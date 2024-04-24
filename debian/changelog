@@ -1,5 +1,75 @@
-template-repository (1.0-1) unstable; urgency=medium
+wget2 (2.1.0-2.1) unstable; urgency=medium
 
-  * Initial release
+  * Non-maintainer upload.
+  * Rename libraries for 64-bit time_t transition.  Closes: #1063197
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Benjamin Drung <bdrung@debian.org>  Fri, 01 Mar 2024 12:57:32 +0000
+
+wget2 (2.1.0-2) unstable; urgency=medium
+
+  * debian/rules replace config.gues|sub copy with dh_update_autotools_config
+  * Thank to Boyuan Yang <byang@d.o> for the following corrections and patches.
+    closes: Bug#1012666
+    - removed unneded debian/*.dirs
+    - debian/control added build-dep libzstd-dev, liblz-dev for compression
+      support
+  * debian/copyright added Upstream-Contact: as suggested by James Addison
+
+ -- Noël Köthe <noel@debian.org>  Sun, 10 Sep 2023 11:38:28 +0200
+
+wget2 (2.1.0-1) unstable; urgency=medium
+
+  * new upstream release from 2023-08-31
+    - progress bar is now default, dot do not trigger an error. closes: #995377
+    - --unlink command option fixed. closes: #990109
+    - -X command option fixed. closes: #1050932
+    - --content-disposition command option fixed. closes: #1005865
+    - <ctrl>+c fixed (no core dump). closes: #991540
+  * removed debian/shlibs.local
+  * changed to dh13, debhelper-compat
+  * SONAME bump to 2
+
+ -- Noël Köthe <noel@debian.org>  Sat, 09 Sep 2023 15:02:25 +0200
+
+wget2 (1.99.1-2.2) unstable; urgency=high
+
+  * Non-maintainer upload.
+  * Rebuild against new gnulib snapshot (20210102).
+  * debian/control: replace old build-dependency libidn2-0-dev with
+    libidn2-dev. (Closes: #975030)
+
+ -- Boyuan Yang <byang@debian.org>  Tue, 26 Jan 2021 11:21:32 -0500
+
+wget2 (1.99.1-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Rebuild against new gnulib snapshot (20200127).
+  * debian/control: Add explicit build-dependency on texinfo.
+    (Closes: #949081)
+
+ -- Boyuan Yang <byang@debian.org>  Tue, 28 Jan 2020 14:51:45 -0500
+
+wget2 (1.99.1-2) unstable; urgency=medium
+
+  * added missing manpages to the packages. closes: Bug#898132
+  * added features: pcre2, brotli, gpgme (for automatic signature verification)
+
+ -- Noël Köthe <noel@debian.org>  Thu, 17 May 2018 22:13:56 +0200
+
+wget2 (1.99.1-1) unstable; urgency=medium
+
+  * second alpha release from 2018-05-01 closes: Bug#887630
+
+ -- Noël Köthe <noel@debian.org>  Sun, 06 May 2018 16:03:22 +0200
+
+wget2 (1.99.0-1) unstable; urgency=medium
+
+  * new upstream release with FTBFS fix closes: Bug#887630
+
+ -- Noël Köthe <noel@debian.org>  Wed, 28 Feb 2018 20:43:43 +0100
+
+wget2 (0.0.20170806-1) unstable; urgency=low
+
+  * Initial release of wget2 the successor of wget
+
+ -- Noël Köthe <noel@debian.org>  Mon, 07 Aug 2017 17:38:26 +0200
