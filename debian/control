@@ -11,7 +11,7 @@ Rules-Requires-Root: no
 
 Package: wget2
 Architecture: any
-Depends: libwget2t64 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Depends: libwget2 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
 Recommends: ca-certificates
 Description: file and recursive website downloader
  GNU Wget is a network utility to retrieve files from the web
@@ -35,9 +35,7 @@ Description: file and recursive website downloader
  .
  GNU Wget2 is the successor of GNU Wget.
 
-Package: libwget2t64
-Provides: ${t64:Provides}
-Breaks: libwget2 (<< ${source:Version})
+Package: libwget2
 Section: libs
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
@@ -58,7 +56,7 @@ Package: wget2-dev
 Section: libdevel
 Architecture: any
 Depends: wget2 (= ${binary:Version}), ${misc:Depends}
-Description: development file for libwget2t64
+Description: development file for libwget2
  GNU Wget is a network utility to retrieve files from the web
  using HTTP(S) and FTP, the two most widely used internet
  protocols. It works non-interactively, so it will work in
