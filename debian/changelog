@@ -1,3 +1,10 @@
+wget2 (2.1.0-2.1deepin2) unstable; urgency=medium
+
+  * Fix CVE-2025-69194: Add path traversal validation for Metalink file
+    name elements
+
+ -- deepin-ci-robot <packages@deepin.org>  Wed, 20 May 2026 22:57:56 +0800
+
 wget2 (2.1.0-2.1deepin1) unstable; urgency=medium
 
   * revert 64-bit time_t transition patch.
