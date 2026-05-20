@@ -1,3 +1,10 @@
+wget2 (2.1.0-2.1deepin3) unstable; urgency=medium
+
+  * Fix CVE-2025-69195: Sanitize filename from Content-Disposition to
+    prevent stack buffer overflow
+
+ -- deepin-ci-robot <packages@deepin.org>  Wed, 20 May 2026 22:58:31 +0800
+
 wget2 (2.1.0-2.1deepin2) unstable; urgency=medium
 
   * Fix CVE-2025-69194: Add path traversal validation for Metalink file
