@@ -1,0 +1,3 @@
+usr/bin/wget2_noinstall
+usr/lib/*/libwget.a
+usr/lib/*/libwget.la 

@@ -1,97 +1,72 @@
 #!/usr/bin/make -f
 
-# Uncomment this to turn on verbose mode.
-export DH_VERBOSE=1
+# DH_VERBOSE := 1
 
-DEB_HOST_GNU_TYPE ?=$(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
-DEB_BUILD_GNU_TYPE ?=$(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+# for hardening you might like to uncomment this:
+export DEB_BUILD_MAINT_OPTIONS=hardening=+all
 
-ifneq ($(DEB_HOST_GNU_TYPE),$(DEB_BUILD_GNU_TYPE))
-confflags= --build $(DEB_BUILD_GNU_TYPE) --host $(DEB_HOST_GNU_TYPE)
+DPKG_EXPORT_BUILDFLAGS := 1
+include /usr/share/dpkg/architecture.mk
+include /usr/share/dpkg/pkg-info.mk
+
+ifeq (, $(filter nocheck, ${DEB_BUILD_OPTIONS}))
+# get the current IP address status of the loopback device
+ip_desc := $(shell inetutils-ifconfig --format=unix lo)
 else
-confflags= --build $(DEB_BUILD_GNU_TYPE)
+ip_desc := inet 127.0.0.1
 endif
 
-DEB_BUILD_MAINT_OPTIONS = hardening=+all
-DPKG_EXPORT_BUILDFLAGS = 1
-include /usr/share/dpkg/buildflags.mk
-CFLAGS += -DNO_SSLv2 -D_FILE_OFFSET_BITS=64 -g -Wall
+# reset these env, or some tests would fail due if libproxy picks them up
+export https_proxy :=
+export http_proxy :=
+export all_proxy :=
 
-configure-stamp:
-	dh_testdir
-	dh_update_autotools_config
-	# Add here commands to configure the package.
-	CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)" LDFLAGS="$(LDFLAGS)" ./configure \
-			--prefix=/usr \
-			--mandir=\$${prefix}/share/man \
-			--infodir=\$${prefix}/share/info \
-			--sysconfdir=/etc \
-			--disable-rpath \
-			--with-libidn=/usr $(confflags)
+ENABLE_LIBPROXY = --enable-libproxy
+ifneq (, $(filter $(DEB_HOST_ARCH), sparc64))
+ENABLE_LIBPROXY =
+endif
 
-	touch configure-stamp
+%:
+	dh $@
 
-build: build-arch build-indep
+override_dh_auto_clean:
+	if [ -f Makefile ] ; then dh_auto_clean ; fi
+	if [ -d debian/tmp_save_gmo ] ; then mv debian/tmp_save_gmo/*.gmo po ; rmdir debian/tmp_save_gmo ; fi
 
-build-arch: build-stamp
-
-build-indep: build-stamp
-
-build-stamp: configure-stamp
-	dh_testdir
-
-	# Add here commands to compile the package.
-	$(MAKE)
-
-	touch build-stamp
-
-clean:
-	dh_testdir
-	dh_testroot
-	rm -f build-stamp configure-stamp
-
-	# Add here commands to clean up after the build process.
-	[ ! -f Makefile ] || $(MAKE) clean
-	rm -rf config.sub config.guess
-
+override_dh_clean:
 	dh_clean
+	rm -rf build-aux
+	rm -rf docs/html
+	find . -name Makefile.in -delete
+	if [ -d lib.bak ] ; then rm -rf lib; mv lib.bak lib ; fi
 
-install: build
-	dh_testdir
-	dh_testroot
-	dh_prep
-	dh_installdirs
+execute_before_dh_autoreconf:
+	cp -a lib lib.bak
+# The original upstream tarball needs bootstrap to initialize gnulib
+#	./bootstrap --no-git --gnulib-srcdir=/usr/share/gnulib
 
-	# Add here commands to install the package into debian/tmp.
-	$(MAKE) install DESTDIR=$(CURDIR)/debian/tmp
+override_dh_auto_configure:
+	mkdir debian/tmp_save_gmo
+	cp -a po/*.gmo debian/tmp_save_gmo
+	dh_auto_configure -- --enable-fsanitize-ubsan=no \
+	 --with-lzma --with-bzip2 \
+	 --without-libhsts \
+	 $(ENABLE_LIBPROXY) --enable-year2038
 
-	dh_install
+override_dh_auto_build:
+	DEB_VERSION=$(DEB_VERSION) dh_auto_build
 
-# Build architecture-independent files here.
-binary-indep: build install
-# We have nothing to do by default.
-
-# Build architecture-dependent files here.
-binary-arch: build install
-	dh_testdir
-	dh_testroot
-	dh_installdebconf	
-	dh_installdocs
-	dh_installexamples
-	dh_installman
-	dh_installinfo -a
-	dh_installchangelogs NEWS
-	dh_link
-	dh_strip
-	dh_strip_nondeterminism
-	dh_compress
-	dh_fixperms
-	dh_makeshlibs
-	dh_installdeb
-	dh_shlibdeps
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb
-
-binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install
+override_dh_auto_test:
+ifeq (, $(filter nocheck, $(DEB_BUILD_OPTIONS)))
+ifeq (, $(findstring inet 127.0.0.1, $(ip_desc)))
+	$(warning Do not run the test suite because it fails on IPv6-only hosts.)
+else
+ifneq (, $(filter $(DEB_HOST_ARCH), hurd-amd64))
+# some different flaky tests in different versions, annoying but still meaningful
+	-dh_auto_test
+else
+# run tests normally
+	dh_auto_test
+endif
+endif
+endif

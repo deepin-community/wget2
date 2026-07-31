@@ -1,14 +1,14 @@
 # Swedish messages for wget2.
-# Copyright © 2017, 2021 Free Software Foundation, Inc.
+# Copyright © 2017, 2021, 2023 Free Software Foundation, Inc.
 # This file is distributed under the same license as the wget2 package.
 #
-# Göran Uddeborg <goeran@uddeborg.se>, 2021
+# Göran Uddeborg <goeran@uddeborg.se>, 2021, 2023
 msgid ""
 msgstr ""
-"Project-Id-Version: wget2 2.0.0\n"
+"Project-Id-Version: wget2 2.1.0\n"
 "Report-Msgid-Bugs-To: bug-wget2@gnu.org\n"
-"POT-Creation-Date: 2023-08-31 14:40+0200\n"
-"PO-Revision-Date: 2021-10-19 14:41+0200\n"
+"POT-Creation-Date: 2024-11-24 19:19+0100\n"
+"PO-Revision-Date: 2023-09-03 18:08+0200\n"
 "Last-Translator: Göran Uddeborg <goeran@uddeborg.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Bugs: Report translation errors to the Language-Team address.\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: lib/error.c:194
+#: lib/error.c:208
 msgid "Unknown system error"
 msgstr "Okänt systemfel"
 
@@ -108,12 +108,12 @@ msgstr "kan inte notera aktuell arbetskatalog"
 msgid "failed to return to initial working directory"
 msgstr "misslyckades att återgå till den ursprungliga arbetskatalogen"
 
-#: lib/os2-spawn.c:45
+#: lib/os2-spawn.c:51
 #, c-format
 msgid "_open_osfhandle failed"
 msgstr "_open_osfhandle misslyckades"
 
-#: lib/os2-spawn.c:82
+#: lib/os2-spawn.c:88
 #, c-format
 msgid "cannot restore fd %d: dup2 failed"
 msgstr "kan inte återställa fb %d: dup2 misslyckades"
@@ -190,22 +190,22 @@ msgstr "Ensam ) eller \\)"
 msgid "No previous regular expression"
 msgstr "Inget tidigare reguljärt uttryck"
 
-#: lib/spawn-pipe.c:216 lib/spawn-pipe.c:219
+#: lib/spawn-pipe.c:218 lib/spawn-pipe.c:221
 #, c-format
 msgid "cannot create pipe"
 msgstr "kan inte skapa ett rör"
 
-#: lib/spawn-pipe.c:596 lib/wait-process.c:291 lib/wait-process.c:365
+#: lib/spawn-pipe.c:599 lib/wait-process.c:326 lib/wait-process.c:400
 #, c-format
 msgid "%s subprocess failed"
 msgstr "%s-underprocess misslyckades"
 
-#: lib/wait-process.c:232 lib/wait-process.c:264 lib/wait-process.c:326
+#: lib/wait-process.c:267 lib/wait-process.c:299 lib/wait-process.c:361
 #, c-format
 msgid "%s subprocess"
 msgstr "%s-underprocess"
 
-#: lib/wait-process.c:283 lib/wait-process.c:355
+#: lib/wait-process.c:318 lib/wait-process.c:390
 #, c-format
 msgid "%s subprocess got fatal signal %d"
 msgstr "%s-underprocess fick en ödesdiger signal %d"
@@ -214,21 +214,21 @@ msgstr "%s-underprocess fick en ödesdiger signal %d"
 msgid "memory exhausted"
 msgstr "slut på minne"
 
-#: libwget/cookie.c:408
+#: libwget/cookie.c:411
 #, c-format
 msgid "Incomplete cookie entry: %s\n"
 msgstr "Ofullständig kakpost: %s\n"
 
-#: libwget/cookie.c:440
+#: libwget/cookie.c:445
 msgid "Failed to read cookies\n"
 msgstr "Misslyckades att läsa kakor\n"
 
-#: libwget/cookie.c:499
+#: libwget/cookie.c:506
 #, c-format
 msgid "Failed to write cookie file '%s'\n"
 msgstr "Misslyckades att skriva kakfilen ”%s”\n"
 
-#: libwget/cookie_parse.c:363
+#: libwget/cookie_parse.c:365
 msgid "Cookie without name or assignment ignored\n"
 msgstr "Kaka utan namn eller tilldelning ignorerad\n"
 
@@ -242,7 +242,7 @@ msgstr "Okänd symbol efter @charset: %d\n"
 msgid "Failed to open %s\n"
 msgstr "Misslyckades att öppna %s\n"
 
-#: libwget/css_url.c:102
+#: libwget/css_url.c:104
 #, c-format
 msgid "Cannot resolve relative URI '%s'\n"
 msgstr "Kan inte slå upp en relativ URI ”%s”\n"
@@ -252,10 +252,8 @@ msgid "Failed to init gzip decompression\n"
 msgstr "Misslyckades att initiera gzip-dekomprimering\n"
 
 #: libwget/decompressor.c:159
-#, fuzzy
-#| msgid "Failed to init deflate decompression\n"
 msgid "Failed to re-init deflate/gzip decompression\n"
-msgstr "Misslyckades att initiera deflateringsdekomprimering\n"
+msgstr "Misslyckades att initiera om deflate/gzip-dekomprimering\n"
 
 #: libwget/decompressor.c:175
 #, c-format
@@ -326,17 +324,21 @@ msgstr "Misslyckades att initiera bzip2-dekomprimering\n"
 msgid "Failed to uncompress bzip2 stream (%d)\n"
 msgstr "Misslyckades att dekomprimera bzip2-strömmen (%d)\n"
 
-#: libwget/dns.c:282
+#: libwget/dns.c:313
 #, fuzzy, c-format
-#| msgid "Failed to resolve %s:%d: %s\n"
-msgid "Failed to resolve '%s:%d': %s\n"
-msgstr "Misslyckades att slå upp %s:%d: %s\n"
+#| msgid "Failed to resolve '%s:%d': %s\n"
+msgid "Failed to resolve '[%s]:%d': %s\n"
+msgstr "Misslyckades att slå upp ”%s:%d”: %s\n"
 
-#: libwget/dns.c:365
-#, fuzzy, c-format
-#| msgid "Failed to resolve %s (%s)\n"
+#: libwget/dns.c:315
+#, c-format
+msgid "Failed to resolve '%s:%d': %s\n"
+msgstr "Misslyckades att slå upp ”%s:%d”: %s\n"
+
+#: libwget/dns.c:398
+#, c-format
 msgid "Failed to resolve '%s' (%s)\n"
-msgstr "Misslyckades att slå upp %s (%s)\n"
+msgstr "Misslyckades att slå upp ”%s” (%s)\n"
 
 #: libwget/encoding.c:112
 #, c-format
@@ -422,10 +424,9 @@ msgid "Failed to hash (%d)\n"
 msgstr "Misslyckades att beräkna kontrollsumma (%d)\n"
 
 #: libwget/hash_printf.c:89
-#, fuzzy, c-format
-#| msgid "Failed to allocate %zu bytes\n"
+#, c-format
 msgid "%s: Failed to malloc %zu bytes\n"
-msgstr "Misslyckades att allokera %zu byte\n"
+msgstr "%s: Misslyckades att göra malloc på %zu byte\n"
 
 #: libwget/hashfile.c:92
 #, c-format
@@ -435,7 +436,7 @@ msgstr "Okänd kontrollsummetyp ”%s”\n"
 #: libwget/hashfile.c:794 libwget/hpkp_db.c:159
 #, c-format
 msgid "%s: Unexpected hash len %zu > %zu\n"
-msgstr ""
+msgstr "%s: Oväntas kontrollsummelängd %zu > %zu\n"
 
 #: libwget/hashfile.c:816
 #, c-format
@@ -476,180 +477,170 @@ msgstr "Misslyckades att läsa HPKP-data\n"
 msgid "Failed to write HPKP file '%s'\n"
 msgstr "Misslyckades att skriva HPKP-filen ”%s”\n"
 
-#: libwget/hsts.c:412 libwget/tls_session.c:332
+#: libwget/hsts.c:419 libwget/tls_session.c:332
 #, c-format
 msgid "Failed to parse HSTS line: '%s'\n"
 msgstr "Misslyckades att tolka HSTS-raden: ”%s”\n"
 
-#: libwget/hsts.c:452
+#: libwget/hsts.c:459
 msgid "Failed to read HSTS data\n"
 msgstr "Misslyckades att läsa HSTS-data\n"
 
-#: libwget/hsts.c:515
+#: libwget/hsts.c:522
 #, c-format
 msgid "Failed to write HSTS file '%s'\n"
 msgstr "Misslyckades att skriva HSTS-filen ”%s”\n"
 
-#: libwget/http.c:178 libwget/http.c:188 libwget/http.c:197 libwget/http.c:206
+#: libwget/http.c:184 libwget/http.c:194 libwget/http.c:203 libwget/http.c:212
 #, c-format
 msgid "%s: Unknown key %d (or value must not be an integer)\n"
 msgstr "%s: Okänd nyckel %d (eller värdet får inte vara ett heltal)\n"
 
-#: libwget/http.c:303
+#: libwget/http.c:309
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
 msgstr "Ej stödd skyddskvalitet ”%s”.\n"
 
-#: libwget/http.c:314
+#: libwget/http.c:320
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
 msgstr "Algoritmen ”%s” stödjs inte.\n"
 
-#: libwget/http.c:413
+#: libwget/http.c:412
 #, c-format
 msgid "Decompress failed [host: %s - resource: %s]\n"
 msgstr "Dekomprimering misslyckades [värd: %s – resurs: %s]\n"
 
-#: libwget/http.c:645
+#: libwget/http.c:483
 #, c-format
 msgid "Proxy connection failed with: %s\n"
-msgstr ""
+msgstr "Proxy-förbindelsen misslyckades med: %s\n"
 
-#: libwget/http.c:739
-msgid "Failed to create HTTP2 callbacks\n"
-msgstr "Misslyckades att skapa HTTP2-återanrop\n"
-
-#: libwget/http.c:749
-#, c-format
-msgid "Failed to create HTTP2 client session (%d)\n"
-msgstr "Misslyckades att skapa en HTTP2-klientsession (%d)\n"
-
-#: libwget/http.c:761
-#, c-format
-msgid "Failed to submit HTTP2 client settings (%d)\n"
-msgstr "Misslyckades att skicka HTTP2-klientinställningar (%d)\n"
-
-#: libwget/http.c:791
-#, c-format
-msgid "Failed to terminate HTTP2 session (%d)\n"
-msgstr "Misslyckades att avsluta HTTP2-sessionen (%d)\n"
-
-#: libwget/http.c:857
-#, fuzzy, c-format
-#| msgid "Failed to allocate %zu bytes\n"
-msgid "Failed to allocate nvs[%d]\n"
-msgstr "Misslyckades att allokera %zu byte\n"
-
-#: libwget/http.c:863
-#, fuzzy, c-format
-#| msgid "Failed to allocate %zu bytes\n"
-msgid "Failed to allocate resource[%zu]\n"
-msgstr "Misslyckades att allokera %zu byte\n"
-
-#: libwget/http.c:918
-msgid "Failed to submit HTTP2 request\n"
-msgstr "Misslyckades att skicka en HTTP2-begäran\n"
-
-#: libwget/http.c:933
+#: libwget/http.c:668
 msgid "Failed to create request buffer\n"
 msgstr "Misslyckades att skapa en buffert för begäran\n"
 
-#: libwget/http.c:1136 libwget/tls_session.c:374
+#: libwget/http.c:835 libwget/tls_session.c:374
 #, c-format
 msgid "Failed to allocate %zu bytes\n"
 msgstr "Misslyckades att allokera %zu byte\n"
 
-#: libwget/http.c:1231
-#, fuzzy, c-format
-#| msgid "Failed to allocate %zu bytes\n"
+#: libwget/http.c:929
+#, c-format
 msgid "Failed to allocate %zu bytes (%s)\n"
-msgstr "Misslyckades att allokera %zu byte\n"
+msgstr "Misslyckades att allokera %zu byte (%s)\n"
 
-#: libwget/http.c:1254
-#, fuzzy, c-format
-#| msgid "Failed to convert chunk size '%.31s'\n"
+#: libwget/http.c:952
+#, c-format
 msgid "Failed to convert chunk size '%.31s' (%s)\n"
-msgstr "Misslyckades att konvertera styckesstorleken ”%.31s”\n"
+msgstr "Misslyckades att konvertera styckesstorleken ”%.31s” (%s)\n"
 
-#: libwget/http.c:1292
-#, fuzzy, c-format
-#| msgid "Chunk size overflow: %zX\n"
+#: libwget/http.c:990
+#, c-format
 msgid "Chunk size overflow: %zX (%s)\n"
-msgstr "Spill för styckesstorleken: %zX\n"
+msgstr "Spill för styckesstorleken: %zX (%s)\n"
 
-#: libwget/http.c:1334
-#, fuzzy, c-format
-#| msgid "Expected end-of-chunk not found\n"
+#: libwget/http.c:1032
+#, c-format
 msgid "Expected end-of-chunk not found (%s)\n"
-msgstr "Förväntat styckesslut inte funnet\n"
+msgstr "Förväntat styckesslut inte funnet (%s)\n"
 
-#: libwget/http.c:1382
-#, fuzzy, c-format
-#| msgid "Failed to read %zd bytes (%d)\n"
+#: libwget/http.c:1080
+#, c-format
 msgid "Failed to read %zd bytes (%d) (%s)\n"
-msgstr "Misslyckades att läsa %zd byte (%d)\n"
+msgstr "Misslyckades att läsa %zd byte (%d) (%s)\n"
 
-#: libwget/http.c:1388
-#, fuzzy, c-format
-#| msgid "Just got %zu of %zu bytes\n"
+#: libwget/http.c:1086
+#, c-format
 msgid "Just got %zu of %zu bytes (%s)\n"
-msgstr "Fig bara %zu av %zu byte\n"
+msgstr "Fig bara %zu av %zu byte (%s)\n"
 
-#: libwget/http.c:1393
-#, fuzzy, c-format
-#| msgid "Body too large: %zu instead of %zu bytes\n"
+#: libwget/http.c:1091
+#, c-format
 msgid "Body too large: %zu instead of %zu bytes (%s)\n"
-msgstr "Kroppen för stor: %zu istället för %zu byte\n"
+msgstr "Kroppen för stor: %zu istället för %zu byte (%s)\n"
+
+#: libwget/http2.c:200
+msgid "Failed to create HTTP2 callbacks\n"
+msgstr "Misslyckades att skapa HTTP2-återanrop\n"
+
+#: libwget/http2.c:209
+#, c-format
+msgid "Failed to create HTTP2 client session (%d)\n"
+msgstr "Misslyckades att skapa en HTTP2-klientsession (%d)\n"
+
+#: libwget/http2.c:220
+#, c-format
+msgid "Failed to submit HTTP2 client settings (%d)\n"
+msgstr "Misslyckades att skicka HTTP2-klientinställningar (%d)\n"
+
+#: libwget/http2.c:240
+#, c-format
+msgid "Failed to terminate HTTP2 session (%d)\n"
+msgstr "Misslyckades att avsluta HTTP2-sessionen (%d)\n"
+
+#: libwget/http2.c:289
+#, c-format
+msgid "Failed to allocate nvs[%d]\n"
+msgstr "Misslyckades att allokera nvs[%d]\n"
+
+#: libwget/http2.c:295
+#, c-format
+msgid "Failed to allocate resource[%zu]\n"
+msgstr "Misslyckades att allokera resource[%zu]\n"
+
+#: libwget/http2.c:360
+msgid "Failed to submit HTTP2 request\n"
+msgstr "Misslyckades att skicka en HTTP2-begäran\n"
 
 #: libwget/http_highlevel.c:45
-#, fuzzy, c-format
-#| msgid "Failed to write %zu bytes of data (%d)\n"
+#, c-format
 msgid "Failed to fwrite %zu bytes of data (%d)\n"
-msgstr "Misslyckades att skriva %zu byte med data (%d)\n"
+msgstr "Misslyckades att fwrite %zu byte med data (%d)\n"
 
 #: libwget/http_highlevel.c:60
 #, c-format
 msgid "Failed to write %zu bytes of data (%d)\n"
 msgstr "Misslyckades att skriva %zu byte med data (%d)\n"
 
-#: libwget/http_highlevel.c:161
+#: libwget/http_highlevel.c:165
 #, c-format
 msgid "Unknown option %d\n"
 msgstr "Okänt alternativ %d\n"
 
-#: libwget/http_highlevel.c:171
+#: libwget/http_highlevel.c:175
 msgid "Error parsing URL\n"
 msgstr "Fel vid tolkning av URL\n"
 
-#: libwget/http_highlevel.c:178
+#: libwget/http_highlevel.c:182
 msgid "Missing URL/URI\n"
 msgstr "Saknad URL/URI\n"
 
-#: libwget/http_parse.c:860 libwget/http_parse.c:885
+#: libwget/http_parse.c:865 libwget/http_parse.c:890
 #, c-format
 msgid "Failed to parse date '%s'\n"
 msgstr "Misslyckades att tolka datumet ”%s”\n"
 
-#: libwget/http_parse.c:1268
+#: libwget/http_parse.c:1273
 msgid "HTTP response header not found\n"
 msgstr "HTTP-svarshuvud inte funnet\n"
 
-#: libwget/init.c:136 src/options.c:3632
+#: libwget/init.c:137 src/options.c:3683
 #, c-format
 msgid "Failed to init DNS cache (%d)"
 msgstr "Misslyckades att initiera DNS-cachen (%d)"
 
-#: libwget/init.c:171 libwget/init.c:245 libwget/init.c:270 libwget/init.c:285
+#: libwget/init.c:172 libwget/init.c:246 libwget/init.c:271 libwget/init.c:286
 #, c-format
 msgid "%s: Unknown option %d"
 msgstr "%s: Okänd flagga %d"
 
-#: libwget/init.c:190
+#: libwget/init.c:191
 #, c-format
 msgid "%s: Failed to init networking (%d)"
 msgstr "%s: Misslyckades att initera nätverket (%d)"
 
-#: libwget/init.c:228
+#: libwget/init.c:229
 #, c-format
 msgid "%s: Failed to deinit networking (%d)"
 msgstr "%s: Misslyckades att avinitiera nätverket (%d)"
@@ -713,22 +704,24 @@ msgstr "Misslycades att byta namn från ”%s” till ”%s” (%d)\n"
 msgid "Take manually care for '%s'\n"
 msgstr "Ta manuellt hand om ”%s”\n"
 
-#: libwget/iri.c:651
+#: libwget/iri.c:629
+msgid "Port number must be in the range 1..65535\n"
+msgstr ""
+
+#: libwget/iri.c:663
 #, c-format
 msgid "Missing host/domain in URI '%s'\n"
 msgstr "Saknad värd/domän i URI:n ”%s”\n"
 
 #: libwget/net.c:133
-#, fuzzy, c-format
-#| msgid "Failed to rename '%s' (errno=%d)\n"
+#, c-format
 msgid "%s (hostname='%s', ip=%s, errno=%d)\n"
-msgstr "Misslyckades att byta namn på ”%s” (errno=%d)\n"
+msgstr "%s (värdnamn=”%s”, ip=%s, errno=%d)\n"
 
 #: libwget/net.c:140
-#, fuzzy, c-format
-#| msgid "Failed to rename '%s' (errno=%d)\n"
+#, c-format
 msgid "%s (hostname='%s', errno=%d)\n"
-msgstr "Misslyckades att byta namn på ”%s” (errno=%d)\n"
+msgstr "%s (värdnamn=”%s”, errno=%d)\n"
 
 #: libwget/net.c:608 libwget/net.c:616
 msgid "Failed to set socket to non-blocking\n"
@@ -754,37 +747,35 @@ msgstr "Misslyckades att sätta uttagsflaggan BINDTODEVICE\n"
 msgid "Unsupported socket option BINDTODEVICE\n"
 msgstr "Ej stödd uttagsflagga BINDTODEVICE\n"
 
-#: libwget/net.c:773
+#: libwget/net.c:654
 #, fuzzy
-#| msgid "Failed to bind (%d)\n"
-msgid "Failed to bind"
-msgstr "Misslyckades att binda (%d)\n"
+#| msgid "Failed to set socket option NODELAY\n"
+msgid "Failed to set socket option SO_SNDTIMEO\n"
+msgstr "Misslyckades att sätta uttagsflaggan NODELAY\n"
 
-#: libwget/net.c:785 libwget/net.c:959
-#, fuzzy
-#| msgid "Failed to connect: %s\n"
-msgid "Failed to connect"
-msgstr "Misslyckades att ansluta: %s\n"
-
-#: libwget/net.c:819
-#, fuzzy
-#| msgid "Failed to create socket (%d)\n"
+#: libwget/net.c:780
 msgid "Failed to create socket"
-msgstr "Misslyckades att skapa uttag (%d)\n"
+msgstr "Misslyckades att skapa uttag"
 
-#: libwget/net.c:898
-#, fuzzy, c-format
-#| msgid "Failed to read %zu bytes (%d)\n"
+#: libwget/net.c:793
+msgid "Failed to bind"
+msgstr "Misslyckades att binda"
+
+#: libwget/net.c:805 libwget/net.c:979
+msgid "Failed to connect"
+msgstr "Misslyckades att ansluta"
+
+#: libwget/net.c:918
+#, c-format
 msgid "Failed to read %zu bytes (hostname='%s', ip=%s, errno=%d)\n"
-msgstr "Misslyckades att läsa %zu byte (%d)\n"
+msgstr "Misslyckades att läsa %zu byte (värdnamn=”%s”, ip=%s, errno=%d)\n"
 
-#: libwget/net.c:981
-#, fuzzy, c-format
-#| msgid "Failed to rename '%s' (errno=%d)\n"
+#: libwget/net.c:1001
+#, c-format
 msgid "Failed to send %zu bytes (hostname='%s', ip=%s, errno=%d)\n"
-msgstr "Misslyckades att byta namn på ”%s” (errno=%d)\n"
+msgstr "Misslyckades att skicka %zu byte (värdnamn=”%s”, ip=%s, errno=%d)\n"
 
-#: libwget/net.c:1023
+#: libwget/net.c:1043
 #, c-format
 msgid "%s: internal error: length mismatch %zu != %zd\n"
 msgstr "%s: internt fel: längden stämmer inte %zu ≠ %zd\n"
@@ -794,7 +785,7 @@ msgstr "%s: internt fel: längden stämmer inte %zu ≠ %zd\n"
 msgid "Mirror scheme not supported: '%s'\n"
 msgstr "Speglingsschemat stödjs inte: ”%s”\n"
 
-#: libwget/metalink.c:287
+#: libwget/metalink.c:289
 msgid "Error in parsing XML"
 msgstr "Fel vid tolkning av XML"
 
@@ -994,184 +985,191 @@ msgstr "Chiffer: %s\n"
 msgid "MAC: %s\n"
 msgstr "MAC: %s\n"
 
-#: libwget/ssl_gnutls.c:883
+#: libwget/ssl_gnutls.c:888
 #, c-format
 msgid "Failed to import pubkey: %s\n"
 msgstr "Misslyckades att importera publik nyckel: %s\n"
 
-#: libwget/ssl_gnutls.c:891 libwget/ssl_gnutls.c:903 libwget/ssl_gnutls.c:911
+#: libwget/ssl_gnutls.c:896 libwget/ssl_gnutls.c:908 libwget/ssl_gnutls.c:916
 #, c-format
 msgid "Failed to export pubkey: %s\n"
 msgstr "Misslyckades att exportera publik nyckel: %s\n"
 
-#: libwget/ssl_gnutls.c:961
+#: libwget/ssl_gnutls.c:966
 msgid "ERROR"
 msgstr "FEL"
 
-#: libwget/ssl_gnutls.c:961
+#: libwget/ssl_gnutls.c:966
 msgid "WARNING"
 msgstr "VARNING"
 
-#: libwget/ssl_gnutls.c:980
+#: libwget/ssl_gnutls.c:986
 #, c-format
 msgid "%s: Certificate verification error\n"
 msgstr "%s: Certifikatsverifikationsfel\n"
 
-#: libwget/ssl_gnutls.c:1032
+#: libwget/ssl_gnutls.c:1038
 #, c-format
 msgid "DANE verification print error for %s: %s\n"
-msgstr ""
+msgstr "DANE-verifieringsutskriftsfel för %s: %s\n"
 
-#: libwget/ssl_gnutls.c:1034
-#, fuzzy, c-format
-#| msgid "%s: Hash init failed for type '%s': %s\n"
+#: libwget/ssl_gnutls.c:1040
+#, c-format
 msgid "DANE verification failed for %s: %s\n"
-msgstr "%s: Kontrollsummeinitiering misslyckades för typen ”%s”: %s\n"
+msgstr "DANE-verifieringen misslyckades för %s: %s\n"
 
-#: libwget/ssl_gnutls.c:1051
+#: libwget/ssl_gnutls.c:1057
 #, c-format
 msgid "%s: The certificate is not trusted.\n"
 msgstr "%s: Certifikatet är inte betrott.\n"
 
-#: libwget/ssl_gnutls.c:1053
+#: libwget/ssl_gnutls.c:1059
 #, c-format
 msgid "%s: The certificate has been revoked.\n"
 msgstr "%s: Certifikatet har återkallats.\n"
 
-#: libwget/ssl_gnutls.c:1055
+#: libwget/ssl_gnutls.c:1061
 #, c-format
 msgid "%s: The certificate doesn't have a known issuer.\n"
 msgstr "%s: Certifikatet har inte en känd utgivare.\n"
 
-#: libwget/ssl_gnutls.c:1057
+#: libwget/ssl_gnutls.c:1063
 #, c-format
 msgid "%s: The certificate signer was not a CA.\n"
 msgstr "%s: Certifikatssigneraren var inte en CA.\n"
 
-#: libwget/ssl_gnutls.c:1059
+#: libwget/ssl_gnutls.c:1065
 #, c-format
 msgid "%s: The certificate was signed using an insecure algorithm.\n"
 msgstr "%s: Certifikatet signerades med en osäker algoritm.\n"
 
-#: libwget/ssl_gnutls.c:1061
+#: libwget/ssl_gnutls.c:1067
 #, c-format
 msgid "%s: The certificate is not yet activated.\n"
 msgstr "%s: Certifikatet är inte aktiverat ännu.\n"
 
-#: libwget/ssl_gnutls.c:1063
+#: libwget/ssl_gnutls.c:1069
 #, c-format
 msgid "%s: The certificate has expired.\n"
 msgstr "%s: Certifikatet har gått ut.\n"
 
-#: libwget/ssl_gnutls.c:1066
+#: libwget/ssl_gnutls.c:1072
 #, c-format
 msgid "%s: The certificate signature is invalid.\n"
 msgstr "%s: Certifikatsignaturen är ogiltig.\n"
 
-#: libwget/ssl_gnutls.c:1068
+#: libwget/ssl_gnutls.c:1074
 #, c-format
 msgid "%s: The certificate's owner does not match hostname '%s'.\n"
 msgstr "%s: Certifikatets ägare matchar inte värdnmanet ”%s”.\n"
 
-#: libwget/ssl_gnutls.c:1080
+#: libwget/ssl_gnutls.c:1086
 #, c-format
 msgid "%s: The certificate could not be verified (0x%X).\n"
 msgstr "%s: Certifikatet kunde inte verifieras (0x%X).\n"
 
-#: libwget/ssl_gnutls.c:1091
+#: libwget/ssl_gnutls.c:1097
 #, c-format
 msgid "%s: Certificate must be X.509\n"
 msgstr "%s: Certifikatet måste vara X.509\n"
 
-#: libwget/ssl_gnutls.c:1096
+#: libwget/ssl_gnutls.c:1102
 #, c-format
 msgid "%s: Error initializing X.509 certificate\n"
 msgstr "%s: Fel vid initiering av X.509-certifikat\n"
 
-#: libwget/ssl_gnutls.c:1102
+#: libwget/ssl_gnutls.c:1108
 #, c-format
 msgid "%s: No certificate was found!\n"
 msgstr "%s: Inget certifikat hittades!\n"
 
-#: libwget/ssl_gnutls.c:1107
+#: libwget/ssl_gnutls.c:1113
 #, c-format
 msgid "%s: Failed to parse certificate: %s\n"
 msgstr "%s: Misslyckades att tolka certifikatet: %s\n"
 
-#: libwget/ssl_gnutls.c:1130
+#: libwget/ssl_gnutls.c:1137
 msgid "WARNING: The certificate's (stapled) OCSP status is invalid\n"
 msgstr "VARNING: Certifikatets (vidhäftade) OCSP-status är ogiltig\n"
 
-#: libwget/ssl_gnutls.c:1134
-msgid "WARNING: The certificate's (stapled) OCSP status has not been sent\n"
-msgstr "VARNING: Certifikatets (vidhäftade) OCSP-status har inte skickats\n"
+#: libwget/ssl_gnutls.c:1144
+#, c-format
+msgid ""
+"WARNING: OCSP stapling is not supported by '%s', but OCSP validation has "
+"been requested.\n"
+msgstr ""
 
-#: libwget/ssl_gnutls.c:1146
+#: libwget/ssl_gnutls.c:1145
+msgid ""
+"WARNING: This implies a privacy leak: the client sends the certificate "
+"serial ID over HTTP to the CA.\n"
+msgstr ""
+
+#: libwget/ssl_gnutls.c:1158
 #, c-format
 msgid "%s: Failed to parse certificate[%u]: %s\n"
 msgstr "%s: Misslyckades att tolka certifikat[%u]: %s\n"
 
-#: libwget/ssl_gnutls.c:1232
+#: libwget/ssl_gnutls.c:1244
 #, c-format
 msgid "%s: Pubkey pinning mismatch!\n"
 msgstr "%s: Pin:ande av publik nyckel stämmer inte!\n"
 
-#: libwget/ssl_gnutls.c:1295
+#: libwget/ssl_gnutls.c:1307
 msgid "GnuTLS requires the key and the cert to be of the same type.\n"
 msgstr "GnuTLS kräver att nyckeln och certifikatet är av samma typ.\n"
 
-#: libwget/ssl_gnutls.c:1299
+#: libwget/ssl_gnutls.c:1311
 msgid "No certificates or keys were found\n"
 msgstr "Inga certifikat eller nycklar hittades\n"
 
-#: libwget/ssl_gnutls.c:1306
+#: libwget/ssl_gnutls.c:1318
 #, c-format
 msgid "No CAs were found in '%s'\n"
 msgstr "Inga CA:n hittades i ”%s”\n"
 
-#: libwget/ssl_gnutls.c:1373
-#, fuzzy, c-format
-#| msgid "Failed to parse last line in '%s'\n"
+#: libwget/ssl_gnutls.c:1385
+#, c-format
 msgid "Failed to allocate file name for cert '%s/%s'\n"
-msgstr "Misslyckades att tolka sista raden i ”%s”\n"
+msgstr "Misslyckades att allokera filnamnet för certifikatet ”%s/%s”\n"
 
-#: libwget/ssl_gnutls.c:1392
+#: libwget/ssl_gnutls.c:1404
 #, c-format
 msgid "Failed to opendir %s\n"
 msgstr "Misslyckades att göra opendir %s\n"
 
-#: libwget/ssl_gnutls.c:1399
+#: libwget/ssl_gnutls.c:1411
 #, c-format
 msgid "Failed to load CRL '%s': (%d)\n"
 msgstr "Misslyckades att läsa in CRL ”%s”: (%d)\n"
 
-#: libwget/ssl_gnutls.c:1441
+#: libwget/ssl_gnutls.c:1453
 #, c-format
 msgid "GnuTLS: Unsupported priority string '%s': %s\n"
 msgstr "GnuTLS: Prioritetssträngen ”%s” stödjs inte: %s\n"
 
-#: libwget/ssl_gnutls.c:1445
+#: libwget/ssl_gnutls.c:1457
 #, c-format
 msgid "GnuTLS: Unsupported default priority 'NULL': %s\n"
 msgstr "GnuTLS: Standardprioriteten ”NULL” stödjs inte: %s\n"
 
-#: libwget/ssl_gnutls.c:1692 libwget/ssl_gnutls.c:1698
+#: libwget/ssl_gnutls.c:1708 libwget/ssl_gnutls.c:1714
 msgid ""
 "TLS False Start requested but libwget built with insufficient GnuTLS "
 "version\n"
 msgstr ""
 "TLS falsk start begärd men libwget är byggd med otillräcklig GnuTLS-version\n"
 
-#: libwget/ssl_gnutls.c:1703
+#: libwget/ssl_gnutls.c:1719
 #, c-format
 msgid "GnuTLS: Failed to set priorities: %s\n"
 msgstr "GnuTLS: Misslyckades att sätta prioriteter: %s\n"
 
-#: libwget/ssl_gnutls.c:1736
+#: libwget/ssl_gnutls.c:1752
 msgid "WARNING: OCSP is not available in this version of GnuTLS.\n"
 msgstr "VARNING: OCSP är inte tillgängligt in denna version av GnuTLS.\n"
 
-#: libwget/ssl_gnutls.c:1803
+#: libwget/ssl_gnutls.c:1819
 #, c-format
 msgid "GnuTLS: Failed to set session data: %s\n"
 msgstr "GnuTLS: Misslyckades att sätta sessionsdata: %s\n"
@@ -1189,24 +1187,45 @@ msgstr "Misslyckades att skapa WOLFSSL_CTX\n"
 msgid "WolfSSL: Failed to set ciphers '%s'\n"
 msgstr "WolfSSL: Misslyckades att sätta chiffer ”%s”\n"
 
-#: libwget/ssl_wolfssl.c:662
-#, c-format
+#: libwget/ssl_wolfssl.c:658
+#, fuzzy
+#| msgid "Failed to load %s (%d)"
+msgid "Failed to load system certs\n"
+msgstr "Misslyckades att läsa in %s (%d)"
+
+#: libwget/ssl_wolfssl.c:684
+#, fuzzy
+#| msgid ""
+#| "Failed to load CA pem: %s or cert dir: %s, ssl verification will likely "
+#| "fail.\n"
+msgid "Skipped loading CA certs. SSL verification will likely fail.\n"
+msgstr ""
+"Misslyckades att läsa in CA-pem: %s eller cert-katalogen: %s, ssl-"
+"verifiering kommer sannolikt att misslyckas.\n"
+
+#: libwget/ssl_wolfssl.c:690
+#, fuzzy, c-format
+#| msgid ""
+#| "Failed to load CA pem: %s or cert dir: %s, ssl verification will likely "
+#| "fail.\n"
 msgid ""
-"Failed to load CA pem: %s or cert dir: %s, ssl verification will likely "
+"Failed to load CA pem: %s or cert dir: %s, SSL verification will likely "
 "fail.\n"
 msgstr ""
+"Misslyckades att läsa in CA-pem: %s eller cert-katalogen: %s, ssl-"
+"verifiering kommer sannolikt att misslyckas.\n"
 
-#: libwget/ssl_wolfssl.c:900
+#: libwget/ssl_wolfssl.c:929
 msgid "Failed to create WolfSSL session\n"
 msgstr "Misslyckades att skapa en WolfSSL-session\n"
 
-#: libwget/ssl_wolfssl.c:1034
+#: libwget/ssl_wolfssl.c:1063
 #, c-format
 msgid "failed to connect TLS (%d): %s\n"
 msgstr "misslyckades att ansluta TLS (%d): %s\n"
 
-#: libwget/ssl_openssl.c:243 libwget/ssl_openssl.c:283
-#: libwget/ssl_openssl.c:361
+#: libwget/ssl_openssl.c:246 libwget/ssl_openssl.c:286
+#: libwget/ssl_openssl.c:364
 #, c-format
 msgid ""
 "Unknown configuration key %d (maybe this config value should be of another "
@@ -1215,7 +1234,7 @@ msgstr ""
 "Okänd konfigurationsnyckel %d (kanske detta konfigurationsvärde skulle vara "
 "av en annan typ?)\n"
 
-#: libwget/ssl_openssl.c:410
+#: libwget/ssl_openssl.c:413
 msgid ""
 "OpenSSL: TLS 1.3 is not supported by your OpenSSL version. Will use TLS 1.2 "
 "instead.\n"
@@ -1223,12 +1242,12 @@ msgstr ""
 "OpenSSL: TLS 1.3 stödjs inte av din OpenSSL-version. Kommer använda TLS 1.2 "
 "istället.\n"
 
-#: libwget/ssl_openssl.c:420
+#: libwget/ssl_openssl.c:423
 #, c-format
 msgid "OpenSSL: Invalid priority string '%s'\n"
 msgstr "OpenSSL: Felaktig prioritetssträng ”%s”\n"
 
-#: libwget/ssl_openssl.c:482
+#: libwget/ssl_openssl.c:485
 #, c-format
 msgid ""
 "OpenSSL: Could not load certificates from default paths. Falling back to "
@@ -1237,133 +1256,123 @@ msgstr ""
 "OpenSSL: Kunde inte läsa in certifikat från standardsökvägar. Faller "
 "tillbaka på ”%s”."
 
-#: libwget/ssl_openssl.c:487
+#: libwget/ssl_openssl.c:490
 #, c-format
 msgid "OpenSSL: No certificates could be loaded from directory '%s'\n"
 msgstr "OpenSSL: Inga certifikat kunde läsas in från katalogen ”%s”\n"
 
-#: libwget/ssl_openssl.c:491
+#: libwget/ssl_openssl.c:494
 #, c-format
 msgid "OpenSSL: Could not open directory '%s'. No certificates were loaded.\n"
 msgstr "OpenSSL: Kunde inte öppna katalogen ”%s”. Inga certifikat lästes in.\n"
 
-#: libwget/ssl_openssl.c:682
-#, fuzzy
-#| msgid "Could not verify stapled OCSP response. Aborting.\n"
+#: libwget/ssl_openssl.c:685
 msgid "Could not get user data to verify stapled OCSP.\n"
-msgstr "Kunde inte verifiera vidhäftat OCSP-svar. Avbryter.\n"
+msgstr "Kunde inte få användardata för att verifiera vidhäftat OCSP.\n"
 
-#: libwget/ssl_openssl.c:694
+#: libwget/ssl_openssl.c:697
 msgid "Got a stapled OCSP response, but could not parse it. Aborting.\n"
 msgstr "Fick ett vidhäftat OCSP-svar, men kunde inte tolka det. Avbryter.\n"
 
-#: libwget/ssl_openssl.c:700
+#: libwget/ssl_openssl.c:703
 msgid "Could not get server's cert stack\n"
 msgstr "Kunde inte få serverns certifikatstack\n"
 
-#: libwget/ssl_openssl.c:712
+#: libwget/ssl_openssl.c:715
 msgid "Could not verify stapled OCSP response. Aborting.\n"
 msgstr "Kunde inte verifiera vidhäftat OCSP-svar. Avbryter.\n"
 
-#: libwget/ssl_openssl.c:873
+#: libwget/ssl_openssl.c:877
 msgid "ERROR: print_openssl_time: BIO_read failed\n"
-msgstr ""
+msgstr "FEL: print_openssl_time: BIO_read misslyckades\n"
 
-#: libwget/ssl_openssl.c:887
-#, fuzzy
-#| msgid "Could not get server's cert stack\n"
+#: libwget/ssl_openssl.c:891
 msgid "Could not get current time!\n"
-msgstr "Kunde inte få serverns certifikatstack\n"
-
-#: libwget/ssl_openssl.c:896
-#, fuzzy
-#| msgid "Could not compute certificate fingerprint for cert %u\n"
-msgid "Could not compute time difference for thisUpd. Aborting.\n"
-msgstr "Kunde ite beräkna certifikatfingeravtrycket för certifikat %u\n"
+msgstr "Kunde inte få aktuell tid!\n"
 
 #: libwget/ssl_openssl.c:900
-#, fuzzy
-#| msgid "OCSP response is too old. Ignoring.\n"
+msgid "Could not compute time difference for thisUpd. Aborting.\n"
+msgstr "Kunde inte beräkna tidsskillnaden för thisUpd. Avbryter.\n"
+
+#: libwget/ssl_openssl.c:904
 msgid "*** OCSP response thisUpd is too old. Aborting.\n"
-msgstr "OCSP-svaret är för gammalt. Ignorerar.\n"
+msgstr "*** OCSP-svaret thusUpd är för gammalt. Avbryter.\n"
 
-#: libwget/ssl_openssl.c:911
-#, fuzzy
-#| msgid "Could not compute certificate fingerprint for cert %u\n"
+#: libwget/ssl_openssl.c:915
 msgid "Could not compute time difference for nextUpd. Aborting.\n"
-msgstr "Kunde ite beräkna certifikatfingeravtrycket för certifikat %u\n"
+msgstr "Kunde inte beräkna tidsskillnaden för nextUpd. Avbryter.\n"
 
-#: libwget/ssl_openssl.c:916
+#: libwget/ssl_openssl.c:920
 msgid "*** OCSP next update is in the past!\n"
-msgstr ""
+msgstr "*** OCSP nästa uppdatering är i det förgångna!\n"
 
-#: libwget/ssl_openssl.c:946
+#: libwget/ssl_openssl.c:950
 msgid "Unsuccessful OCSP response\n"
 msgstr "Misslyckat OCSP-svar\n"
 
-#: libwget/ssl_openssl.c:954
+#: libwget/ssl_openssl.c:958
 msgid "Could not verify OCSP certificate chain\n"
 msgstr "Kunde inte verifiera OCSP-certifikatskedjan\n"
 
-#: libwget/ssl_openssl.c:960
+#: libwget/ssl_openssl.c:964
 msgid "Could not parse OCSP single response\n"
 msgstr "Kunde inte tolka ett ensamt OCSP-svar\n"
 
-#: libwget/ssl_openssl.c:967
+#: libwget/ssl_openssl.c:971
 msgid "Could not obtain OCSP response status\n"
 msgstr "Kunde inte få OCSP-svarsstatus\n"
 
-#: libwget/ssl_openssl.c:982
+#: libwget/ssl_openssl.c:986
 msgid "Could not get 'thisUpd' from OCSP response. Cannot check time.\n"
 msgstr ""
 "Kunde inte få ”thisUpd” från OCSP-svaret. Kan inte kontrollera tiden.\n"
 
-#: libwget/ssl_openssl.c:1044
+#: libwget/ssl_openssl.c:1046
 msgid "Could not obtain OCSP_BASICRESPONSE\n"
 msgstr "Kunde inte få OCSP_BASICRESPONSE\n"
 
-#: libwget/ssl_openssl.c:1050
+#: libwget/ssl_openssl.c:1052
 msgid "OCSP nonce does not match\n"
 msgstr "OCSP-nonce matchar inte\n"
 
-#: libwget/ssl_openssl.c:1195 libwget/ssl_openssl.c:1230
+#: libwget/ssl_openssl.c:1197 libwget/ssl_openssl.c:1232
 #, c-format
 msgid "Could not compute certificate fingerprint for cert %u\n"
-msgstr "Kunde ite beräkna certifikatfingeravtrycket för certifikat %u\n"
+msgstr "Kunde inte beräkna certifikatfingeravtrycket för certifikat %u\n"
 
-#: libwget/ssl_openssl.c:1264
+#: libwget/ssl_openssl.c:1266
 msgid "Certificate check disabled. Peer's certificate will NOT be checked.\n"
 msgstr ""
 "Certifikatskontrollen avvaktiverad. Motpartens certifikat kommer INTE att "
 "kontrolleras.\n"
 
-#: libwget/ssl_openssl.c:1270
+#: libwget/ssl_openssl.c:1272
 msgid "OpenSSL: Could not obtain cert store\n"
 msgstr "OpenSSL: Kunde inte hämta certifikatslagret\n"
 
-#: libwget/ssl_openssl.c:1283
+#: libwget/ssl_openssl.c:1285
 #, c-format
 msgid "Could not load CRL from '%s' (%d)\n"
 msgstr "Kunde inte läsa in CRL från ”%s” (%d)\n"
 
-#: libwget/ssl_openssl.c:1299
+#: libwget/ssl_openssl.c:1301
 #, c-format
 msgid "Could not load CA certificate from file '%s'\n"
 msgstr "Kunde inte läsa in CA-certifikat från filen ”%s”\n"
 
-#: libwget/ssl_openssl.c:1352
+#: libwget/ssl_openssl.c:1354
 msgid "Could not initialize OpenSSL\n"
 msgstr "Kunde inte initiera OpenSSL\n"
 
-#: libwget/ssl_openssl.c:1403
+#: libwget/ssl_openssl.c:1405
 msgid "OpenSSL: Could not parse cached session data.\n"
 msgstr "OpenSSL: Kunde inte tolka cachade sessionsdata.\n"
 
-#: libwget/ssl_openssl.c:1411
+#: libwget/ssl_openssl.c:1413
 msgid "OpenSSL: Could not set session data.\n"
 msgstr "OpenSSL: Kunde inte ställa in sessionsdata.\n"
 
-#: libwget/ssl_openssl.c:1626
+#: libwget/ssl_openssl.c:1628
 msgid ""
 "Host name check disabled. Server certificate's subject name will not be "
 "checked.\n"
@@ -1371,45 +1380,41 @@ msgstr ""
 "Värdnamnskontroll avaktiverad. Servercertifikatets subjektsnamn kommer inte "
 "kontrolleras.\n"
 
-#: libwget/ssl_openssl.c:1635
+#: libwget/ssl_openssl.c:1637
 msgid "Could not set 'status_request' extension\n"
 msgstr "Kunde inte ställa in utökningen ”status_request”\n"
 
-#: libwget/ssl_openssl.c:1641
+#: libwget/ssl_openssl.c:1643
 msgid "SNI could not be sent"
 msgstr "SNI kunde inte skickas"
 
-#: libwget/ssl_openssl.c:1645
+#: libwget/ssl_openssl.c:1647
 msgid "ALPN offering could not be sent"
 msgstr "ALPN-erbjudande kunde inte skickas"
 
-#: libwget/ssl_openssl.c:1653
+#: libwget/ssl_openssl.c:1655
 msgid "Could not get cached TLS session"
 msgstr "Kunde inte få cachad TLS-sesion"
 
-#: libwget/ssl_openssl.c:1675
+#: libwget/ssl_openssl.c:1677
 #, c-format
 msgid "Could not complete TLS handshake: %s\n"
 msgstr "Kunde inte färdigställa TLS-handskakningen: %s\n"
 
-#: libwget/ssl_openssl.c:1693
-#, fuzzy
-#| msgid "Public key pinning mismatch.\n"
+#: libwget/ssl_openssl.c:1695
 msgid "Public key pinning mismatch\n"
-msgstr "Pin:ade publika nycklar stämmer inte.\n"
+msgstr "Pin:ade publika nycklar stämmer inte\n"
 
-#: libwget/ssl_openssl.c:1712
-#, fuzzy
-#| msgid "Could not verify OCSP certificate chain\n"
+#: libwget/ssl_openssl.c:1714
 msgid "Aborting handshake. Could not verify OCSP chain.\n"
-msgstr "Kunde inte verifiera OCSP-certifikatskedjan\n"
+msgstr "Avbryter handskakningen. Kunde inte verifiera OCSP-kedjan.\n"
 
-#: libwget/ssl_openssl.c:1867
+#: libwget/ssl_openssl.c:1873
 #, c-format
 msgid "TLS read error: %s\n"
 msgstr "TLS-läsfel: %s\n"
 
-#: libwget/ssl_openssl.c:1901
+#: libwget/ssl_openssl.c:1907
 #, c-format
 msgid "TLS write error: %s\n"
 msgstr "TLS-skrivfel: %s\n"
@@ -1424,12 +1429,11 @@ msgid "Failed to write TLS session file '%s'\n"
 msgstr "Misslyckades att skriva TLS-sessionsfil ”%s”\n"
 
 #: libwget/xml.c:661
-#, fuzzy, c-format
-#| msgid "Failed to allocate %zu bytes\n"
+#, c-format
 msgid "Failed to allocate %zu bytes for XML parse buffer\n"
-msgstr "Misslyckades att allokera %zu byte\n"
+msgstr "Misslyckades att allokera %zu byte för XML-tolkningsbufferten\n"
 
-#: src/bar.c:120
+#: src/bar.c:124
 msgid "Cannot create progress bar thread. Disabling progress bar.\n"
 msgstr "Kan inte skapa förloppsmätartråd. Avaktiverar förloppsmätare.\n"
 
@@ -1506,7 +1510,7 @@ msgstr "Kunde inte korrigera signaturfilen!\n"
 msgid "Failed to read file to verify sig: %s\n"
 msgstr "Misslyckades att läsa filen för att verifiera signaturen: %s\n"
 
-#: src/host.c:394 src/wget.c:946
+#: src/host.c:393 src/wget.c:1000
 #, c-format
 msgid "URL '%s' not followed (disallowed by robots.txt)\n"
 msgstr "URL:en ”%s” följs inte (otillåtet av robots.txt)\n"
@@ -1560,10 +1564,9 @@ msgid "No value in header (ignoring): %s\n"
 msgstr "Inget värde i huvudet (ignorerar): %s\n"
 
 #: src/options.c:680
-#, fuzzy, c-format
-#| msgid "Invalid boolean value '%s'\n"
+#, c-format
 msgid "Invalid value '%s'\n"
-msgstr "Felaktigt booleskt värde ”%s”\n"
+msgstr "Felaktigt värde ”%s”\n"
 
 #: src/options.c:696
 #, c-format
@@ -1592,195 +1595,216 @@ msgstr "Tom förloppstyp\n"
 #: src/options.c:809
 #, c-format
 msgid "Progress type '%s' ignored. It is not implemented yet\n"
-msgstr ""
+msgstr "Förloppstypen ”%s” ignorerad. Den är inte implementerad ännu\n"
 
 #: src/options.c:811
 #, c-format
 msgid "Unknown progress type '%s'\n"
 msgstr "Okänd förloppstyp ”%s”\n"
 
-#: src/options.c:836
+#: src/options.c:824
+#, fuzzy
+#| msgid "Unknown restrict-file-name type '%s'\n"
+msgid "Missing restrict-file-name type\n"
+msgstr "Okänd restrict-file-name-typ ”%s”\n"
+
+#: src/options.c:854
 #, c-format
 msgid "Unknown restrict-file-name type '%s'\n"
 msgstr "Okänd restrict-file-name-typ ”%s”\n"
 
-#: src/options.c:868
+#: src/options.c:860
+msgid "Restrict file names to either 'unix' or 'windows'\n"
+msgstr ""
+
+#: src/options.c:865
+msgid "Restrict file names to either 'uppercase' or 'lowercase'\n"
+msgstr ""
+
+#: src/options.c:874
+msgid ""
+"    use [none]|[unix|windows],[lowercase|uppercase],[nocontrol][,ascii].\n"
+msgstr ""
+
+#: src/options.c:903
 #, c-format
 msgid "Unknown option '-n%c'\n"
 msgstr "Okänd flagga ”-n%c”\n"
 
-#: src/options.c:888
+#: src/options.c:923
 #, c-format
 msgid "Unknown address family '%s'\n"
 msgstr "Okänd adressfamilj ”%s”\n"
 
-#: src/options.c:915
+#: src/options.c:950
 #, c-format
 msgid "Unknown stats format '%s'\n"
 msgstr "Okänt statistikformat ”%s”\n"
 
-#: src/options.c:945 src/options.c:963
+#: src/options.c:980 src/options.c:998
 #, c-format
 msgid "Plugin '%s' failed to load: %s\n"
 msgstr "Insticksmodulen ”%s” kunde inte laddas: %s\n"
 
-#: src/options.c:1024 src/options.c:1044
+#: src/options.c:1059 src/options.c:1079
 msgid "Missing required type specifier\n"
 msgstr "Saknad nödvändig typspecificerare\n"
 
-#: src/options.c:1028 src/options.c:1048
+#: src/options.c:1063 src/options.c:1083
 #, c-format
 msgid "Invalid type specifier: %s\n"
 msgstr "Felaktig typspecificerare: %s\n"
 
-#: src/options.c:1061
+#: src/options.c:1096
 msgid "no-verify-sig cannot take additional arguments\n"
 msgstr "no-verify-sig kan inte ta ytterligare argument\n"
 
-#: src/options.c:1071
+#: src/options.c:1106
 #, c-format
 msgid "Invalid option specifier: %s\n"
 msgstr "Felaktig flaggspecificerare: %s\n"
 
-#: src/options.c:1115
-#, c-format
-msgid "Compression type %s not supported\n"
+#: src/options.c:1151
+#, fuzzy, c-format
+#| msgid "Compression type %s not supported\n"
+msgid "Compression type '%s' not supported\n"
 msgstr "Komprimeringstypen %s stödjs inte\n"
 
-#: src/options.c:1118
-#, c-format
-msgid "Duplicate type %s"
+#: src/options.c:1154
+#, fuzzy, c-format
+#| msgid "Duplicate type %s"
+msgid "Duplicate type '%s'"
 msgstr "Dubblerad typ %s"
 
-#: src/options.c:1148
+#: src/options.c:1184
 #, c-format
 msgid "Lib for type %s not built"
 msgstr "Lib för typ %s är inte byggt"
 
-#: src/options.c:1180
+#: src/options.c:1216
 #, c-format
 msgid "Disallowed Value for --no-download-attr: %s\n"
 msgstr "Otillåtet värde för --no-download-attr: %s\n"
 
-#: src/options.c:1189
+#: src/options.c:1225
 #, c-format
 msgid "Invalid value for --download-attr: %s\n"
 msgstr "Felaktigt värde för --download-attr: %s\n"
 
-#: src/options.c:2547 src/options.c:2582
+#: src/options.c:2592 src/options.c:2627
 #, c-format
 msgid "Unknown option '%s'\n"
 msgstr "Okänt alternativ ”%s”\n"
 
-#: src/options.c:2599
+#: src/options.c:2642
 #, c-format
 msgid "Option 'no-%s' doesn't allow an argument\n"
 msgstr "Alternativet ”no-%s” tar inte något argument\n"
 
-#: src/options.c:2603
+#: src/options.c:2646
 #, c-format
 msgid "Option '%s' doesn't allow an argument\n"
 msgstr "Alternativet ”%s” tar inte något argument\n"
 
-#: src/options.c:2614
+#: src/options.c:2657
 #, c-format
 msgid "Missing argument for option '%s'\n"
 msgstr "Saknat argument för alternativet ”%s”\n"
 
-#: src/options.c:2680
+#: src/options.c:2723
 #, c-format
 msgid "Failed to parse: '%s'\n"
 msgstr "Misslyckades att tolka: ”%s”\n"
 
-#: src/options.c:2742
+#: src/options.c:2785
 #, c-format
 msgid "Config file recursion detected in %s\n"
 msgstr "Konfigurtionsfilsrekursion upptäckt i %s\n"
 
-#: src/options.c:2769
+#: src/options.c:2812
 #, c-format
 msgid "Failed to open %s (%d): %s\n"
 msgstr "Misslyckades att öppna %s (%d): %s\n"
 
-#: src/options.c:2833
+#: src/options.c:2876
 #, c-format
 msgid "Failed to parse last line in '%s'\n"
 msgstr "Misslyckades att tolka sista raden i ”%s”\n"
 
-#: src/options.c:2913
+#: src/options.c:2956
 #, c-format
 msgid "Missing argument(s) for option '-%c'\n"
 msgstr "Argument saknas till flaggan ”-%c”\n"
 
-#: src/options.c:2933
+#: src/options.c:2976
 #, c-format
 msgid "Unknown option '-%c'\n"
 msgstr "Okänd flagga ”-%c”\n"
 
-#: src/options.c:2964
+#: src/options.c:3007
 #, c-format
 msgid "Password for user \"%s\": "
 msgstr "Lösenord för användaren ”%s”: "
 
-#: src/options.c:2966
+#: src/options.c:3009
 msgid "Password: "
 msgstr "Lösenord: "
 
-#: src/options.c:2987
+#: src/options.c:3030
 msgid "Cannot create pipe"
 msgstr "Kan inte skapa ett rör"
 
-#: src/options.c:2993
+#: src/options.c:3036
 #, c-format
 msgid "Error initializing spawn file actions for use-askpass: %d"
 msgstr "Fel vid initiering av spawn-file-actions för use-askpass: %d"
 
-#: src/options.c:3004
+#: src/options.c:3047
 #, c-format
 msgid "Error setting spawn file actions for use-askpass: %d"
 msgstr "Fel vid inställning av spawn-file-actions för use-askpass: %d"
 
-#: src/options.c:3011
+#: src/options.c:3054
 #, c-format
 msgid "Error spawning %s: %d"
 msgstr "Fel vid start av %s: %d"
 
-#: src/options.c:3028
+#: src/options.c:3071
 #, c-format
 msgid "Error reading response from command \"%s %s\": %s\n"
 msgstr "Fel när svaret lästes från kommandot ”%s %s”: %s\n"
 
-#: src/options.c:3093
+#: src/options.c:3136
 #, c-format
 msgid "Failed to open %s"
 msgstr "Misslyckades att öppna %s"
 
-#: src/options.c:3143
+#: src/options.c:3186
 #, c-format
 msgid "~/.wget2rc is deprecated. Please move it to %s/wget2rc\n"
 msgstr "~/.wget2rc är föråldrad den till %s/wget2rc\n"
 
-#: src/options.c:3471
+#: src/options.c:3522
 #, c-format
 msgid "Failed to set http proxies %s\n"
 msgstr "Misslyckades att ställa in http-proxyn %s\n"
 
-#: src/options.c:3475
+#: src/options.c:3526
 #, c-format
 msgid "Failed to set https proxies %s\n"
 msgstr "Misslyckades att ställa in https-proxyn %s\n"
 
-#: src/options.c:3479
+#: src/options.c:3530
 #, c-format
 msgid "Failed to set proxy exceptions %s\n"
 msgstr "Misslyckades att ställan in proxy-undantag %s\n"
 
-#: src/options.c:3505
+#: src/options.c:3556
 #, c-format
 msgid "Failed to load %s (%d)"
 msgstr "Misslyckades att läsa in %s (%d)"
 
-#: src/options.c:3565
+#: src/options.c:3616
 msgid ""
 "Specifying both --start-pos and --continue is not recommended; --continue "
 "will be disabled"
@@ -1788,19 +1812,19 @@ msgstr ""
 "Att ange både --start-pos och --continue rekommenderas inte; --continue "
 "kommer avaktiveras"
 
-#: src/options.c:3571
+#: src/options.c:3622
 msgid "WARNING: timestamping does nothing in combination with -O"
 msgstr "VARNING: tidsstämpling gör inget i kombination med -O"
 
-#: src/options.c:3575
+#: src/options.c:3626
 msgid "Can't timestamp and not clobber old files at the same time"
 msgstr "Det går inte att tidsstämpla och skriva över gamla filer på samma gång"
 
-#: src/options.c:3579
+#: src/options.c:3630
 msgid "WARNING: timestamping does nothing in combination with spider"
 msgstr "VARNING: tidsstämpling gör inget i kombination med spindeln"
 
-#: src/options.c:3583
+#: src/options.c:3634
 msgid ""
 "WARNING: timestamping and chunk-size only work together without If-Modified-"
 "Since"
@@ -1808,92 +1832,92 @@ msgstr ""
 "VARNING: tidsstämpling och styckesstorlek fungerar bara tillsammans utan If-"
 "Modified-Since"
 
-#: src/options.c:3622
+#: src/options.c:3673
 #, c-format
 msgid "Failed to init networking (%d)"
 msgstr "Misslyckades att initiera nätverket (%d)"
 
-#: src/options.c:3627
+#: src/options.c:3678
 #, c-format
 msgid "Failed to init DNS (%d)"
 msgstr "Misslyckades att initiera DNS (%d)"
 
-#: src/options.c:3645 src/options.c:3656 src/options.c:3667 src/options.c:3678
-#: src/options.c:3689
+#: src/options.c:3696 src/options.c:3707 src/options.c:3718 src/options.c:3729
+#: src/options.c:3740
 #, c-format
 msgid "Failed to open '%s' (%d)"
 msgstr "Misslyckades att öppna ”%s” (%d)"
 
-#: src/options.c:3942
+#: src/options.c:3993
 #, c-format
 msgid "%s: Option not in order '%s' after '%s' (using opt_compare())\n"
 msgstr ""
 "%s: Alternativet ”%s” är inte i ordning efter ”%s” (enligt opt_compare())\n"
 
-#: src/options.c:3951
+#: src/options.c:4002
 #, c-format
 msgid "%s: Option not in order '%s' after '%s' (using opt_compare_config())\n"
 msgstr ""
 "%s: Alternativet ”%s” är inte i ordning efter ”%s” (enligt "
 "opt_compare_config())\n"
 
-#: src/options.c:3961
+#: src/options.c:4012
 #, c-format
 msgid "%s: Failed to find option '%s' (using opt_compare())\n"
 msgstr "%s: Misslyckades att hitta alternativet ”%s” (enligt opt_compare())\n"
 
-#: src/options.c:3971 src/options.c:3995
+#: src/options.c:4022 src/options.c:4046
 #, c-format
 msgid "%s: Failed to find option '%s' (using opt_compare_config())\n"
 msgstr ""
 "%s: Misslyckades att hitta alternativet ”%s” (enligt opt_compare_config())\n"
 
-#: src/options.c:4020
+#: src/options.c:4071
 #, c-format
 msgid "%s: Failed to parse bool short option #%zu (=%d)\n"
 msgstr "%s: Misslyckades att tolka booleskt kort alternativ nr. %zu (=%d)\n"
 
-#: src/options.c:4046 src/options.c:4052
+#: src/options.c:4097 src/options.c:4103
 #, c-format
 msgid "%s: Failed to parse bool long option #%zu (%d)\n"
 msgstr "%s: Misslyckades att tolka booleskt långt alternativ nr. %zu (=%d)\n"
 
-#: src/options.c:4095
+#: src/options.c:4146
 #, c-format
 msgid "%s: Failed to parse timeout short option #%zu (=%d)\n"
 msgstr "%s: Misslyckades att tolka tidsgräns kort alternativ nr. %zu (=%d)\n"
 
-#: src/options.c:4126
+#: src/options.c:4177
 #, c-format
 msgid "%s: Failed to parse timeout long option #%zu (%d)\n"
 msgstr "%s: Misslyckades att tolka tidsgräns långt alternativ nr. %zu (=%d)\n"
 
-#: src/options.c:4161
+#: src/options.c:4212
 #, c-format
 msgid "%s: Extra headers found in option #%zu\n"
 msgstr "%s: Extra huvuden funna i alternativ nr. %zu\n"
 
-#: src/options.c:4166
+#: src/options.c:4217
 #, c-format
 msgid "%s: Failed to parse header option #%zu\n"
 msgstr "%s: Misslyckades att tolka huvudalternativ nr. %zu\n"
 
-#: src/options.c:4189
+#: src/options.c:4240
 #, c-format
 msgid "%s: Accepted illegal header option #%zu\n"
 msgstr "%s: Accepterade otillåtet huvudalternativ nr. %zu\n"
 
-#: src/options.c:4217 src/options.c:4236
+#: src/options.c:4268 src/options.c:4287
 #, c-format
 msgid "%s: Failed to parse string short option #%zu (=%s)\n"
 msgstr "%s: Misslyckades att tolka sträng kort alternativ nr. %zu (=%s)\n"
 
-#: src/plugin.c:397
+#: src/plugin.c:398
 #, c-format
 msgid "Plugin '%s' failed to load: %s"
 msgstr "Insticksmodulen ”%s” misslyckades att ladda: %s"
 
-#: src/plugin.c:505
+#: src/plugin.c:506
 #, c-format
 msgid "Options for %s:\n"
 msgstr "Alternativ för %s:\n"
@@ -1913,384 +1937,405 @@ msgstr "Misslyckades att skapa katalogen ”%s” (errno=%d)\n"
 msgid "Failed to rename '%s' (errno=%d)\n"
 msgstr "Misslyckades att byta namn på ”%s” (errno=%d)\n"
 
-#: src/wget.c:599
+#: src/wget.c:631
+#, fuzzy, c-format
+#| msgid "HSTS in effect for %s:%hu\n"
+msgid "HSTS in effect for [%s]:%hu\n"
+msgstr "HSTS är i bruk för %s:%hu\n"
+
+#: src/wget.c:633
 #, c-format
 msgid "HSTS in effect for %s:%hu\n"
 msgstr "HSTS är i bruk för %s:%hu\n"
 
-#: src/wget.c:617
+#: src/wget.c:696
 #, c-format
 msgid "Failed to parse URI '%s'\n"
 msgstr "Misslyckades att tolka URI:n ”%s”\n"
 
-#: src/wget.c:635
+#: src/wget.c:714
 #, c-format
 msgid "URI scheme not supported: '%s'\n"
 msgstr "URI-schemat stödjs inte: ”%s”\n"
 
-#: src/wget.c:778
+#: src/wget.c:852
+#, fuzzy
+#| msgid "Cannot resolve URI '%s'\n"
+msgid "Cannot resolve URI\n"
+msgstr "Kan inte slå upp URI:n ”%s”\n"
+
+#: src/wget.c:864
 #, c-format
 msgid "Adding URL: %s\n"
 msgstr "Lägger till URL: %s\n"
 
-#: src/wget.c:794 src/wget.c:1159
-#, c-format
-msgid "Cannot resolve URI '%s'\n"
-msgstr "Kan inte slå upp URI:n ”%s”\n"
-
-#: src/wget.c:802
+#: src/wget.c:870
 #, c-format
 msgid "not requesting '%s'. (Plugin Verdict)\n"
-msgstr ""
+msgstr "begär inte ”%s”. (Insticksmodulsbeslut)\n"
 
-#: src/wget.c:816
+#: src/wget.c:884
 #, c-format
 msgid "URL '%s' not followed (unsupported scheme)\n"
 msgstr "URL:en ”%s” följs inte (schema som inte stödjs)\n"
 
-#: src/wget.c:826
+#: src/wget.c:894
 #, c-format
 msgid "URL '%s' not followed (https-only requested)\n"
 msgstr "URL:en ”%s” följs inte (endast https begärt)\n"
 
-#: src/wget.c:843
+#: src/wget.c:911
 msgid "missing ip/host/domain"
 msgstr "saknad ip/värd/domän"
 
-#: src/wget.c:846
+#: src/wget.c:914
 msgid "no host-spanning requested"
 msgstr "att inte spänna över värdar begärt"
 
-#: src/wget.c:848
+#: src/wget.c:916
 msgid "domain explicitly excluded"
 msgstr "domänen uttryckligen utesluten"
 
-#: src/wget.c:852
+#: src/wget.c:920
 #, c-format
 msgid "URL '%s' not followed (%s)\n"
 msgstr "URL:en ”%s” följs inte (%s)\n"
 
-#: src/wget.c:900
+#: src/wget.c:954
 #, c-format
 msgid "URL '%s' not followed (parent ascending not allowed)\n"
 msgstr "URL:en ”%s” följs inte (att gå ovanför föräldern tillåts inte)\n"
 
-#: src/wget.c:918
+#: src/wget.c:972
 #, c-format
 msgid "URL '%s' not requested (file already exists)\n"
 msgstr "URL:en ”%s” begärs inte (filen finns redan)\n"
 
-#: src/wget.c:953
+#: src/wget.c:1007
 #, c-format
 msgid "Failed to get '%s' from hosts\n"
 msgstr "Misslyckades att få ”%s” från värdar\n"
 
-#: src/wget.c:1135
+#: src/wget.c:1191
 #, c-format
 msgid "convert %s %s %s\n"
 msgstr "konvertera %s %s %s\n"
 
-#: src/wget.c:1138
+#: src/wget.c:1194
 #, c-format
 msgid "%s not found (%d)\n"
 msgstr "%s finns inte (%d)\n"
 
-#: src/wget.c:1189
+#: src/wget.c:1215
+#, c-format
+msgid "Cannot resolve URI '%s'\n"
+msgstr "Kan inte slå upp URI:n ”%s”\n"
+
+#: src/wget.c:1245
 #, c-format
 msgid "Failed to rename %s to %s (%d)"
 msgstr "Misslyckades att byta namn på %s till %s (%d)"
 
-#: src/wget.c:1195
+#: src/wget.c:1251
 #, c-format
 msgid "Failed to write open %s (%d)"
 msgstr "Misslyckades att öppna %s för skrivning (%d)"
 
-#: src/wget.c:1336 src/wget.c:1428
+#: src/wget.c:1391 src/wget.c:1482
 #, c-format
 msgid "Failed to start downloader, error %d\n"
 msgstr "Misslyckades att starta hämtaren, fel %d\n"
 
-#: src/wget.c:1359
+#: src/wget.c:1414
 #, c-format
 msgid "Failed to open input file %s\n"
 msgstr "Misslyckades att öppna indatafilen %s\n"
 
-#: src/wget.c:1364
+#: src/wget.c:1419
 msgid "Nothing to do - goodbye\n"
 msgstr "Inget att göra – adjö\n"
 
-#: src/wget.c:1382
+#: src/wget.c:1437
 msgid "Wget2 built without thread support. Disabling progress report\n"
 msgstr "Wget2 byggd utan trådstöd. Avaktiverar förloppsrapporten\n"
 
-#: src/wget.c:1400
-msgid "INFO logger being disabled as --progress=bar enabled\n"
-msgstr ""
+#: src/wget.c:1455
+#, fuzzy, c-format
+#| msgid "Failed to start downloader, error %d\n"
+msgid "Failed to start progress report thread, error %d\n"
+msgstr "Misslyckades att starta hämtaren, fel %d\n"
 
-#: src/wget.c:1435
+#: src/wget.c:1489
 #, c-format
 msgid "Quota of %lld bytes reached - stopping.\n"
 msgstr "Kvot på %lld byte uppnåd – slutar.\n"
 
-#: src/wget.c:1455
+#: src/wget.c:1509
 #, c-format
 msgid "Failed to wait for downloader #%d (%d %d)\n"
 msgstr "Misslyckades att vänta på hämtare nr. %d (%d %d)\n"
 
-#: src/wget.c:1462
+#: src/wget.c:1516
 #, c-format
 msgid "Downloaded: %d files, %s bytes, %d redirects, %d errors\n"
 msgstr "Hämtade: %d filer, %s byte, %d omdirigeringar, %d fel\n"
 
-#: src/wget.c:1488
+#: src/wget.c:1542
 msgid ""
 "--convert-links and --convert-file-only cannot be used together, error\n"
 msgstr ""
 "--convert-links och --convert-file-only kan inte användas tillsammans, fel\n"
 
-#: src/wget.c:1584
+#: src/wget.c:1557
+#, fuzzy, c-format
+#| msgid "Failed to wait for downloader #%d (%d %d)\n"
+msgid "Failed to wait for progress thread (%d %d)\n"
+msgstr "Misslyckades att vänta på hämtare nr. %d (%d %d)\n"
+
+#: src/wget.c:1654
 #, c-format
 msgid "Failed to connect: %s\n"
 msgstr "Misslyckades att ansluta: %s\n"
 
-#: src/wget.c:1810
+#: src/wget.c:1880
 msgid "The file is already fully retrieved; nothing to do.\n"
 msgstr "Filen är redan helt hämtad; inget att göra.\n"
 
-#: src/wget.c:1875
+#: src/wget.c:1932
 #, c-format
 msgid "File '%s' not modified on server. Omitting download"
 msgstr "Filen ”%s” är inte ändrad på servern. Låter bli att hämta"
 
-#: src/wget.c:1912
+#: src/wget.c:1969
 #, c-format
 msgid "Not scanning '%s' (known ETag)\n"
 msgstr "Skannar inte ”%s” (känd ETag)\n"
 
-#: src/wget.c:1959
+#: src/wget.c:2016
 #, c-format
 msgid "The sizes do not match (local %lld, remote %zu) -- retrieving"
 msgstr "Storlekarna stämmer inte (lokal %lld, fjärr %zu) — hämtar"
 
-#: src/wget.c:2085
+#: src/wget.c:2178
 #, c-format
 msgid "File length %llu - remove job\n"
 msgstr "Fillängd %llu – tar bort jobb\n"
 
-#: src/wget.c:2087
+#: src/wget.c:2180
 msgid "No download mirrors found - remove job\n"
 msgstr "Inga hämtningsspeglar funna – tar bort jobb\n"
 
-#: src/wget.c:2202
+#: src/wget.c:2295
 msgid "Couldn't determine base file to delete for failed verification\n"
 msgstr "Kan inte avgöra basfilen att ta bort för misslyckad verifikation\n"
 
-#: src/wget.c:2206
+#: src/wget.c:2299
 #, c-format
 msgid "Signature for file %s successfully verified\n"
 msgstr "Signaturen för filen %s lyckosamt verifierad\n"
 
-#: src/wget.c:2222
+#: src/wget.c:2315
 msgid "Should not have remaining extensions!\n"
 msgstr "Skall inte ha återstående ändelser!\n"
 
-#: src/wget.c:2236
+#: src/wget.c:2329
 msgid "File name for signature checking not assigned to job!\n"
 msgstr "Filnamnet för signaturkontroll inte tilldelad till jobbet!\n"
 
-#: src/wget.c:2238
+#: src/wget.c:2331
 msgid "Cannot check the signature on a signature!\n"
 msgstr "Kan inte kontrollera signaturen på en signatur!\n"
 
-#: src/wget.c:2452
+#: src/wget.c:2560
 #, c-format
 msgid "Unhandled action %d\n"
 msgstr "Ej hanterad åtgärd %d\n"
 
-#: src/wget.c:2561
+#: src/wget.c:2672
 #, c-format
 msgid "URL '%.*s' not followed (conversion failed)\n"
 msgstr "URL:en ”%.*s” följs inte (konverteringen misslyckades)\n"
 
-#: src/wget.c:2569
+#: src/wget.c:2680
 #, c-format
 msgid "Cannot resolve relative URI %.*s\n"
 msgstr "Kan inte slå upp den relativa URI:n %.*s\n"
 
-#: src/wget.c:2591
+#: src/wget.c:2702
 msgid "set by user"
 msgstr "satt av användaren"
 
-#: src/wget.c:2596 src/wget.c:2604 src/wget.c:2612
+#: src/wget.c:2707 src/wget.c:2715 src/wget.c:2723
 msgid "set by BOM"
 msgstr "satt av BOM"
 
-#: src/wget.c:2618
+#: src/wget.c:2729
 msgid "set by server response"
 msgstr "satt av serversvaret"
 
-#: src/wget.c:2627
+#: src/wget.c:2738
 #, c-format
 msgid "Convert non-ASCII encoding '%s' (%s) to UTF-8\n"
 msgstr "Konvertera icke-ASCII-kodning ”%s” (%s) till UTF-8\n"
 
-#: src/wget.c:2631
+#: src/wget.c:2742
 #, c-format
 msgid "Link conversion disabled for '%s'\n"
 msgstr "Länkkonvertering avaktiverad för ”%s”\n"
 
-#: src/wget.c:2634
+#: src/wget.c:2745
 #, c-format
 msgid "Filename conversion disabled for '%s'\n"
 msgstr "Filnamnskonvertering avaktiverad för ”%s”\n"
 
-#: src/wget.c:2638
+#: src/wget.c:2749
 #, c-format
 msgid "Failed to convert non-ASCII encoding '%s' (%s) to UTF-8, skip parsing\n"
 msgstr ""
 "Misslyckades att konvertera icke-ASCII-kodning ”%s” (%s) till UTF-8, hoppar "
 "över tolkning\n"
 
-#: src/wget.c:2651
+#: src/wget.c:2762
 msgid "set by document"
 msgstr "satt av dokumentet"
 
-#: src/wget.c:2654
+#: src/wget.c:2765
 msgid "default, encoding not specified"
 msgstr "standard, kodningen inte angiven"
 
-#: src/wget.c:2658
+#: src/wget.c:2769
 #, c-format
 msgid "URI content encoding = '%s' (%s)\n"
 msgstr "URI:ns innehållskodning = ”%s” (%s)\n"
 
-#: src/wget.c:2666
+#: src/wget.c:2777
 #, c-format
 msgid "BASE '%.*s' not usable (missing absolute base URI)\n"
 msgstr "BASE ”%.*s” är inte användbar (saknad absolut bas-URI)\n"
 
-#: src/wget.c:2673
+#: src/wget.c:2784
 #, c-format
 msgid "Cannot resolve BASE URI %.*s\n"
 msgstr "Det går inte att slå upp BASE URI %.*s\n"
 
-#: src/wget.c:2685
+#: src/wget.c:2794
 #, c-format
 msgid "URL '%.*s' not followed (action/formaction attribute)\n"
 msgstr "URL:en ”%.*s” följs inte (action-/formaction-attribut)\n"
 
-#: src/wget.c:2699
+#: src/wget.c:2808
 #, c-format
 msgid "URL '%.*s' not followed (page requisites + level)\n"
 msgstr "URL:en ”%.*s” följs inte (sidbegäranden + nivå)\n"
 
-#: src/wget.c:2710 src/wget.c:2912 src/wget.c:3045
+#: src/wget.c:2819 src/wget.c:3029 src/wget.c:3164
 #, c-format
 msgid "URL '%.*s' not followed (missing base URI)\n"
 msgstr "URL:en ”%.*s” följs inte (saknad bas-URI)\n"
 
-#: src/wget.c:2774 src/wget.c:2900
+#: src/wget.c:2886 src/wget.c:3019
 #, c-format
 msgid "found %d url(s) (base=%s)\n"
 msgstr "hittade %d url:ar (bas=%s)\n"
 
-#: src/wget.c:2782 src/wget.c:2878
+#: src/wget.c:2893 src/wget.c:2997
 #, c-format
 msgid "URL '%.*s' not followed (not matching sitemap location)\n"
 msgstr "URL:en ”%.*s” följs inte (matchar inte sitemap-platsen)\n"
 
-#: src/wget.c:2789 src/wget.c:2806 src/wget.c:2919
+#: src/wget.c:2904 src/wget.c:2925 src/wget.c:3040
 #, c-format
 msgid "URL '%.*s' not followed (already known)\n"
 msgstr "URL:en ”%.*s” följs inte (redan känd)\n"
 
-#: src/wget.c:2797
+#: src/wget.c:2912
 #, c-format
 msgid "found %d sitemap url(s) (base=%s)\n"
 msgstr "hittade %d sitemap-url:ar (bas=%s)\n"
 
-#: src/wget.c:2839
+#: src/wget.c:2957
 #, c-format
 msgid "Can't scan '%s' because no libz support enabled at compile time\n"
 msgstr ""
 "Kan inte skanna ”%s” för att inget stöd för libz aktiverades vid "
 "kompileringstillfället\n"
 
-#: src/wget.c:2979
+#: src/wget.c:3098
 #, c-format
 msgid "Invalid file length %llu\n"
 msgstr "Felaktig fillängd %llu\n"
 
-#: src/wget.c:2982
+#: src/wget.c:3101
 msgid "No download mirrors found\n"
 msgstr "Inga speglar att hämta ifrån hittade\n"
 
-#: src/wget.c:3031 src/wget.c:3059 src/wget.c:3078
+#: src/wget.c:3150 src/wget.c:3178 src/wget.c:3197
 #, c-format
 msgid "URI content encoding = '%s'\n"
 msgstr "URI:ns innehållskodning = ”%s”\n"
 
-#: src/wget.c:3151
+#: src/wget.c:3270
 #, c-format
 msgid "Failed to set file date (%d)\n"
 msgstr "Misslyckades att sätta fildatum (%d)\n"
 
-#: src/wget.c:3298
-#, c-format
-msgid "Failed to write to STDOUT (%zu, errno=%d)\n"
+#: src/wget.c:3417
+#, fuzzy, c-format
+#| msgid "Failed to write to STDOUT (%zu, errno=%d)\n"
+msgid "Failed to write to STDOUT (%td, errno=%d)\n"
 msgstr "Misslyckades att skriva till STDUT (%zu, errno=%d)\n"
 
-#: src/wget.c:3398
+#: src/wget.c:3517
 #, c-format
 msgid "Failed to rename %s to %s (errno=%d)\n"
 msgstr "Misslyckades att byta namn på %s till %s (errno=%d)\n"
 
-#: src/wget.c:3425 src/wget.c:3431
+#: src/wget.c:3543 src/wget.c:3549
 #, c-format
 msgid "Failed to load partial content from '%s' (errno=%d)\n"
 msgstr "Misslyckades att läsa in partiellt innehåll från ”%s” (errno=%d)\n"
 
-#: src/wget.c:3440
+#: src/wget.c:3558
 #, c-format
 msgid "Failed to unlink '%s' (errno=%d)\n"
 msgstr "Misslyckades med att göra unlink av ”%s” (errno=%d)\n"
 
-#: src/wget.c:3460
+#: src/wget.c:3578
 #, c-format
 msgid "Saving ']8;;file://%s%s\\%s]8;;\\'\n"
 msgstr "Sparar ”]8;;file://%s%s\\%s]8;;\\”\n"
 
-#: src/wget.c:3464
+#: src/wget.c:3582
 #, c-format
 msgid "Saving '%s'\n"
 msgstr "Sparar ”%s”\n"
 
-#: src/wget.c:3469
+#: src/wget.c:3588
 #, c-format
 msgid "Failed to write file %s (%zd, errno=%d)\n"
 msgstr "Misslyckades att skriva filen %s (%zd, errno=%d)\n"
 
-#: src/wget.c:3477
+#: src/wget.c:3596
 #, c-format
 msgid "File '%s' already there; not retrieving.\n"
 msgstr "Filen ”%s” är redan där; hämtar inte.\n"
 
-#: src/wget.c:3483
+#: src/wget.c:3602
 #, c-format
 msgid "Directory / file name clash - not saving '%s'\n"
 msgstr "Katalog- / filnamnskollision – sparar inte ”%s”\n"
 
-#: src/wget.c:3485
+#: src/wget.c:3604
 #, c-format
 msgid "Failed to open '%s' (%d)\n"
 msgstr "Misslyckades att öppna ”%s” (%d)\n"
 
-#: src/wget.c:3497
+#: src/wget.c:3616
 #, c-format
 msgid "Failed to save extended attribute %s\n"
 msgstr "Misslyckades att spara utökade attribut %s\n"
 
-#: src/wget.c:3688
+#: src/wget.c:3807
 #, c-format
 msgid ""
 "# got header %zu bytes:\n"
@@ -2299,85 +2344,58 @@ msgstr ""
 "# fick huvud %zu byte:\n"
 "%s\n"
 
-#: src/wget.c:3762
+#: src/wget.c:3881
 #, c-format
 msgid "Failed to open .netrc file '%s' (%d): %s\n"
 msgstr "Misslyckades att öppna .netrc-filen ”%s” (%d): %s\n"
 
-#: src/wget.c:4096
+#: src/wget.c:4228
 #, c-format
 msgid "Failed to fsync errno=%d\n"
 msgstr "Misslyckades att göra fsync errno=%d\n"
 
-#: src/wget.c:4404
+#: src/wget.c:4536
 #, c-format
 msgid "Continuing in background, pid %lu.\n"
 msgstr "Fortsätter i bakgrunden, pid %lu.\n"
 
-#: src/wget.c:4406 src/wget.c:4472
+#: src/wget.c:4538 src/wget.c:4619
 #, c-format
 msgid "Output will be written to %s.\n"
 msgstr "Utdata kommer skrivas till %s.\n"
 
-#: src/wget.c:4432
+#: src/wget.c:4564
 msgid "fake_fork_child() failed\n"
 msgstr "fake_fork_child() misslyckades\n"
 
-#: src/wget.c:4440
+#: src/wget.c:4572
 msgid "fake_fork() failed\n"
 msgstr "fake_fork() misslyckades\n"
 
-#: src/wget.c:4466
+#: src/wget.c:4613
 #, c-format
 msgid "Failed to fork (%d)\n"
 msgstr "Misslyckades att grena (%d)\n"
 
-#: src/wget.c:4470
+#: src/wget.c:4617
 #, c-format
 msgid "Continuing in background, pid %d.\n"
 msgstr "Fortsätter i bakgrunden, pid %d.\n"
 
-#: src/wget.c:4480
+#: src/wget.c:4627
 msgid "Failed to redirect stdin to /dev/null.\n"
 msgstr "Misslyckades att omdirigera standard in till /dev/null.\n"
 
-#: src/wget.c:4482
+#: src/wget.c:4629
 msgid "Failed to redirect stdout to /dev/null.\n"
 msgstr "Misslyckades att omdirigera standard ut till /dev/null.\n"
 
-#: src/wget.c:4484
+#: src/wget.c:4631
 msgid "Failed to redirect stderr to /dev/null.\n"
 msgstr "Misslyckades att omdirigera standard fel till /dev/null.\n"
 
-#, c-format
-#~ msgid "Failed to connect (%d)\n"
-#~ msgstr "Misslyckades att ansluta (%d)\n"
+#~ msgid "WARNING: The certificate's (stapled) OCSP status has not been sent\n"
+#~ msgstr "VARNING: Certifikatets (vidhäftade) OCSP-status har inte skickats\n"
 
-#, c-format
-#~ msgid "Failed to write %zu bytes (%d)\n"
-#~ msgstr "Misslyckades att skriva %zu byte (%d)\n"
-
-#, c-format
-#~ msgid "Failed to load %s, please check the file.\n"
-#~ msgstr "Misslyckades att läsa in %s, kontrollera filen.\n"
-
-#~ msgid "Certificate revoked by OCSP\n"
-#~ msgstr "Certifikatet återkallat av OCSP\n"
-
-#~ msgid "Could not retrieve certificate store. Will skip HPKP checks.\n"
-#~ msgstr ""
-#~ "Kunde inte hämta certifikatslager. Kommer hoppa över HPKP-kontroller.\n"
-
-#~ msgid "Could not retrieve saved verification status flags.\n"
-#~ msgstr "Kunde inte hämta sparade verifikationsstatusflaggor.\n"
-
-#~ msgid "Certificate revoked by OCSP.\n"
-#~ msgstr "Certifikatet återkallat av OCSP.\n"
-
-#, c-format
-#~ msgid "  %.*s -> %s\n"
-#~ msgstr "  %.*s → %s\n"
-
-#, c-format
-#~ msgid "       -> %s\n"
-#~ msgstr "       → %s\n"
+#~ msgid "INFO logger being disabled as --progress=bar enabled\n"
+#~ msgstr "INFO-loggaren avaktiveras eftersom --progress=bar är aktiverat\n"

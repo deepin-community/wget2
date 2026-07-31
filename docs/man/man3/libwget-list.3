@@ -1,4 +1,4 @@
-.TH "libwget-list" 3 "Thu Aug 31 2023" "Version 2.1.0" "wget2" \" -*- nroff -*-
+.TH "libwget-list" 3 "Version 2.2.0" "wget2" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -106,12 +106,12 @@ wget_list_append(&list, &mydata1, sizeof(mydata1)); // append mydata1 to list
 wget_list_append(&list, &mydata2, sizeof(mydata2)); // append mydata2 to list
 
 data = wget_list_getfirst(list);
-printf("data=(%d,%d)\n", data->x, data->y); // prints 'data=(1,25)'
+printf("data=(%d,%d)\\n", data\->x, data\->y); // prints 'data=(1,25)'
 
 wget_list_remove(&list, data);
 
 data = wget_list_getfirst(list);
-printf("data=(%d,%d)\n", data->x, data->y); // prints 'data=(5,99)'
+printf("data=(%d,%d)\\n", data\->x, data\->y); // prints 'data=(5,99)'
 
 wget_list_free(&list);
 .fi
@@ -216,7 +216,7 @@ wget_list *list = NULL;
 
 static int print_elem(void *context, const char *elem)
 {
-   printf("%s\n",elem);
+   printf("%s\\n",elem);
    return 0;
 }
 

@@ -1,6 +1,6 @@
 /* xmalloc.c -- malloc with out of memory checking
 
-   Copyright (C) 1990-2000, 2002-2006, 2008-2023 Free Software Foundation, Inc.
+   Copyright (C) 1990-2000, 2002-2006, 2008-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -29,8 +29,12 @@
 #include <stdint.h>
 #include <string.h>
 
+#ifdef __CHERI_PURE_CAPABILITY__
+# include <cheri.h>
+#endif
+
 static void * _GL_ATTRIBUTE_PURE
-nonnull (void *p)
+check_nonnull (void *p)
 {
   if (!p)
     xalloc_die ();
@@ -42,13 +46,13 @@ nonnull (void *p)
 void *
 xmalloc (size_t s)
 {
-  return nonnull (malloc (s));
+  return check_nonnull (malloc (s));
 }
 
 void *
 ximalloc (idx_t s)
 {
-  return nonnull (imalloc (s));
+  return check_nonnull (imalloc (s));
 }
 
 char *
@@ -63,16 +67,22 @@ xcharalloc (size_t n)
 void *
 xrealloc (void *p, size_t s)
 {
-  void *r = realloc (p, s);
-  if (!r && (!p || s))
+  /* Work around realloc glitch by treating a 0 size as if it were 1,
+     to avoid undefined behavior in strict C23 platforms,
+     so that returning NULL is equivalent to failing.  */
+  void *r = realloc (p, s ? s : 1);
+  if (!r)
     xalloc_die ();
+#ifdef __CHERI_PURE_CAPABILITY__
+  r = cheri_bounds_set (r, s);
+#endif
   return r;
 }
 
 void *
 xirealloc (void *p, idx_t s)
 {
-  return nonnull (irealloc (p, s));
+  return check_nonnull (irealloc (p, s));
 }
 
 /* Change the size of an allocated block of memory P to an array of N
@@ -81,16 +91,26 @@ xirealloc (void *p, idx_t s)
 void *
 xreallocarray (void *p, size_t n, size_t s)
 {
-  void *r = reallocarray (p, n, s);
-  if (!r && (!p || (n && s)))
+  /* Work around reallocarray glitch by treating a 0 size as if it were 1,
+     so that returning NULL is equivalent to failing.  */
+  size_t nx = n;
+  size_t sx = s;
+  if (!n || !s)
+    nx = sx = 1;
+  void *r = reallocarray (p, nx, sx);
+  if (!r)
     xalloc_die ();
+#ifdef __CHERI_PURE_CAPABILITY__
+  if (!n || !s)
+    r = cheri_bounds_set (r, 0);
+#endif
   return r;
 }
 
 void *
 xireallocarray (void *p, idx_t n, idx_t s)
 {
-  return nonnull (ireallocarray (p, n, s));
+  return check_nonnull (ireallocarray (p, n, s));
 }
 
 /* Allocate an array of N objects, each with S bytes of memory,
@@ -295,13 +315,13 @@ xizalloc (idx_t s)
 void *
 xcalloc (size_t n, size_t s)
 {
-  return nonnull (calloc (n, s));
+  return check_nonnull (calloc (n, s));
 }
 
 void *
 xicalloc (idx_t n, idx_t s)
 {
-  return nonnull (icalloc (n, s));
+  return check_nonnull (icalloc (n, s));
 }
 
 /* Clone an object P of size S, with error checking.  There's no need

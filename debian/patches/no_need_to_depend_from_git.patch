@@ -1,0 +1,39 @@
+Author: Andreas Tille <tille@debian.org>
+Last-Udate: Mon, 16 Sep 2024 19:30:27 +0200
+Description: Do not use git or wget while building
+Remark: This patch is deactivated but would be needed when using the original upstream tarball
+Forwarded: not-needed
+--- a/bootstrap.conf
++++ b/bootstrap.conf
+@@ -164,15 +164,7 @@ tar         -
+ "
+ 
+ clone_wiki() {
+-	echo "Wget2 Wiki Cloning in progress..."
+-	git submodule update --init -- wiki
+-	wiki_status=$?
+-	if [ $wiki_status -eq 0 ]
+-	then
+-		echo "\e[1;32mWiki pages cloned\e[0m"
+-	else
+-		echo "\e[1;31mUnable to clone wiki but no issues you can continue\e[0m"
+-	fi
++	echo "Wget2: Skip Wiki Cloning when packaging for Debian..."
+ }
+ 
+ bootstrap_epilogue() {
+--- a/bootstrap
++++ b/bootstrap
+@@ -841,11 +841,7 @@ autopull()
+ # ----------------------------- Get translations. -----------------------------
+ 
+ download_po_files() {
+-  subdir=$1
+-  domain=$2
+-  echo "$me: getting translations into $subdir for $domain..."
+-  cmd=$(printf "$po_download_command_format" "$subdir" "$domain")
+-  eval "$cmd"
++  echo "$me: Do not download anything for Debian packaging"
+ }
+ 
+ # Mirror .po files to $po_dir/.reference and copy only the new

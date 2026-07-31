@@ -1,0 +1,49 @@
+From: Tim Rühsen <tim.ruehsen@gmx.de>
+Date: Sun, 1 Dec 2024 19:54:07 +0100
+Subject: [PATCH] Fix chunk_size conversion on 32bit arch
+
+* src/wget.c (process_head_response): Cast size_t to long long.
+* src/wget_options.h (struct config): Change type of chunk_size from size_t to long long.
+
+Reported-by: https://gitlab.com/uhle
+Bug: https://gitlab.com/gnuwget/wget2/-/issues/684
+Bug-Debian: https://bugs.debian.org/1088242
+Origin: upstream, https://gitlab.com/gnuwget/wget2/-/commit/709067e544ce0efd5c8f96ed7209ec2cc61062b8
+---
+ src/wget.c         | 4 ++--
+ src/wget_options.h | 3 +--
+ 2 files changed, 3 insertions(+), 4 deletions(-)
+
+--- a/src/wget.c
++++ b/src/wget.c
+@@ -218,7 +218,7 @@
+ // we have to modify and check the quota in one (protected) step.
+ static long long quota_modify_read(size_t nbytes)
+ {
+-	return fetch_and_add_longlong(&quota, (long long)nbytes);
++	return fetch_and_add_longlong(&quota, (long long) nbytes);
+ }
+ 
+ static void nop(int sig)
+@@ -1976,7 +1976,7 @@
+ 
+ 		job->done = 0; // do this job again with GET request
+ 		return;
+-	} else if (config.chunk_size && resp->content_length > config.chunk_size) {
++	} else if (config.chunk_size && (long long) resp->content_length > config.chunk_size) {
+ 		// create metalink structure without hashing
+ 		wget_metalink_piece piece = { .length = config.chunk_size };
+ 		wget_metalink_mirror mirror = { .location = "-", .iri = job->iri };
+--- a/src/wget_options.h
++++ b/src/wget_options.h
+@@ -176,9 +176,8 @@
+ 	char
+ 		*password,
+ 		*username;
+-	size_t
+-		chunk_size;
+ 	long long
++		chunk_size,
+ 		quota,
+ 		limit_rate, // bytes
+ 		start_pos; // bytes

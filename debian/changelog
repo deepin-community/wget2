@@ -1,22 +1,109 @@
-wget2 (2.1.0-2.1deepin3) unstable; urgency=medium
+wget2 (2.2.0+ds-1+deb13u1) trixie; urgency=medium
 
-  * Fix CVE-2025-69195: Sanitize filename from Content-Disposition to
-    prevent stack buffer overflow
+  * CVE-2025-69194 (Closes: #1124378)
+  * CVE-2025-69195 (Closes: #1124377)
 
- -- deepin-ci-robot <packages@deepin.org>  Wed, 20 May 2026 22:58:31 +0800
+ -- Moritz Mühlenhoff <jmm@debian.org>  Sun, 18 Jan 2026 19:56:28 +0100
 
-wget2 (2.1.0-2.1deepin2) unstable; urgency=medium
+wget2 (2.2.0+ds-1) unstable; urgency=medium
 
-  * Fix CVE-2025-69194: Add path traversal validation for Metalink file
-    name elements
+  * Team upload to unstable (salsa debian group).
 
- -- deepin-ci-robot <packages@deepin.org>  Wed, 20 May 2026 22:57:56 +0800
+ -- Shengqi Chen <harry@debian.org>  Tue, 04 Mar 2025 15:03:02 +0800
 
-wget2 (2.1.0-2.1deepin1) unstable; urgency=medium
+wget2 (2.2.0+ds-1~exp3) experimental; urgency=medium
 
-  * revert 64-bit time_t transition patch.
+  * Team upload (salsa debian group).
+  * Disable libproxy on sparc64 to fix FTBFS.
+  * wget2: install pre-generated manpages instead of building with pandoc
+    (which is uninstallable on many architectures).
+  * d/patches: add patch to remove use of git and get version from dpkg.
 
- -- lichenggang <lichenggang@deepin.org>  Fri, 18 Oct 2024 18:02:22 +0800
+ -- Shengqi Chen <harry@debian.org>  Mon, 03 Mar 2025 19:34:34 +0800
+
+wget2 (2.2.0+ds-1~exp2) experimental; urgency=medium
+
+  * Team upload (salsa debian group).
+  * d/control: make some B-D optional to avoid FTBFS on some architectures.
+  * d/patches: add patch to fix wget_restrict_file_name on architectures
+    where char is unsigned by default.
+  * d/rules: ignore dh_auto_test error on hurd-amd64 due to instability of
+    results.
+  * Add symbol control file for libwget3.
+
+ -- Shengqi Chen <harry@debian.org>  Sun, 02 Mar 2025 23:21:20 +0800
+
+wget2 (2.2.0+ds-1~exp1) experimental; urgency=medium
+
+  * Team upload (salsa debian group).
+
+  [ Thomas Uhle ]
+  * Do not run the test suite on IPv6-only hosts as long as it fails there.
+    See: #1089156
+  * debian/changelog: Change Thomas Uhle's email address to uhle@cpan.org.
+  * debian/control: Bump Standards-Version to 4.7.2, no changes needed.
+
+  [ Shengqi Chen ]
+  * d/rules: clean docs/html dir after dh_auto_clean (closes: #1046967).
+  * d/copyright: exclude fuzzer input files from upstream tar.
+  * d/watch: use ftp.gnu.org, set name mangling, enable signature check.
+  * New upstream version 2.2.0+ds
+    + Bump SONAME to libwget3
+  * d/control: add Multi-Arch: same for libwget{3,-dev}
+  * d/patches: refresh existing patches
+    + add patch to fix the linkage of libwget and wget2 binary
+    + update metadata for no_need_to_depend_from_git.patch
+    + add patch to disable some flaky tests when libproxy is enabled
+  * d/rules: 
+    + enable hardening flags
+    + build with liblzma, libproxy and lfs support
+
+ -- Shengqi Chen <harry@debian.org>  Sun, 02 Mar 2025 00:34:27 +0800
+
+wget2 (2.1.0-5) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Andreas Tille ]
+  * Save binary gmo files which are uselessly shipped in upstream tarball
+  * d/gbp.conf: Use pristine-tar
+
+  [ Thomas Uhle ]
+  * Apply patch from upstream to fix chunk_size conversion on 32bit arch
+    Closes: #1088242
+  * Build  with bzip2 support
+    Closes: #1089154
+
+ -- Thomas Uhle <uhle@cpan.org>  Fri, 06 Dec 2024 13:31:14 +0100
+
+wget2 (2.1.0-4) unstable; urgency=medium
+
+  * Build-Depends: libmicrohttpd-dev to run all build-time tests
+
+ -- Thomas Uhle <uhle@cpan.org>  Tue, 24 Sep 2024 17:44:22 +0200
+
+wget2 (2.1.0-3) unstable; urgency=medium
+
+  * Team upload of Debian team
+  * Fix Vcs fields
+  * Standards-Version: 4.7.0 (routine-update)
+  * Replace transitional package pkg-config by pkgconf in Build-Depends
+    (routine-update)
+  * Remove trailing whitespace in debian/rules (routine-update)
+  * Remove empty debian/patches/series.
+  * Rely on pre-initialized dpkg-architecture variables.
+  * Short dh
+    Closes: #1054291
+  * wrap-and-sort
+  * Build-Depends: lzip, python3
+  * Enable Multi-Arch installation
+  * Fix watch file
+  * Deal with dh_missing --fail-missing default
+  * Build-Depends: libidn-dev => removed since unneeded (see bug #1054291)
+  * Install usr/share/locale
+  * Drop unneeded dpkg-dev from Build-Depends
+
+ -- Andreas Tille <tille@debian.org>  Mon, 23 Sep 2024 15:15:48 +0200
 
 wget2 (2.1.0-2.1) unstable; urgency=medium
 

@@ -1,4 +1,4 @@
-.TH "libwget-net" 3 "Thu Aug 31 2023" "Version 2.1.0" "wget2" \" -*- nroff -*-
+.TH "libwget-net" 3 "Version 2.2.0" "wget2" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -522,7 +522,7 @@ The \fCwget_tcp\fP structure will be freed and \fC_tcp\fP will be set to NULL\&.
 .PP
 If \fC_tcp\fP is NULL, the SNI field will be cleared\&.
 .PP
-Does not free the internal DNS cache, so that other connections can re-use it\&. Call \fBwget_dns_cache_free()\fP if you want to free it\&. 
+Does not free the internal DNS cache, so that other connections can reuse it\&. Call \fBwget_dns_cache_free()\fP if you want to free it\&. 
 .SS "int wget_tcp_ready_2_transfer (wget_tcp * tcp, int flags)"
 Test whether the given connection (\fCtcp\fP) is ready to read or write\&.
 .PP

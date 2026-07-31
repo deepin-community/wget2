@@ -2,13 +2,13 @@
 # Copyright (C) 2017 Free Software Foundation, Inc.
 # This file is distributed under the same license as the wget2 package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2018, 2021.
+# Yuri Chornoivan <yurchor@ukr.net>, 2018, 2021, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: wget2 2.0.0\n"
+"Project-Id-Version: wget2 2.1.0\n"
 "Report-Msgid-Bugs-To: bug-wget2@gnu.org\n"
-"POT-Creation-Date: 2023-08-31 14:40+0200\n"
-"PO-Revision-Date: 2021-09-19 20:45+0300\n"
+"POT-Creation-Date: 2024-11-24 19:19+0100\n"
+"PO-Revision-Date: 2023-09-01 15:28+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -20,7 +20,7 @@ msgstr ""
 "n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Lokalize 20.12.0\n"
 
-#: lib/error.c:194
+#: lib/error.c:208
 msgid "Unknown system error"
 msgstr "Невідома системна помилка"
 
@@ -110,12 +110,12 @@ msgstr "не вдалося записати поточний робочий к�
 msgid "failed to return to initial working directory"
 msgstr "не вдалося повернутися до початкового робочого каталогу"
 
-#: lib/os2-spawn.c:45
+#: lib/os2-spawn.c:51
 #, c-format
 msgid "_open_osfhandle failed"
 msgstr "Помилка _open_osfhandle"
 
-#: lib/os2-spawn.c:82
+#: lib/os2-spawn.c:88
 #, c-format
 msgid "cannot restore fd %d: dup2 failed"
 msgstr "не вдалося відновити файловий дескриптор %d: помилка dup2"
@@ -192,22 +192,22 @@ msgstr "Неврівноважена дужка ) або \\)"
 msgid "No previous regular expression"
 msgstr "Не виявлено попереднього формального виразу"
 
-#: lib/spawn-pipe.c:216 lib/spawn-pipe.c:219
+#: lib/spawn-pipe.c:218 lib/spawn-pipe.c:221
 #, c-format
 msgid "cannot create pipe"
 msgstr "не вдалося створити канал"
 
-#: lib/spawn-pipe.c:596 lib/wait-process.c:291 lib/wait-process.c:365
+#: lib/spawn-pipe.c:599 lib/wait-process.c:326 lib/wait-process.c:400
 #, c-format
 msgid "%s subprocess failed"
 msgstr "Помилка підпроцесу %s"
 
-#: lib/wait-process.c:232 lib/wait-process.c:264 lib/wait-process.c:326
+#: lib/wait-process.c:267 lib/wait-process.c:299 lib/wait-process.c:361
 #, c-format
 msgid "%s subprocess"
 msgstr "Підпроцес %s"
 
-#: lib/wait-process.c:283 lib/wait-process.c:355
+#: lib/wait-process.c:318 lib/wait-process.c:390
 #, c-format
 msgid "%s subprocess got fatal signal %d"
 msgstr "Підпроцесом %s отримано сигнал щодо аварійного завершення %d"
@@ -216,21 +216,21 @@ msgstr "Підпроцесом %s отримано сигнал щодо ава�
 msgid "memory exhausted"
 msgstr "недостатньо пам'яті"
 
-#: libwget/cookie.c:408
+#: libwget/cookie.c:411
 #, c-format
 msgid "Incomplete cookie entry: %s\n"
 msgstr "Неповний запис куки: %s\n"
 
-#: libwget/cookie.c:440
+#: libwget/cookie.c:445
 msgid "Failed to read cookies\n"
 msgstr "Не вдалося прочитати куки\n"
 
-#: libwget/cookie.c:499
+#: libwget/cookie.c:506
 #, c-format
 msgid "Failed to write cookie file '%s'\n"
 msgstr "Не вдалося записати файл куки «%s»\n"
 
-#: libwget/cookie_parse.c:363
+#: libwget/cookie_parse.c:365
 msgid "Cookie without name or assignment ignored\n"
 msgstr "Проігноровано куку без назви або прив'язку\n"
 
@@ -244,7 +244,7 @@ msgstr "Невідомий ключ після @charset: %d\n"
 msgid "Failed to open %s\n"
 msgstr "Не вдалося відкрити %s\n"
 
-#: libwget/css_url.c:102
+#: libwget/css_url.c:104
 #, c-format
 msgid "Cannot resolve relative URI '%s'\n"
 msgstr "Не вдалося визначити відносну адресу «%s»\n"
@@ -254,10 +254,8 @@ msgid "Failed to init gzip decompression\n"
 msgstr "Не вдалося ініціювати розпакування gzip\n"
 
 #: libwget/decompressor.c:159
-#, fuzzy
-#| msgid "Failed to init deflate decompression\n"
 msgid "Failed to re-init deflate/gzip decompression\n"
-msgstr "Не вдалося ініціювати розпакування deflate\n"
+msgstr "Не вдалося повторно ініціювати розпакування deflate/gzip\n"
 
 #: libwget/decompressor.c:175
 #, c-format
@@ -328,17 +326,21 @@ msgstr "Не вдалося ініціювати розпакування bzip2\
 msgid "Failed to uncompress bzip2 stream (%d)\n"
 msgstr "Не вдалося розпакувати потік даних bzip2 (%d)\n"
 
-#: libwget/dns.c:282
+#: libwget/dns.c:313
 #, fuzzy, c-format
-#| msgid "Failed to resolve %s:%d: %s\n"
-msgid "Failed to resolve '%s:%d': %s\n"
-msgstr "Не вдалося визначити %s:%d %s\n"
+#| msgid "Failed to resolve '%s:%d': %s\n"
+msgid "Failed to resolve '[%s]:%d': %s\n"
+msgstr "Не вдалося визначити «%s:%d»: %s\n"
 
-#: libwget/dns.c:365
-#, fuzzy, c-format
-#| msgid "Failed to resolve %s (%s)\n"
+#: libwget/dns.c:315
+#, c-format
+msgid "Failed to resolve '%s:%d': %s\n"
+msgstr "Не вдалося визначити «%s:%d»: %s\n"
+
+#: libwget/dns.c:398
+#, c-format
 msgid "Failed to resolve '%s' (%s)\n"
-msgstr "Не вдалося визначити %s (%s)\n"
+msgstr "Не вдалося визначити «%s» (%s)\n"
 
 #: libwget/encoding.c:112
 #, c-format
@@ -424,10 +426,9 @@ msgid "Failed to hash (%d)\n"
 msgstr "Не вдалося виконати хешування (%d)\n"
 
 #: libwget/hash_printf.c:89
-#, fuzzy, c-format
-#| msgid "Failed to allocate %zu bytes\n"
+#, c-format
 msgid "%s: Failed to malloc %zu bytes\n"
-msgstr "Не вдалося отримати область пам'яті у %zu байтів\n"
+msgstr "%s: не вдалося отримати за допомогою malloc %zu байтів\n"
 
 #: libwget/hashfile.c:92
 #, c-format
@@ -437,7 +438,7 @@ msgstr "Невідомий тип хешування «%s»\n"
 #: libwget/hashfile.c:794 libwget/hpkp_db.c:159
 #, c-format
 msgid "%s: Unexpected hash len %zu > %zu\n"
-msgstr ""
+msgstr "%s: неочікувана довжина хешу %zu > %zu\n"
 
 #: libwget/hashfile.c:816
 #, c-format
@@ -478,180 +479,170 @@ msgstr "Не вдалося прочитати дані HPKP\n"
 msgid "Failed to write HPKP file '%s'\n"
 msgstr "Не вдалося записати файл HPKP «%s»\n"
 
-#: libwget/hsts.c:412 libwget/tls_session.c:332
+#: libwget/hsts.c:419 libwget/tls_session.c:332
 #, c-format
 msgid "Failed to parse HSTS line: '%s'\n"
 msgstr "Не вдалося обробити рядок HSTS: «%s»\n"
 
-#: libwget/hsts.c:452
+#: libwget/hsts.c:459
 msgid "Failed to read HSTS data\n"
 msgstr "Не вдалося прочитати дані HSTS\n"
 
-#: libwget/hsts.c:515
+#: libwget/hsts.c:522
 #, c-format
 msgid "Failed to write HSTS file '%s'\n"
 msgstr "Не вдалося записати файл HSTS «%s»\n"
 
-#: libwget/http.c:178 libwget/http.c:188 libwget/http.c:197 libwget/http.c:206
+#: libwget/http.c:184 libwget/http.c:194 libwget/http.c:203 libwget/http.c:212
 #, c-format
 msgid "%s: Unknown key %d (or value must not be an integer)\n"
 msgstr "%s: невідомий ключ %d (або значення не повинне бути цілим числом)\n"
 
-#: libwget/http.c:303
+#: libwget/http.c:309
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
 msgstr "Непідтримувана якість захисту «%s».\n"
 
-#: libwget/http.c:314
+#: libwget/http.c:320
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
 msgstr "Непідтримуваний алгоритм «%s».\n"
 
-#: libwget/http.c:413
+#: libwget/http.c:412
 #, c-format
 msgid "Decompress failed [host: %s - resource: %s]\n"
 msgstr "Помилка розпаковування [вузол: %s — ресурс: %s]\n"
 
-#: libwget/http.c:645
+#: libwget/http.c:483
 #, c-format
 msgid "Proxy connection failed with: %s\n"
-msgstr ""
+msgstr "Помилка з'єднання з проксі: %s\n"
 
-#: libwget/http.c:739
-msgid "Failed to create HTTP2 callbacks\n"
-msgstr "Не вдалося створити зворотні виклики HTTP2\n"
-
-#: libwget/http.c:749
-#, c-format
-msgid "Failed to create HTTP2 client session (%d)\n"
-msgstr "Не вдалося створити сеанс клієнта HTTP2 (%d)\n"
-
-#: libwget/http.c:761
-#, c-format
-msgid "Failed to submit HTTP2 client settings (%d)\n"
-msgstr "Не вдалося надіслати параметри клієнта HTTP2 (%d)\n"
-
-#: libwget/http.c:791
-#, c-format
-msgid "Failed to terminate HTTP2 session (%d)\n"
-msgstr "Не вдалося перервати сеанс HTTP2 (%d)\n"
-
-#: libwget/http.c:857
-#, fuzzy, c-format
-#| msgid "Failed to allocate %zu bytes\n"
-msgid "Failed to allocate nvs[%d]\n"
-msgstr "Не вдалося отримати область пам'яті у %zu байтів\n"
-
-#: libwget/http.c:863
-#, fuzzy, c-format
-#| msgid "Failed to allocate %zu bytes\n"
-msgid "Failed to allocate resource[%zu]\n"
-msgstr "Не вдалося отримати область пам'яті у %zu байтів\n"
-
-#: libwget/http.c:918
-msgid "Failed to submit HTTP2 request\n"
-msgstr "Не вдалося надіслати запит HTTP2\n"
-
-#: libwget/http.c:933
+#: libwget/http.c:668
 msgid "Failed to create request buffer\n"
 msgstr "Не вдалося створити буфер запитів\n"
 
-#: libwget/http.c:1136 libwget/tls_session.c:374
+#: libwget/http.c:835 libwget/tls_session.c:374
 #, c-format
 msgid "Failed to allocate %zu bytes\n"
 msgstr "Не вдалося отримати область пам'яті у %zu байтів\n"
 
-#: libwget/http.c:1231
-#, fuzzy, c-format
-#| msgid "Failed to allocate %zu bytes\n"
+#: libwget/http.c:929
+#, c-format
 msgid "Failed to allocate %zu bytes (%s)\n"
-msgstr "Не вдалося отримати область пам'яті у %zu байтів\n"
+msgstr "Не вдалося отримати область пам'яті у %zu байтів (%s)\n"
 
-#: libwget/http.c:1254
-#, fuzzy, c-format
-#| msgid "Failed to convert chunk size '%.31s'\n"
+#: libwget/http.c:952
+#, c-format
 msgid "Failed to convert chunk size '%.31s' (%s)\n"
-msgstr "Не вдалося перетворити розмір фрагмента «%.31s»\n"
+msgstr "Не вдалося перетворити розмір фрагмента «%.31s» (%s)\n"
 
-#: libwget/http.c:1292
-#, fuzzy, c-format
-#| msgid "Chunk size overflow: %zX\n"
+#: libwget/http.c:990
+#, c-format
 msgid "Chunk size overflow: %zX (%s)\n"
-msgstr "Переповнення розміру фрагмента: %zX\n"
+msgstr "Переповнення розміру фрагмента: %zX (%s)\n"
 
-#: libwget/http.c:1334
-#, fuzzy, c-format
-#| msgid "Expected end-of-chunk not found\n"
+#: libwget/http.c:1032
+#, c-format
 msgid "Expected end-of-chunk not found (%s)\n"
-msgstr "Не знайдено очікуваного кінця фрагмента\n"
+msgstr "Не знайдено очікуваного кінця фрагмента (%s)\n"
 
-#: libwget/http.c:1382
-#, fuzzy, c-format
-#| msgid "Failed to read %zd bytes (%d)\n"
+#: libwget/http.c:1080
+#, c-format
 msgid "Failed to read %zd bytes (%d) (%s)\n"
-msgstr "Не вдалося прочитати %zd байтів (%d)\n"
+msgstr "Не вдалося прочитати %zd байтів (%d) (%s)\n"
 
-#: libwget/http.c:1388
-#, fuzzy, c-format
-#| msgid "Just got %zu of %zu bytes\n"
+#: libwget/http.c:1086
+#, c-format
 msgid "Just got %zu of %zu bytes (%s)\n"
-msgstr "Отримано лише %zu з %zu байтів\n"
+msgstr "Отримано лише %zu з %zu байтів (%s)\n"
 
-#: libwget/http.c:1393
-#, fuzzy, c-format
-#| msgid "Body too large: %zu instead of %zu bytes\n"
+#: libwget/http.c:1091
+#, c-format
 msgid "Body too large: %zu instead of %zu bytes (%s)\n"
-msgstr "Вміст надто великий: %zu замість %zu байтів\n"
+msgstr "Вміст надто великий: %zu замість %zu байтів (%s)\n"
+
+#: libwget/http2.c:200
+msgid "Failed to create HTTP2 callbacks\n"
+msgstr "Не вдалося створити зворотні виклики HTTP2\n"
+
+#: libwget/http2.c:209
+#, c-format
+msgid "Failed to create HTTP2 client session (%d)\n"
+msgstr "Не вдалося створити сеанс клієнта HTTP2 (%d)\n"
+
+#: libwget/http2.c:220
+#, c-format
+msgid "Failed to submit HTTP2 client settings (%d)\n"
+msgstr "Не вдалося надіслати параметри клієнта HTTP2 (%d)\n"
+
+#: libwget/http2.c:240
+#, c-format
+msgid "Failed to terminate HTTP2 session (%d)\n"
+msgstr "Не вдалося перервати сеанс HTTP2 (%d)\n"
+
+#: libwget/http2.c:289
+#, c-format
+msgid "Failed to allocate nvs[%d]\n"
+msgstr "Не вдалося отримати пам'ять для nvs[%d]\n"
+
+#: libwget/http2.c:295
+#, c-format
+msgid "Failed to allocate resource[%zu]\n"
+msgstr "Не вдалося отримати пам'ять для resource[%zu]\n"
+
+#: libwget/http2.c:360
+msgid "Failed to submit HTTP2 request\n"
+msgstr "Не вдалося надіслати запит HTTP2\n"
 
 #: libwget/http_highlevel.c:45
-#, fuzzy, c-format
-#| msgid "Failed to write %zu bytes of data (%d)\n"
+#, c-format
 msgid "Failed to fwrite %zu bytes of data (%d)\n"
-msgstr "Не вдалося записати %zu байтів даних (%d)\n"
+msgstr "Не вдалося виконати fwrite для %zu байтів даних (%d)\n"
 
 #: libwget/http_highlevel.c:60
 #, c-format
 msgid "Failed to write %zu bytes of data (%d)\n"
 msgstr "Не вдалося записати %zu байтів даних (%d)\n"
 
-#: libwget/http_highlevel.c:161
+#: libwget/http_highlevel.c:165
 #, c-format
 msgid "Unknown option %d\n"
 msgstr "Невідомий параметр %d\n"
 
-#: libwget/http_highlevel.c:171
+#: libwget/http_highlevel.c:175
 msgid "Error parsing URL\n"
 msgstr "Помилка під час спроби обробити адресу\n"
 
-#: libwget/http_highlevel.c:178
+#: libwget/http_highlevel.c:182
 msgid "Missing URL/URI\n"
 msgstr "Пропущено адресу\n"
 
-#: libwget/http_parse.c:860 libwget/http_parse.c:885
+#: libwget/http_parse.c:865 libwget/http_parse.c:890
 #, c-format
 msgid "Failed to parse date '%s'\n"
 msgstr "Не вдалося обробити дату «%s»\n"
 
-#: libwget/http_parse.c:1268
+#: libwget/http_parse.c:1273
 msgid "HTTP response header not found\n"
 msgstr "Не знайдено заголовка відповіді HTTP\n"
 
-#: libwget/init.c:136 src/options.c:3632
+#: libwget/init.c:137 src/options.c:3683
 #, c-format
 msgid "Failed to init DNS cache (%d)"
 msgstr "Не вдалося ініціалізувати кеш DNS (%d)"
 
-#: libwget/init.c:171 libwget/init.c:245 libwget/init.c:270 libwget/init.c:285
+#: libwget/init.c:172 libwget/init.c:246 libwget/init.c:271 libwget/init.c:286
 #, c-format
 msgid "%s: Unknown option %d"
 msgstr "%s: невідомий параметр %d"
 
-#: libwget/init.c:190
+#: libwget/init.c:191
 #, c-format
 msgid "%s: Failed to init networking (%d)"
 msgstr "%s: не вдалося ініціалізувати мережу (%d)"
 
-#: libwget/init.c:228
+#: libwget/init.c:229
 #, c-format
 msgid "%s: Failed to deinit networking (%d)"
 msgstr "%s: не вдалося скасувати ініціалізацію мережі (%d)"
@@ -715,22 +706,24 @@ msgstr "Не вдалося перейменувати «%s» на «%s» (%d)\n
 msgid "Take manually care for '%s'\n"
 msgstr "Подбайте вручну про «%s»\n"
 
-#: libwget/iri.c:651
+#: libwget/iri.c:629
+msgid "Port number must be in the range 1..65535\n"
+msgstr ""
+
+#: libwget/iri.c:663
 #, c-format
 msgid "Missing host/domain in URI '%s'\n"
 msgstr "У адресі пропущено вузол або домен, «%s»\n"
 
 #: libwget/net.c:133
-#, fuzzy, c-format
-#| msgid "Failed to rename '%s' (errno=%d)\n"
+#, c-format
 msgid "%s (hostname='%s', ip=%s, errno=%d)\n"
-msgstr "Не вдалося перейменувати «%s» (номер помилки=%d)\n"
+msgstr "%s (назва вузла=«%s», ip=%s, errno=%d)\n"
 
 #: libwget/net.c:140
-#, fuzzy, c-format
-#| msgid "Failed to rename '%s' (errno=%d)\n"
+#, c-format
 msgid "%s (hostname='%s', errno=%d)\n"
-msgstr "Не вдалося перейменувати «%s» (номер помилки=%d)\n"
+msgstr "%s (назва вузла=«%s», errno=%d)\n"
 
 #: libwget/net.c:608 libwget/net.c:616
 msgid "Failed to set socket to non-blocking\n"
@@ -756,37 +749,35 @@ msgstr "Не вдалося встановити параметр сокета B
 msgid "Unsupported socket option BINDTODEVICE\n"
 msgstr "Непідтримуваний параметр сокета - BINDTODEVICE\n"
 
-#: libwget/net.c:773
+#: libwget/net.c:654
 #, fuzzy
-#| msgid "Failed to bind (%d)\n"
-msgid "Failed to bind"
-msgstr "Не вдалося прив'язати (%d)\n"
+#| msgid "Failed to set socket option NODELAY\n"
+msgid "Failed to set socket option SO_SNDTIMEO\n"
+msgstr "Не вдалося встановити параметр сокета NODELAY\n"
 
-#: libwget/net.c:785 libwget/net.c:959
-#, fuzzy
-#| msgid "Failed to connect: %s\n"
-msgid "Failed to connect"
-msgstr "Не вдалося встановити з'єднання: %s\n"
-
-#: libwget/net.c:819
-#, fuzzy
-#| msgid "Failed to create socket (%d)\n"
+#: libwget/net.c:780
 msgid "Failed to create socket"
-msgstr "Не вдалося створити сокет (%d)\n"
+msgstr "Не вдалося створити сокет"
 
-#: libwget/net.c:898
-#, fuzzy, c-format
-#| msgid "Failed to read %zu bytes (%d)\n"
+#: libwget/net.c:793
+msgid "Failed to bind"
+msgstr "Не вдалося прив'язати"
+
+#: libwget/net.c:805 libwget/net.c:979
+msgid "Failed to connect"
+msgstr "Не вдалося з'єднатися"
+
+#: libwget/net.c:918
+#, c-format
 msgid "Failed to read %zu bytes (hostname='%s', ip=%s, errno=%d)\n"
-msgstr "Не вдалося прочитати %zu байтів (%d)\n"
+msgstr "Не вдалося прочитати %zu байтів (назва вузла=«%s», ip=%s, errno=%d)\n"
 
-#: libwget/net.c:981
-#, fuzzy, c-format
-#| msgid "Failed to rename '%s' (errno=%d)\n"
+#: libwget/net.c:1001
+#, c-format
 msgid "Failed to send %zu bytes (hostname='%s', ip=%s, errno=%d)\n"
-msgstr "Не вдалося перейменувати «%s» (номер помилки=%d)\n"
+msgstr "Не вдалося надіслати %zu байтів (назва вузла=«%s», ip=%s, errno=%d)\n"
 
-#: libwget/net.c:1023
+#: libwget/net.c:1043
 #, c-format
 msgid "%s: internal error: length mismatch %zu != %zd\n"
 msgstr "%s: внутрішня помилка: невідповідність довжини %zu != %zd\n"
@@ -796,7 +787,7 @@ msgstr "%s: внутрішня помилка: невідповідність д
 msgid "Mirror scheme not supported: '%s'\n"
 msgstr "Підтримки схеми дзеркал не передбачено: «%s»\n"
 
-#: libwget/metalink.c:287
+#: libwget/metalink.c:289
 msgid "Error in parsing XML"
 msgstr "Помилка у обробці XML"
 
@@ -996,168 +987,175 @@ msgstr "Шифр: %s\n"
 msgid "MAC: %s\n"
 msgstr "MAC: %s\n"
 
-#: libwget/ssl_gnutls.c:883
+#: libwget/ssl_gnutls.c:888
 #, c-format
 msgid "Failed to import pubkey: %s\n"
 msgstr "Не вдалося імпортувати відкритий ключ: %s\n"
 
-#: libwget/ssl_gnutls.c:891 libwget/ssl_gnutls.c:903 libwget/ssl_gnutls.c:911
+#: libwget/ssl_gnutls.c:896 libwget/ssl_gnutls.c:908 libwget/ssl_gnutls.c:916
 #, c-format
 msgid "Failed to export pubkey: %s\n"
 msgstr "Не вдалося експортувати відкритий ключ: %s\n"
 
-#: libwget/ssl_gnutls.c:961
+#: libwget/ssl_gnutls.c:966
 msgid "ERROR"
 msgstr "ПОМИЛКА"
 
-#: libwget/ssl_gnutls.c:961
+#: libwget/ssl_gnutls.c:966
 msgid "WARNING"
 msgstr "УВАГА"
 
-#: libwget/ssl_gnutls.c:980
+#: libwget/ssl_gnutls.c:986
 #, c-format
 msgid "%s: Certificate verification error\n"
 msgstr "%s: помилка під час спроби перевірити сертифікат\n"
 
-#: libwget/ssl_gnutls.c:1032
+#: libwget/ssl_gnutls.c:1038
 #, c-format
 msgid "DANE verification print error for %s: %s\n"
-msgstr ""
+msgstr "Помилка виведення перевірки DANE для %s: %s\n"
 
-#: libwget/ssl_gnutls.c:1034
-#, fuzzy, c-format
-#| msgid "%s: Hash init failed for type '%s': %s\n"
+#: libwget/ssl_gnutls.c:1040
+#, c-format
 msgid "DANE verification failed for %s: %s\n"
-msgstr "%s: не вдалося ініціалізувати хешування для типу «%s»: %s\n"
+msgstr "Не пройдено перевірку DANE для %s: %s\n"
 
-#: libwget/ssl_gnutls.c:1051
+#: libwget/ssl_gnutls.c:1057
 #, c-format
 msgid "%s: The certificate is not trusted.\n"
 msgstr "%s: сертифікат не є надійним.\n"
 
-#: libwget/ssl_gnutls.c:1053
+#: libwget/ssl_gnutls.c:1059
 #, c-format
 msgid "%s: The certificate has been revoked.\n"
 msgstr "%s: сертифікат відкликано.\n"
 
-#: libwget/ssl_gnutls.c:1055
+#: libwget/ssl_gnutls.c:1061
 #, c-format
 msgid "%s: The certificate doesn't have a known issuer.\n"
 msgstr "%s: у сертифіката немає відомого видавця.\n"
 
-#: libwget/ssl_gnutls.c:1057
+#: libwget/ssl_gnutls.c:1063
 #, c-format
 msgid "%s: The certificate signer was not a CA.\n"
 msgstr "%s: підписником сертифіката не є служба сертифікації.\n"
 
-#: libwget/ssl_gnutls.c:1059
+#: libwget/ssl_gnutls.c:1065
 #, c-format
 msgid "%s: The certificate was signed using an insecure algorithm.\n"
 msgstr "%s: сертифікат було підписано за допомогою слабкого алгоритму.\n"
 
-#: libwget/ssl_gnutls.c:1061
+#: libwget/ssl_gnutls.c:1067
 #, c-format
 msgid "%s: The certificate is not yet activated.\n"
 msgstr "%s: сертифікат не активовано.\n"
 
-#: libwget/ssl_gnutls.c:1063
+#: libwget/ssl_gnutls.c:1069
 #, c-format
 msgid "%s: The certificate has expired.\n"
 msgstr "%s: строк дії сертифіката вичерпано.\n"
 
-#: libwget/ssl_gnutls.c:1066
+#: libwget/ssl_gnutls.c:1072
 #, c-format
 msgid "%s: The certificate signature is invalid.\n"
 msgstr "%s: підпис сертифіката є некоректним.\n"
 
-#: libwget/ssl_gnutls.c:1068
+#: libwget/ssl_gnutls.c:1074
 #, c-format
 msgid "%s: The certificate's owner does not match hostname '%s'.\n"
 msgstr "%s: запис власника сертифіката не відповідає назві вузла «%s».\n"
 
-#: libwget/ssl_gnutls.c:1080
+#: libwget/ssl_gnutls.c:1086
 #, c-format
 msgid "%s: The certificate could not be verified (0x%X).\n"
 msgstr "%s: не вдалося перевірити сертифікат (0x%X).\n"
 
-#: libwget/ssl_gnutls.c:1091
+#: libwget/ssl_gnutls.c:1097
 #, c-format
 msgid "%s: Certificate must be X.509\n"
 msgstr "%s: сертифікат має належати до типу X.509\n"
 
-#: libwget/ssl_gnutls.c:1096
+#: libwget/ssl_gnutls.c:1102
 #, c-format
 msgid "%s: Error initializing X.509 certificate\n"
 msgstr "%s: помилка ініціалізації сертифіката X.509\n"
 
-#: libwget/ssl_gnutls.c:1102
+#: libwget/ssl_gnutls.c:1108
 #, c-format
 msgid "%s: No certificate was found!\n"
 msgstr "%s: не знайдено сертифіката!\n"
 
-#: libwget/ssl_gnutls.c:1107
+#: libwget/ssl_gnutls.c:1113
 #, c-format
 msgid "%s: Failed to parse certificate: %s\n"
 msgstr "%s: не вдалося обробити сертифікат: %s\n"
 
-#: libwget/ssl_gnutls.c:1130
+#: libwget/ssl_gnutls.c:1137
 msgid "WARNING: The certificate's (stapled) OCSP status is invalid\n"
 msgstr "ПОПЕРЕДЖЕННЯ: стан (приєднаний) OCSP сертифіката є некоректним\n"
 
-#: libwget/ssl_gnutls.c:1134
-msgid "WARNING: The certificate's (stapled) OCSP status has not been sent\n"
-msgstr "ПОПЕРЕДЖЕННЯ: стан (приєднаний) OCSP сертифіката не надіслано\n"
+#: libwget/ssl_gnutls.c:1144
+#, c-format
+msgid ""
+"WARNING: OCSP stapling is not supported by '%s', but OCSP validation has "
+"been requested.\n"
+msgstr ""
 
-#: libwget/ssl_gnutls.c:1146
+#: libwget/ssl_gnutls.c:1145
+msgid ""
+"WARNING: This implies a privacy leak: the client sends the certificate "
+"serial ID over HTTP to the CA.\n"
+msgstr ""
+
+#: libwget/ssl_gnutls.c:1158
 #, c-format
 msgid "%s: Failed to parse certificate[%u]: %s\n"
 msgstr "%s: не вдалося обробити сертифікат[%u]: %s\n"
 
-#: libwget/ssl_gnutls.c:1232
+#: libwget/ssl_gnutls.c:1244
 #, c-format
 msgid "%s: Pubkey pinning mismatch!\n"
 msgstr "%s: невідповідність прив'язки відкритого ключа!\n"
 
-#: libwget/ssl_gnutls.c:1295
+#: libwget/ssl_gnutls.c:1307
 msgid "GnuTLS requires the key and the cert to be of the same type.\n"
 msgstr "GnuTLS вимагає, щоб ключ і сертифікат належали до одного типу.\n"
 
-#: libwget/ssl_gnutls.c:1299
+#: libwget/ssl_gnutls.c:1311
 msgid "No certificates or keys were found\n"
 msgstr "Не знайдено сертифікатів або ключів\n"
 
-#: libwget/ssl_gnutls.c:1306
+#: libwget/ssl_gnutls.c:1318
 #, c-format
 msgid "No CAs were found in '%s'\n"
 msgstr "Не знайдено служб сертифікації у «%s»\n"
 
-#: libwget/ssl_gnutls.c:1373
-#, fuzzy, c-format
-#| msgid "Failed to parse last line in '%s'\n"
+#: libwget/ssl_gnutls.c:1385
+#, c-format
 msgid "Failed to allocate file name for cert '%s/%s'\n"
-msgstr "Не вдалося обробити останній рядок у «%s»\n"
+msgstr "не вдалося розмістити у пам'яті назву файла для сертифіката «%s/%s»\n"
 
-#: libwget/ssl_gnutls.c:1392
+#: libwget/ssl_gnutls.c:1404
 #, c-format
 msgid "Failed to opendir %s\n"
 msgstr "Не вдалося відкрити каталог %s\n"
 
-#: libwget/ssl_gnutls.c:1399
+#: libwget/ssl_gnutls.c:1411
 #, c-format
 msgid "Failed to load CRL '%s': (%d)\n"
 msgstr "Не вдалося завантажити CRL «%s»: (%d)\n"
 
-#: libwget/ssl_gnutls.c:1441
+#: libwget/ssl_gnutls.c:1453
 #, c-format
 msgid "GnuTLS: Unsupported priority string '%s': %s\n"
 msgstr "GnuTLS: непідтримуваний рядок пріоритетності «%s»: %s\n"
 
-#: libwget/ssl_gnutls.c:1445
+#: libwget/ssl_gnutls.c:1457
 #, c-format
 msgid "GnuTLS: Unsupported default priority 'NULL': %s\n"
 msgstr "GnuTLS: непідтримувана типова пріоритетність «NULL»: %s\n"
 
-#: libwget/ssl_gnutls.c:1692 libwget/ssl_gnutls.c:1698
+#: libwget/ssl_gnutls.c:1708 libwget/ssl_gnutls.c:1714
 msgid ""
 "TLS False Start requested but libwget built with insufficient GnuTLS "
 "version\n"
@@ -1165,16 +1163,16 @@ msgstr ""
 "Надіслано запит щодо фальшивого старту TLS, але libwget зібрано із "
 "недостатньою версією GnuTLS\n"
 
-#: libwget/ssl_gnutls.c:1703
+#: libwget/ssl_gnutls.c:1719
 #, c-format
 msgid "GnuTLS: Failed to set priorities: %s\n"
 msgstr "GnuTLS: не вдалося встановити пріоритети: %s\n"
 
-#: libwget/ssl_gnutls.c:1736
+#: libwget/ssl_gnutls.c:1752
 msgid "WARNING: OCSP is not available in this version of GnuTLS.\n"
 msgstr "ПОПЕРЕДЖЕННЯ: OCSP є недоступним у цій версії GnuTLS.\n"
 
-#: libwget/ssl_gnutls.c:1803
+#: libwget/ssl_gnutls.c:1819
 #, c-format
 msgid "GnuTLS: Failed to set session data: %s\n"
 msgstr "GnuTLS: не вдалося встановити дані сеансу: %s\n"
@@ -1192,24 +1190,45 @@ msgstr "Не вдалося створити WOLFSSL_CTX\n"
 msgid "WolfSSL: Failed to set ciphers '%s'\n"
 msgstr "WolfSSL: не вдалося встановити шифрування «%s»\n"
 
-#: libwget/ssl_wolfssl.c:662
-#, c-format
+#: libwget/ssl_wolfssl.c:658
+#, fuzzy
+#| msgid "Failed to load %s (%d)"
+msgid "Failed to load system certs\n"
+msgstr "Не вдалося завантажити %s (%d)"
+
+#: libwget/ssl_wolfssl.c:684
+#, fuzzy
+#| msgid ""
+#| "Failed to load CA pem: %s or cert dir: %s, ssl verification will likely "
+#| "fail.\n"
+msgid "Skipped loading CA certs. SSL verification will likely fail.\n"
+msgstr ""
+"Не вдалося завантажити pem CA: %s або каталогу сертифікатів: %s, перевірку "
+"ssl, ймовірно, пройдено не буде.\n"
+
+#: libwget/ssl_wolfssl.c:690
+#, fuzzy, c-format
+#| msgid ""
+#| "Failed to load CA pem: %s or cert dir: %s, ssl verification will likely "
+#| "fail.\n"
 msgid ""
-"Failed to load CA pem: %s or cert dir: %s, ssl verification will likely "
+"Failed to load CA pem: %s or cert dir: %s, SSL verification will likely "
 "fail.\n"
 msgstr ""
+"Не вдалося завантажити pem CA: %s або каталогу сертифікатів: %s, перевірку "
+"ssl, ймовірно, пройдено не буде.\n"
 
-#: libwget/ssl_wolfssl.c:900
+#: libwget/ssl_wolfssl.c:929
 msgid "Failed to create WolfSSL session\n"
 msgstr "Не вдалося створити сеанс WolfSSL\n"
 
-#: libwget/ssl_wolfssl.c:1034
+#: libwget/ssl_wolfssl.c:1063
 #, c-format
 msgid "failed to connect TLS (%d): %s\n"
 msgstr "не вдалося встановити з'єднання TLS (%d): %s\n"
 
-#: libwget/ssl_openssl.c:243 libwget/ssl_openssl.c:283
-#: libwget/ssl_openssl.c:361
+#: libwget/ssl_openssl.c:246 libwget/ssl_openssl.c:286
+#: libwget/ssl_openssl.c:364
 #, c-format
 msgid ""
 "Unknown configuration key %d (maybe this config value should be of another "
@@ -1218,7 +1237,7 @@ msgstr ""
 "Невідомий ключ налаштувань %d (можливо, цей значення налаштувань має "
 "належати до іншого типу?)\n"
 
-#: libwget/ssl_openssl.c:410
+#: libwget/ssl_openssl.c:413
 msgid ""
 "OpenSSL: TLS 1.3 is not supported by your OpenSSL version. Will use TLS 1.2 "
 "instead.\n"
@@ -1226,12 +1245,12 @@ msgstr ""
 "OpenSSL: у вашій версії OpenSSL не передбачено підтримки TLS 1.3. Будемо "
 "замість цього використовувати TLS 1.2.\n"
 
-#: libwget/ssl_openssl.c:420
+#: libwget/ssl_openssl.c:423
 #, c-format
 msgid "OpenSSL: Invalid priority string '%s'\n"
 msgstr "OpenSSL: некоректний рядок пріоритетності, «%s»\n"
 
-#: libwget/ssl_openssl.c:482
+#: libwget/ssl_openssl.c:485
 #, c-format
 msgid ""
 "OpenSSL: Could not load certificates from default paths. Falling back to "
@@ -1240,136 +1259,129 @@ msgstr ""
 "OpenSSL: не вдалося завантажити сертифікати із типових каталогів. "
 "Повертаємося до резервного місця - «%s»."
 
-#: libwget/ssl_openssl.c:487
+#: libwget/ssl_openssl.c:490
 #, c-format
 msgid "OpenSSL: No certificates could be loaded from directory '%s'\n"
 msgstr "OpenSSL: не вдалося завантажити жодного сертифіката з каталогу «%s»\n"
 
-#: libwget/ssl_openssl.c:491
+#: libwget/ssl_openssl.c:494
 #, c-format
 msgid "OpenSSL: Could not open directory '%s'. No certificates were loaded.\n"
 msgstr ""
 "OpenSSL: не вдалося відкрити каталог «%s». Не було завантажено жодного "
 "сертифіката.\n"
 
-#: libwget/ssl_openssl.c:682
-#, fuzzy
-#| msgid "Could not verify stapled OCSP response. Aborting.\n"
+#: libwget/ssl_openssl.c:685
 msgid "Could not get user data to verify stapled OCSP.\n"
-msgstr "Не вдалося перевірити основну відповідь OCSP. Перериваємо обробку.\n"
+msgstr ""
+"Не вдалося отримати дані користувача для перевірки основної відповіді OCSP.\n"
 
-#: libwget/ssl_openssl.c:694
+#: libwget/ssl_openssl.c:697
 msgid "Got a stapled OCSP response, but could not parse it. Aborting.\n"
 msgstr ""
 "Отримано основну відповідь OCSP, але обробити її не вдалося. Перериваємо "
 "обробку.\n"
 
-#: libwget/ssl_openssl.c:700
+#: libwget/ssl_openssl.c:703
 msgid "Could not get server's cert stack\n"
 msgstr "Не вдалося отримати стос сертифікатів сервера\n"
 
-#: libwget/ssl_openssl.c:712
+#: libwget/ssl_openssl.c:715
 msgid "Could not verify stapled OCSP response. Aborting.\n"
 msgstr "Не вдалося перевірити основну відповідь OCSP. Перериваємо обробку.\n"
 
-#: libwget/ssl_openssl.c:873
+#: libwget/ssl_openssl.c:877
 msgid "ERROR: print_openssl_time: BIO_read failed\n"
-msgstr ""
+msgstr "ERROR: print_openssl_time: помилка BIO_read\n"
 
-#: libwget/ssl_openssl.c:887
-#, fuzzy
-#| msgid "Could not get server's cert stack\n"
+#: libwget/ssl_openssl.c:891
 msgid "Could not get current time!\n"
-msgstr "Не вдалося отримати стос сертифікатів сервера\n"
-
-#: libwget/ssl_openssl.c:896
-#, fuzzy
-#| msgid "Could not compute certificate fingerprint for cert %u\n"
-msgid "Could not compute time difference for thisUpd. Aborting.\n"
-msgstr "Не вдалося обчислити відбиток сертифіката для сертифіката %u\n"
+msgstr "Не вдалося отримати поточний час!\n"
 
 #: libwget/ssl_openssl.c:900
-#, fuzzy
-#| msgid "OCSP response is too old. Ignoring.\n"
-msgid "*** OCSP response thisUpd is too old. Aborting.\n"
-msgstr "Відповідь OCSP є надто старою. Ігноруємо.\n"
-
-#: libwget/ssl_openssl.c:911
-#, fuzzy
-#| msgid "Could not compute certificate fingerprint for cert %u\n"
-msgid "Could not compute time difference for nextUpd. Aborting.\n"
-msgstr "Не вдалося обчислити відбиток сертифіката для сертифіката %u\n"
-
-#: libwget/ssl_openssl.c:916
-msgid "*** OCSP next update is in the past!\n"
+msgid "Could not compute time difference for thisUpd. Aborting.\n"
 msgstr ""
+"Не вдалося обчислити різницю у часі для thisUpd. Перериваємо обробку.\n"
 
-#: libwget/ssl_openssl.c:946
+#: libwget/ssl_openssl.c:904
+msgid "*** OCSP response thisUpd is too old. Aborting.\n"
+msgstr "*** Відповідь thisUpd OCSP є надто старою. Перериваємо обробку.\n"
+
+#: libwget/ssl_openssl.c:915
+msgid "Could not compute time difference for nextUpd. Aborting.\n"
+msgstr ""
+"Не вдалося обчислити різницю у часі для nextUpd. Перериваємо обробку.\n"
+
+#: libwget/ssl_openssl.c:920
+msgid "*** OCSP next update is in the past!\n"
+msgstr "*** Дата наступного оновлення OCSP перебуває у минулому!\n"
+
+#: libwget/ssl_openssl.c:950
 msgid "Unsuccessful OCSP response\n"
 msgstr "Відповідь OCSP — невдача\n"
 
-#: libwget/ssl_openssl.c:954
+#: libwget/ssl_openssl.c:958
 msgid "Could not verify OCSP certificate chain\n"
 msgstr "Не вдалося перевірити ланцюжок сертифікатів OCSP\n"
 
-#: libwget/ssl_openssl.c:960
+#: libwget/ssl_openssl.c:964
 msgid "Could not parse OCSP single response\n"
 msgstr "Не вдалося обробити одинарну відповідь OCSP\n"
 
-#: libwget/ssl_openssl.c:967
+#: libwget/ssl_openssl.c:971
 msgid "Could not obtain OCSP response status\n"
 msgstr "Не вдалося отримати стан відповіді OCSP\n"
 
-#: libwget/ssl_openssl.c:982
+#: libwget/ssl_openssl.c:986
 msgid "Could not get 'thisUpd' from OCSP response. Cannot check time.\n"
 msgstr ""
 "Не вдалося отримати «thisUpd» з відповіді OCSP. Не вдалося перевірити час.\n"
 
-#: libwget/ssl_openssl.c:1044
+#: libwget/ssl_openssl.c:1046
 msgid "Could not obtain OCSP_BASICRESPONSE\n"
 msgstr "Не вдалося отримати OCSP_BASICRESPONSE\n"
 
-#: libwget/ssl_openssl.c:1050
+#: libwget/ssl_openssl.c:1052
 msgid "OCSP nonce does not match\n"
 msgstr "Розбіжність поточних OCSP\n"
 
-#: libwget/ssl_openssl.c:1195 libwget/ssl_openssl.c:1230
+#: libwget/ssl_openssl.c:1197 libwget/ssl_openssl.c:1232
 #, c-format
 msgid "Could not compute certificate fingerprint for cert %u\n"
 msgstr "Не вдалося обчислити відбиток сертифіката для сертифіката %u\n"
 
-#: libwget/ssl_openssl.c:1264
+#: libwget/ssl_openssl.c:1266
 msgid "Certificate check disabled. Peer's certificate will NOT be checked.\n"
 msgstr ""
 "Перевірку сертифікатів вимкнено. Сертифікат вузла НЕ буде перевірено.\n"
 
-#: libwget/ssl_openssl.c:1270
+#: libwget/ssl_openssl.c:1272
 msgid "OpenSSL: Could not obtain cert store\n"
 msgstr "OpenSSL: не вдалося отримати вміст сховища сертифікатів\n"
 
-#: libwget/ssl_openssl.c:1283
+#: libwget/ssl_openssl.c:1285
 #, c-format
 msgid "Could not load CRL from '%s' (%d)\n"
 msgstr "Не вдалося завантажити CRL з «%s» (%d)\n"
 
-#: libwget/ssl_openssl.c:1299
+#: libwget/ssl_openssl.c:1301
 #, c-format
 msgid "Could not load CA certificate from file '%s'\n"
 msgstr "Не вдалося завантажити сертифікат CA з файла «%s»\n"
 
-#: libwget/ssl_openssl.c:1352
+#: libwget/ssl_openssl.c:1354
 msgid "Could not initialize OpenSSL\n"
 msgstr "Не вдалося ініціалізувати OpenSSL\n"
 
-#: libwget/ssl_openssl.c:1403
+#: libwget/ssl_openssl.c:1405
 msgid "OpenSSL: Could not parse cached session data.\n"
 msgstr "OpenSSL: не вдалося обробити кешовані дані сеансу.\n"
 
-#: libwget/ssl_openssl.c:1411
+#: libwget/ssl_openssl.c:1413
 msgid "OpenSSL: Could not set session data.\n"
 msgstr "OpenSSL: не вдалося встановити дані сеансу.\n"
 
-#: libwget/ssl_openssl.c:1626
+#: libwget/ssl_openssl.c:1628
 msgid ""
 "Host name check disabled. Server certificate's subject name will not be "
 "checked.\n"
@@ -1377,45 +1389,41 @@ msgstr ""
 "Перевірку назви вузла вимкнено. Назву отримувача сертифіката сервера "
 "перевірено не буде.\n"
 
-#: libwget/ssl_openssl.c:1635
+#: libwget/ssl_openssl.c:1637
 msgid "Could not set 'status_request' extension\n"
 msgstr "Не вдалося встановити розширення «status_request»\n"
 
-#: libwget/ssl_openssl.c:1641
+#: libwget/ssl_openssl.c:1643
 msgid "SNI could not be sent"
 msgstr "Не вдалося надіслати SNI"
 
-#: libwget/ssl_openssl.c:1645
+#: libwget/ssl_openssl.c:1647
 msgid "ALPN offering could not be sent"
 msgstr "Не вдалося надіслати пропозицію ALPN"
 
-#: libwget/ssl_openssl.c:1653
+#: libwget/ssl_openssl.c:1655
 msgid "Could not get cached TLS session"
 msgstr "Не вдалося отримати кешований сеанс TLS"
 
-#: libwget/ssl_openssl.c:1675
+#: libwget/ssl_openssl.c:1677
 #, c-format
 msgid "Could not complete TLS handshake: %s\n"
 msgstr "Не вдалося завершити узгодження зв'язку TLS: %s\n"
 
-#: libwget/ssl_openssl.c:1693
-#, fuzzy
-#| msgid "Public key pinning mismatch.\n"
+#: libwget/ssl_openssl.c:1695
 msgid "Public key pinning mismatch\n"
-msgstr "Невідповідність прив'язки відкритого ключа.\n"
+msgstr "Невідповідність прив'язки відкритого ключа\n"
 
-#: libwget/ssl_openssl.c:1712
-#, fuzzy
-#| msgid "Could not verify OCSP certificate chain\n"
+#: libwget/ssl_openssl.c:1714
 msgid "Aborting handshake. Could not verify OCSP chain.\n"
-msgstr "Не вдалося перевірити ланцюжок сертифікатів OCSP\n"
+msgstr "Перериваємо узгодження зв'язку. Не вдалося перевірити ланцюжок OCSP.\n"
 
-#: libwget/ssl_openssl.c:1867
+#: libwget/ssl_openssl.c:1873
 #, c-format
 msgid "TLS read error: %s\n"
 msgstr "Помилка читання TLS: %s\n"
 
-#: libwget/ssl_openssl.c:1901
+#: libwget/ssl_openssl.c:1907
 #, c-format
 msgid "TLS write error: %s\n"
 msgstr "Помилка запису TLS: %s\n"
@@ -1430,12 +1438,12 @@ msgid "Failed to write TLS session file '%s'\n"
 msgstr "Не вдалося записати файл сеансу TLS «%s»\n"
 
 #: libwget/xml.c:661
-#, fuzzy, c-format
-#| msgid "Failed to allocate %zu bytes\n"
+#, c-format
 msgid "Failed to allocate %zu bytes for XML parse buffer\n"
-msgstr "Не вдалося отримати область пам'яті у %zu байтів\n"
+msgstr ""
+"Не вдалося отримати область пам'яті у %zu байтів для буфера обробки XML\n"
 
-#: src/bar.c:120
+#: src/bar.c:124
 msgid "Cannot create progress bar thread. Disabling progress bar.\n"
 msgstr ""
 "Не вдалося створити потік обробки смужки поступу. Вимикаємо смужку поступу.\n"
@@ -1513,7 +1521,7 @@ msgstr "Не вдалося виправити файл підпису!\n"
 msgid "Failed to read file to verify sig: %s\n"
 msgstr "Не вдалося прочитати файл для перевірки підпису: %s\n"
 
-#: src/host.c:394 src/wget.c:946
+#: src/host.c:393 src/wget.c:1000
 #, c-format
 msgid "URL '%s' not followed (disallowed by robots.txt)\n"
 msgstr "Перехід за адресою «%s» не здійснено (заборонено у robots.txt)\n"
@@ -1568,10 +1576,9 @@ msgid "No value in header (ignoring): %s\n"
 msgstr "Немає значення у заголовку (ігноруємо): %s\n"
 
 #: src/options.c:680
-#, fuzzy, c-format
-#| msgid "Invalid boolean value '%s'\n"
+#, c-format
 msgid "Invalid value '%s'\n"
-msgstr "Некоректне булеве значення «%s»\n"
+msgstr "Некоректне значення «%s»\n"
 
 #: src/options.c:696
 #, c-format
@@ -1600,199 +1607,220 @@ msgstr "Порожній тип поступу\n"
 #: src/options.c:809
 #, c-format
 msgid "Progress type '%s' ignored. It is not implemented yet\n"
-msgstr ""
+msgstr "Тип поступу «%s» проігноровано. Його ще не реалізовано\n"
 
 #: src/options.c:811
 #, c-format
 msgid "Unknown progress type '%s'\n"
 msgstr "Невідомий тип поступу, «%s»\n"
 
-#: src/options.c:836
+#: src/options.c:824
+#, fuzzy
+#| msgid "Unknown restrict-file-name type '%s'\n"
+msgid "Missing restrict-file-name type\n"
+msgstr "Невідомий тип restrict-file-name, «%s»\n"
+
+#: src/options.c:854
 #, c-format
 msgid "Unknown restrict-file-name type '%s'\n"
 msgstr "Невідомий тип restrict-file-name, «%s»\n"
 
-#: src/options.c:868
+#: src/options.c:860
+msgid "Restrict file names to either 'unix' or 'windows'\n"
+msgstr ""
+
+#: src/options.c:865
+msgid "Restrict file names to either 'uppercase' or 'lowercase'\n"
+msgstr ""
+
+#: src/options.c:874
+msgid ""
+"    use [none]|[unix|windows],[lowercase|uppercase],[nocontrol][,ascii].\n"
+msgstr ""
+
+#: src/options.c:903
 #, c-format
 msgid "Unknown option '-n%c'\n"
 msgstr "Невідомий параметр «-n%c»\n"
 
-#: src/options.c:888
+#: src/options.c:923
 #, c-format
 msgid "Unknown address family '%s'\n"
 msgstr "Невідоме сімейство адрес, «%s»\n"
 
-#: src/options.c:915
+#: src/options.c:950
 #, c-format
 msgid "Unknown stats format '%s'\n"
 msgstr "Невідомий формат статистики «%s»\n"
 
-#: src/options.c:945 src/options.c:963
+#: src/options.c:980 src/options.c:998
 #, c-format
 msgid "Plugin '%s' failed to load: %s\n"
 msgstr "Не вдалося завантажити додаток «%s»: %s\n"
 
-#: src/options.c:1024 src/options.c:1044
+#: src/options.c:1059 src/options.c:1079
 msgid "Missing required type specifier\n"
 msgstr "Пропущено обов'язковий специфікатор типу\n"
 
-#: src/options.c:1028 src/options.c:1048
+#: src/options.c:1063 src/options.c:1083
 #, c-format
 msgid "Invalid type specifier: %s\n"
 msgstr "Некоректний специфікатор типу: %s\n"
 
-#: src/options.c:1061
+#: src/options.c:1096
 msgid "no-verify-sig cannot take additional arguments\n"
 msgstr "no-verify-sig не приймає додаткових аргументів\n"
 
-#: src/options.c:1071
+#: src/options.c:1106
 #, c-format
 msgid "Invalid option specifier: %s\n"
 msgstr "Некоректний специфікатор параметра: %s\n"
 
-#: src/options.c:1115
-#, c-format
-msgid "Compression type %s not supported\n"
+#: src/options.c:1151
+#, fuzzy, c-format
+#| msgid "Compression type %s not supported\n"
+msgid "Compression type '%s' not supported\n"
 msgstr "Підтримки типу стискання %s не передбачено\n"
 
-#: src/options.c:1118
-#, c-format
-msgid "Duplicate type %s"
+#: src/options.c:1154
+#, fuzzy, c-format
+#| msgid "Duplicate type %s"
+msgid "Duplicate type '%s'"
 msgstr "Дублювання типу %s"
 
-#: src/options.c:1148
+#: src/options.c:1184
 #, c-format
 msgid "Lib for type %s not built"
 msgstr "Бібліотеку для типу %s не зібрано"
 
-#: src/options.c:1180
+#: src/options.c:1216
 #, c-format
 msgid "Disallowed Value for --no-download-attr: %s\n"
 msgstr "Заборонене значення для --no-download-attr: %s\n"
 
-#: src/options.c:1189
+#: src/options.c:1225
 #, c-format
 msgid "Invalid value for --download-attr: %s\n"
 msgstr "Некоректне значення --download-attr: %s\n"
 
-#: src/options.c:2547 src/options.c:2582
+#: src/options.c:2592 src/options.c:2627
 #, c-format
 msgid "Unknown option '%s'\n"
 msgstr "Невідомий параметр «%s»\n"
 
-#: src/options.c:2599
+#: src/options.c:2642
 #, c-format
 msgid "Option 'no-%s' doesn't allow an argument\n"
 msgstr "Параметр «no-%s» слід використовувати без аргументів\n"
 
-#: src/options.c:2603
+#: src/options.c:2646
 #, c-format
 msgid "Option '%s' doesn't allow an argument\n"
 msgstr "Параметр «%s» повинен використовуватись без аргументу\n"
 
-#: src/options.c:2614
+#: src/options.c:2657
 #, c-format
 msgid "Missing argument for option '%s'\n"
 msgstr "Не вказано аргументу до параметра «%s»\n"
 
-#: src/options.c:2680
+#: src/options.c:2723
 #, c-format
 msgid "Failed to parse: '%s'\n"
 msgstr "Не вдалося обробити: «%s»\n"
 
-#: src/options.c:2742
+#: src/options.c:2785
 #, c-format
 msgid "Config file recursion detected in %s\n"
 msgstr "Виявлено рекурсію у файлі налаштувань у %s\n"
 
-#: src/options.c:2769
+#: src/options.c:2812
 #, c-format
 msgid "Failed to open %s (%d): %s\n"
 msgstr "Не вдалося відкрити %s (%d): %s\n"
 
-#: src/options.c:2833
+#: src/options.c:2876
 #, c-format
 msgid "Failed to parse last line in '%s'\n"
 msgstr "Не вдалося обробити останній рядок у «%s»\n"
 
-#: src/options.c:2913
+#: src/options.c:2956
 #, c-format
 msgid "Missing argument(s) for option '-%c'\n"
 msgstr "Пропущено аргументи для параметра «-%c»\n"
 
-#: src/options.c:2933
+#: src/options.c:2976
 #, c-format
 msgid "Unknown option '-%c'\n"
 msgstr "Невідомий параметр «-%c»\n"
 
-#: src/options.c:2964
+#: src/options.c:3007
 #, c-format
 msgid "Password for user \"%s\": "
 msgstr "Пароль для користувача «%s»:"
 
-#: src/options.c:2966
+#: src/options.c:3009
 msgid "Password: "
 msgstr "Пароль:"
 
-#: src/options.c:2987
+#: src/options.c:3030
 msgid "Cannot create pipe"
 msgstr "Не вдалося створити канал"
 
-#: src/options.c:2993
+#: src/options.c:3036
 #, c-format
 msgid "Error initializing spawn file actions for use-askpass: %d"
 msgstr ""
 "Помилка під час спроби ініціалізувати дії з поновлення файлів для use-"
 "askpass: %d"
 
-#: src/options.c:3004
+#: src/options.c:3047
 #, c-format
 msgid "Error setting spawn file actions for use-askpass: %d"
 msgstr ""
 "Помилка під час спроби встановити дії з поновлення файлів для use-askpass: %d"
 
-#: src/options.c:3011
+#: src/options.c:3054
 #, c-format
 msgid "Error spawning %s: %d"
 msgstr "Помилка під час спроби запустити %s: %d"
 
-#: src/options.c:3028
+#: src/options.c:3071
 #, c-format
 msgid "Error reading response from command \"%s %s\": %s\n"
 msgstr "Помилка під час спроби читання відповіді від команди «%s %s»: %s\n"
 
-#: src/options.c:3093
+#: src/options.c:3136
 #, c-format
 msgid "Failed to open %s"
 msgstr "Не вдалося відкрити %s"
 
-#: src/options.c:3143
+#: src/options.c:3186
 #, c-format
 msgid "~/.wget2rc is deprecated. Please move it to %s/wget2rc\n"
 msgstr ""
 "~/.wget2rc вважається застарілим. Будь ласка, перенесіть файл до %s/wget2rc\n"
 
-#: src/options.c:3471
+#: src/options.c:3522
 #, c-format
 msgid "Failed to set http proxies %s\n"
 msgstr "Не вдалося встановити проксі-сервери http %s\n"
 
-#: src/options.c:3475
+#: src/options.c:3526
 #, c-format
 msgid "Failed to set https proxies %s\n"
 msgstr "Не вдалося встановити проксі-сервери https %s\n"
 
-#: src/options.c:3479
+#: src/options.c:3530
 #, c-format
 msgid "Failed to set proxy exceptions %s\n"
 msgstr "Не вдалося встановити виключення проксі %s\n"
 
-#: src/options.c:3505
+#: src/options.c:3556
 #, c-format
 msgid "Failed to load %s (%d)"
 msgstr "Не вдалося завантажити %s (%d)"
 
-#: src/options.c:3565
+#: src/options.c:3616
 msgid ""
 "Specifying both --start-pos and --continue is not recommended; --continue "
 "will be disabled"
@@ -1800,19 +1828,19 @@ msgstr ""
 "Не рекомендуємо використовувати одночасно --start-pos і --continue; --"
 "continue буде вимкнено"
 
-#: src/options.c:3571
+#: src/options.c:3622
 msgid "WARNING: timestamping does nothing in combination with -O"
 msgstr "ПОПЕРЕДЖЕННЯ: використання часових позначок не працює з -O"
 
-#: src/options.c:3575
+#: src/options.c:3626
 msgid "Can't timestamp and not clobber old files at the same time"
 msgstr "Режими підтримки міток часу та збереження старих файлів несумісні"
 
-#: src/options.c:3579
+#: src/options.c:3630
 msgid "WARNING: timestamping does nothing in combination with spider"
 msgstr "УВАГА: використання часових позначок не працює зі spider"
 
-#: src/options.c:3583
+#: src/options.c:3634
 msgid ""
 "WARNING: timestamping and chunk-size only work together without If-Modified-"
 "Since"
@@ -1820,92 +1848,92 @@ msgstr ""
 "УВАГА: визначення часових позначок і chunk-size працюють разом лише без If-"
 "Modified-Since"
 
-#: src/options.c:3622
+#: src/options.c:3673
 #, c-format
 msgid "Failed to init networking (%d)"
 msgstr "Не вдалося ініціалізувати мережу (%d)"
 
-#: src/options.c:3627
+#: src/options.c:3678
 #, c-format
 msgid "Failed to init DNS (%d)"
 msgstr "Не вдалося ініціалізувати DNS (%d)"
 
-#: src/options.c:3645 src/options.c:3656 src/options.c:3667 src/options.c:3678
-#: src/options.c:3689
+#: src/options.c:3696 src/options.c:3707 src/options.c:3718 src/options.c:3729
+#: src/options.c:3740
 #, c-format
 msgid "Failed to open '%s' (%d)"
 msgstr "Не вдалося відкрити «%s» (%d)"
 
-#: src/options.c:3942
+#: src/options.c:3993
 #, c-format
 msgid "%s: Option not in order '%s' after '%s' (using opt_compare())\n"
 msgstr ""
 "%s: неправильна позиція «%s» після «%s» (використовуємо opt_compare())\n"
 
-#: src/options.c:3951
+#: src/options.c:4002
 #, c-format
 msgid "%s: Option not in order '%s' after '%s' (using opt_compare_config())\n"
 msgstr ""
 "%s: неправильна позиція «%s» після «%s» (використовуємо "
 "opt_compare_config())\n"
 
-#: src/options.c:3961
+#: src/options.c:4012
 #, c-format
 msgid "%s: Failed to find option '%s' (using opt_compare())\n"
 msgstr "%s: не вдалося знайти параметр «%s» (використовуємо opt_compare())\n"
 
-#: src/options.c:3971 src/options.c:3995
+#: src/options.c:4022 src/options.c:4046
 #, c-format
 msgid "%s: Failed to find option '%s' (using opt_compare_config())\n"
 msgstr ""
 "%s: не вдалося знайти параметр «%s» (використовуємо opt_compare_config())\n"
 
-#: src/options.c:4020
+#: src/options.c:4071
 #, c-format
 msgid "%s: Failed to parse bool short option #%zu (=%d)\n"
 msgstr "=%s: не вдалося обробити короткий булевий параметр %zu (%d)\n"
 
-#: src/options.c:4046 src/options.c:4052
+#: src/options.c:4097 src/options.c:4103
 #, c-format
 msgid "%s: Failed to parse bool long option #%zu (%d)\n"
 msgstr "%s: не вдалося обробити довгий булевий параметр %zu (%d)\n"
 
-#: src/options.c:4095
+#: src/options.c:4146
 #, c-format
 msgid "%s: Failed to parse timeout short option #%zu (=%d)\n"
 msgstr "=%s: не вдалося обробити короткий параметр часу затримки %zu (%d)\n"
 
-#: src/options.c:4126
+#: src/options.c:4177
 #, c-format
 msgid "%s: Failed to parse timeout long option #%zu (%d)\n"
 msgstr "%s: не вдалося обробити довгий параметр часу затримки %zu (%d)\n"
 
-#: src/options.c:4161
+#: src/options.c:4212
 #, c-format
 msgid "%s: Extra headers found in option #%zu\n"
 msgstr "%s: виявлено зайві заголовки у параметрі %zu\n"
 
-#: src/options.c:4166
+#: src/options.c:4217
 #, c-format
 msgid "%s: Failed to parse header option #%zu\n"
 msgstr "%s: не вдалося обробити параметр заголовка #%zu\n"
 
-#: src/options.c:4189
+#: src/options.c:4240
 #, c-format
 msgid "%s: Accepted illegal header option #%zu\n"
 msgstr "%s: прийнято некоректний параметр заголовка %zu\n"
 
-#: src/options.c:4217 src/options.c:4236
+#: src/options.c:4268 src/options.c:4287
 #, c-format
 msgid "%s: Failed to parse string short option #%zu (=%s)\n"
 msgstr "%s: не вдалося обробити короткий параметр рядка %zu (=%s)\n"
 
-#: src/plugin.c:397
+#: src/plugin.c:398
 #, c-format
 msgid "Plugin '%s' failed to load: %s"
 msgstr "Не вдалося завантажити додаток «%s»: %s"
 
-#: src/plugin.c:505
+#: src/plugin.c:506
 #, c-format
 msgid "Options for %s:\n"
 msgstr "Параметри для %s:\n"
@@ -1925,396 +1953,417 @@ msgstr "Не вдалося створити каталог «%s» (номер �
 msgid "Failed to rename '%s' (errno=%d)\n"
 msgstr "Не вдалося перейменувати «%s» (номер помилки=%d)\n"
 
-#: src/wget.c:599
+#: src/wget.c:631
+#, fuzzy, c-format
+#| msgid "HSTS in effect for %s:%hu\n"
+msgid "HSTS in effect for [%s]:%hu\n"
+msgstr "Задіяно HSTS для %s:%hu\n"
+
+#: src/wget.c:633
 #, c-format
 msgid "HSTS in effect for %s:%hu\n"
 msgstr "Задіяно HSTS для %s:%hu\n"
 
-#: src/wget.c:617
+#: src/wget.c:696
 #, c-format
 msgid "Failed to parse URI '%s'\n"
 msgstr "Не вдалося обробити адресу «%s»\n"
 
-#: src/wget.c:635
+#: src/wget.c:714
 #, c-format
 msgid "URI scheme not supported: '%s'\n"
 msgstr "Підтримки схеми адрес не передбачено: «%s»\n"
 
-#: src/wget.c:778
+#: src/wget.c:852
+#, fuzzy
+#| msgid "Cannot resolve URI '%s'\n"
+msgid "Cannot resolve URI\n"
+msgstr "Не вдалося визначити адресу «%s»\n"
+
+#: src/wget.c:864
 #, c-format
 msgid "Adding URL: %s\n"
 msgstr "Додаємо адресу: %s\n"
 
-#: src/wget.c:794 src/wget.c:1159
-#, c-format
-msgid "Cannot resolve URI '%s'\n"
-msgstr "Не вдалося визначити адресу «%s»\n"
-
-#: src/wget.c:802
+#: src/wget.c:870
 #, c-format
 msgid "not requesting '%s'. (Plugin Verdict)\n"
-msgstr ""
+msgstr "не запитуємо «%s». (вердикт додатка)\n"
 
-#: src/wget.c:816
+#: src/wget.c:884
 #, c-format
 msgid "URL '%s' not followed (unsupported scheme)\n"
 msgstr "Перехід за адресою «%s» не здійснено (непідтримувана схема)\n"
 
-#: src/wget.c:826
+#: src/wget.c:894
 #, c-format
 msgid "URL '%s' not followed (https-only requested)\n"
 msgstr ""
 "Перехід за адресою «%s» не здійснено (запит щодо використання лише https)\n"
 
-#: src/wget.c:843
+#: src/wget.c:911
 msgid "missing ip/host/domain"
 msgstr "пропущено ip-адресу, вузол або домен"
 
-#: src/wget.c:846
+#: src/wget.c:914
 msgid "no host-spanning requested"
 msgstr "надійшов запит щодо непоширення на вузол"
 
-#: src/wget.c:848
+#: src/wget.c:916
 msgid "domain explicitly excluded"
 msgstr "домен виключено явним чином"
 
-#: src/wget.c:852
+#: src/wget.c:920
 #, c-format
 msgid "URL '%s' not followed (%s)\n"
 msgstr "Перехід за адресою «%s» не здійснено (%s)\n"
 
-#: src/wget.c:900
+#: src/wget.c:954
 #, c-format
 msgid "URL '%s' not followed (parent ascending not allowed)\n"
 msgstr ""
 "Перехід за адресою «%s» не здійснено (перехід до батьківського елемента "
 "заборонено)\n"
 
-#: src/wget.c:918
+#: src/wget.c:972
 #, c-format
 msgid "URL '%s' not requested (file already exists)\n"
 msgstr "Запит щодо адреси «%s» не надіслано (файл вже існує)\n"
 
-#: src/wget.c:953
+#: src/wget.c:1007
 #, c-format
 msgid "Failed to get '%s' from hosts\n"
 msgstr "Не вдалося отримати «%s» з вузлів\n"
 
-#: src/wget.c:1135
+#: src/wget.c:1191
 #, c-format
 msgid "convert %s %s %s\n"
 msgstr "перетворити %s %s %s\n"
 
-#: src/wget.c:1138
+#: src/wget.c:1194
 #, c-format
 msgid "%s not found (%d)\n"
 msgstr "%s не знайдено (%d)\n"
 
-#: src/wget.c:1189
+#: src/wget.c:1215
+#, c-format
+msgid "Cannot resolve URI '%s'\n"
+msgstr "Не вдалося визначити адресу «%s»\n"
+
+#: src/wget.c:1245
 #, c-format
 msgid "Failed to rename %s to %s (%d)"
 msgstr "Не вдалося перейменувати %s на %s (%d)"
 
-#: src/wget.c:1195
+#: src/wget.c:1251
 #, c-format
 msgid "Failed to write open %s (%d)"
 msgstr "Не вдалося виконати запис до %s (%d)"
 
-#: src/wget.c:1336 src/wget.c:1428
+#: src/wget.c:1391 src/wget.c:1482
 #, c-format
 msgid "Failed to start downloader, error %d\n"
 msgstr "Не вдалося запустити засіб отримання даних, помилка %d\n"
 
-#: src/wget.c:1359
+#: src/wget.c:1414
 #, c-format
 msgid "Failed to open input file %s\n"
 msgstr "Не вдалося відкрити файл вхідних даних %s\n"
 
-#: src/wget.c:1364
+#: src/wget.c:1419
 msgid "Nothing to do - goodbye\n"
 msgstr "Нічого робити — до побачення\n"
 
-#: src/wget.c:1382
+#: src/wget.c:1437
 msgid "Wget2 built without thread support. Disabling progress report\n"
 msgstr ""
 "Wget2 зібрано без підтримки потоків обробки. Вимикаємо звітування щодо "
 "поступу.\n"
 
-#: src/wget.c:1400
-msgid "INFO logger being disabled as --progress=bar enabled\n"
-msgstr ""
+#: src/wget.c:1455
+#, fuzzy, c-format
+#| msgid "Failed to start downloader, error %d\n"
+msgid "Failed to start progress report thread, error %d\n"
+msgstr "Не вдалося запустити засіб отримання даних, помилка %d\n"
 
-#: src/wget.c:1435
+#: src/wget.c:1489
 #, c-format
 msgid "Quota of %lld bytes reached - stopping.\n"
 msgstr "Досягнуто квоти у %lld байтів — зупиняємо.\n"
 
-#: src/wget.c:1455
+#: src/wget.c:1509
 #, c-format
 msgid "Failed to wait for downloader #%d (%d %d)\n"
 msgstr "Не вдалося зачекати на засіб отримання %d (%d %d)\n"
 
-#: src/wget.c:1462
+#: src/wget.c:1516
 #, c-format
 msgid "Downloaded: %d files, %s bytes, %d redirects, %d errors\n"
 msgstr "Отримано: %d файлів, %s байтів, %d переспрямувань, %d помилок\n"
 
-#: src/wget.c:1488
+#: src/wget.c:1542
 msgid ""
 "--convert-links and --convert-file-only cannot be used together, error\n"
 msgstr ""
 "--convert-links і --convert-file-only не можна використовувати одночасно, "
 "помилка\n"
 
-#: src/wget.c:1584
+#: src/wget.c:1557
+#, fuzzy, c-format
+#| msgid "Failed to wait for downloader #%d (%d %d)\n"
+msgid "Failed to wait for progress thread (%d %d)\n"
+msgstr "Не вдалося зачекати на засіб отримання %d (%d %d)\n"
+
+#: src/wget.c:1654
 #, c-format
 msgid "Failed to connect: %s\n"
 msgstr "Не вдалося встановити з'єднання: %s\n"
 
-#: src/wget.c:1810
+#: src/wget.c:1880
 msgid "The file is already fully retrieved; nothing to do.\n"
 msgstr "Файл вже повністю отримано; нічого робити.\n"
 
-#: src/wget.c:1875
+#: src/wget.c:1932
 #, c-format
 msgid "File '%s' not modified on server. Omitting download"
 msgstr "Файл '%s не змінено на сервері. Пропускаємо процедуру отримання"
 
-#: src/wget.c:1912
+#: src/wget.c:1969
 #, c-format
 msgid "Not scanning '%s' (known ETag)\n"
 msgstr "Не скануємо «%s» (відомий ETag)\n"
 
-#: src/wget.c:1959
+#: src/wget.c:2016
 #, c-format
 msgid "The sizes do not match (local %lld, remote %zu) -- retrieving"
 msgstr ""
 "Розміри не збігаються (локальний - %lld, віддалений - %zu) -- отримуємо"
 
-#: src/wget.c:2085
+#: src/wget.c:2178
 #, c-format
 msgid "File length %llu - remove job\n"
 msgstr "Довжина файла %llu — вилучаємо завдання\n"
 
-#: src/wget.c:2087
+#: src/wget.c:2180
 msgid "No download mirrors found - remove job\n"
 msgstr "Не знайдено дзеркала для отримання даних — вилучаємо завдання\n"
 
-#: src/wget.c:2202
+#: src/wget.c:2295
 msgid "Couldn't determine base file to delete for failed verification\n"
 msgstr ""
 "Не вдалося визначити базовий файл для вилучення для помилкової перевірки\n"
 
-#: src/wget.c:2206
+#: src/wget.c:2299
 #, c-format
 msgid "Signature for file %s successfully verified\n"
 msgstr "Підпис для файла %s успішно перевірено\n"
 
-#: src/wget.c:2222
+#: src/wget.c:2315
 msgid "Should not have remaining extensions!\n"
 msgstr "Решти розширень не має бути!\n"
 
-#: src/wget.c:2236
+#: src/wget.c:2329
 msgid "File name for signature checking not assigned to job!\n"
 msgstr "Із завданням не пов'язано назви файла для перевірки підписів!\n"
 
-#: src/wget.c:2238
+#: src/wget.c:2331
 msgid "Cannot check the signature on a signature!\n"
 msgstr "Неможливо перевірити підпис на підписі!\n"
 
-#: src/wget.c:2452
+#: src/wget.c:2560
 #, c-format
 msgid "Unhandled action %d\n"
 msgstr "Непридатна до обробки дія %d\n"
 
-#: src/wget.c:2561
+#: src/wget.c:2672
 #, c-format
 msgid "URL '%.*s' not followed (conversion failed)\n"
 msgstr "Перехід за адресою «%.*s» не здійснено (помилка перетворення)\n"
 
-#: src/wget.c:2569
+#: src/wget.c:2680
 #, c-format
 msgid "Cannot resolve relative URI %.*s\n"
 msgstr "Не вдалося визначити відносну адресу %.*s»\n"
 
-#: src/wget.c:2591
+#: src/wget.c:2702
 msgid "set by user"
 msgstr "встановлено користувачем"
 
-#: src/wget.c:2596 src/wget.c:2604 src/wget.c:2612
+#: src/wget.c:2707 src/wget.c:2715 src/wget.c:2723
 msgid "set by BOM"
 msgstr "встановлено за BOM"
 
-#: src/wget.c:2618
+#: src/wget.c:2729
 msgid "set by server response"
 msgstr "встановлено за відповіддю сервера"
 
-#: src/wget.c:2627
+#: src/wget.c:2738
 #, c-format
 msgid "Convert non-ASCII encoding '%s' (%s) to UTF-8\n"
 msgstr "Перетворення кодування, відмінного від ASCII, «%s» (%s), до UTF-8\n"
 
-#: src/wget.c:2631
+#: src/wget.c:2742
 #, c-format
 msgid "Link conversion disabled for '%s'\n"
 msgstr "Вимкнено перетворення посилань для «%s»\n"
 
-#: src/wget.c:2634
+#: src/wget.c:2745
 #, c-format
 msgid "Filename conversion disabled for '%s'\n"
 msgstr "Вимкнено перетворення назв файлів для «%s»\n"
 
-#: src/wget.c:2638
+#: src/wget.c:2749
 #, c-format
 msgid "Failed to convert non-ASCII encoding '%s' (%s) to UTF-8, skip parsing\n"
 msgstr ""
 "Не вдалося перетворити дані у кодуванні, відмінному від ASCII, «%s» (%s), до "
 "UTF-8, пропускаємо обробку\n"
 
-#: src/wget.c:2651
+#: src/wget.c:2762
 msgid "set by document"
 msgstr "встановлено за документом"
 
-#: src/wget.c:2654
+#: src/wget.c:2765
 msgid "default, encoding not specified"
 msgstr "типове, кодування не задано"
 
-#: src/wget.c:2658
+#: src/wget.c:2769
 #, c-format
 msgid "URI content encoding = '%s' (%s)\n"
 msgstr "кодування адреси даних = «%s» (%s)\n"
 
-#: src/wget.c:2666
+#: src/wget.c:2777
 #, c-format
 msgid "BASE '%.*s' not usable (missing absolute base URI)\n"
 msgstr ""
 "BASE «%.*s» є непридатним до використання (пропущено абсолютну базову "
 "адресу)\n"
 
-#: src/wget.c:2673
+#: src/wget.c:2784
 #, c-format
 msgid "Cannot resolve BASE URI %.*s\n"
 msgstr "Не вдалося визначити адресу BASE %.*s\n"
 
-#: src/wget.c:2685
+#: src/wget.c:2794
 #, c-format
 msgid "URL '%.*s' not followed (action/formaction attribute)\n"
 msgstr "Перехід за адресою «%.*s» не здійснено (атрибут action/formaction)\n"
 
-#: src/wget.c:2699
+#: src/wget.c:2808
 #, c-format
 msgid "URL '%.*s' not followed (page requisites + level)\n"
 msgstr "Перехід за адресою «%.*s» не здійснено (реквізити сторінки + рівень)\n"
 
-#: src/wget.c:2710 src/wget.c:2912 src/wget.c:3045
+#: src/wget.c:2819 src/wget.c:3029 src/wget.c:3164
 #, c-format
 msgid "URL '%.*s' not followed (missing base URI)\n"
 msgstr "Перехід за адресою «%.*s» не здійснено (пропущено базову адресу)\n"
 
-#: src/wget.c:2774 src/wget.c:2900
+#: src/wget.c:2886 src/wget.c:3019
 #, c-format
 msgid "found %d url(s) (base=%s)\n"
 msgstr "знайдено %d адрес (база=%s)\n"
 
-#: src/wget.c:2782 src/wget.c:2878
+#: src/wget.c:2893 src/wget.c:2997
 #, c-format
 msgid "URL '%.*s' not followed (not matching sitemap location)\n"
 msgstr ""
 "Перехід за адресою «%.*s» не здійснено (немає відповідної адреси карти "
 "сайта)\n"
 
-#: src/wget.c:2789 src/wget.c:2806 src/wget.c:2919
+#: src/wget.c:2904 src/wget.c:2925 src/wget.c:3040
 #, c-format
 msgid "URL '%.*s' not followed (already known)\n"
 msgstr "Перехід за адресою «%.*s» не здійснено (вже відома)\n"
 
-#: src/wget.c:2797
+#: src/wget.c:2912
 #, c-format
 msgid "found %d sitemap url(s) (base=%s)\n"
 msgstr "знайдено %d адрес карт сайта (основа=%s)\n"
 
-#: src/wget.c:2839
+#: src/wget.c:2957
 #, c-format
 msgid "Can't scan '%s' because no libz support enabled at compile time\n"
 msgstr ""
 "Неможливо сканувати «%s», оскільки під час збирання не було увімкнено "
 "підтримку libz\n"
 
-#: src/wget.c:2979
+#: src/wget.c:3098
 #, c-format
 msgid "Invalid file length %llu\n"
 msgstr "Некоректна довжина файла, %llu\n"
 
-#: src/wget.c:2982
+#: src/wget.c:3101
 msgid "No download mirrors found\n"
 msgstr "Не знайдено дзеркала для отримання даних\n"
 
-#: src/wget.c:3031 src/wget.c:3059 src/wget.c:3078
+#: src/wget.c:3150 src/wget.c:3178 src/wget.c:3197
 #, c-format
 msgid "URI content encoding = '%s'\n"
 msgstr "Кодування вмісту адреси = «%s»\n"
 
-#: src/wget.c:3151
+#: src/wget.c:3270
 #, c-format
 msgid "Failed to set file date (%d)\n"
 msgstr "Не вдалося встановити дату для файла (%d)\n"
 
-#: src/wget.c:3298
-#, c-format
-msgid "Failed to write to STDOUT (%zu, errno=%d)\n"
+#: src/wget.c:3417
+#, fuzzy, c-format
+#| msgid "Failed to write to STDOUT (%zu, errno=%d)\n"
+msgid "Failed to write to STDOUT (%td, errno=%d)\n"
 msgstr "Не вдалося записати дані до STDOUT (%zu, номер помилки=%d)\n"
 
-#: src/wget.c:3398
+#: src/wget.c:3517
 #, c-format
 msgid "Failed to rename %s to %s (errno=%d)\n"
 msgstr "Не вдалося перейменувати %s на %s (номер помилки=%d)\n"
 
-#: src/wget.c:3425 src/wget.c:3431
+#: src/wget.c:3543 src/wget.c:3549
 #, c-format
 msgid "Failed to load partial content from '%s' (errno=%d)\n"
 msgstr "Не вдалося завантажити часткові дані з «%s» (номер помилки=%d)\n"
 
-#: src/wget.c:3440
+#: src/wget.c:3558
 #, c-format
 msgid "Failed to unlink '%s' (errno=%d)\n"
 msgstr "Не вдалося відв'язати «%s» (номер помилки=%d)\n"
 
-#: src/wget.c:3460
+#: src/wget.c:3578
 #, c-format
 msgid "Saving ']8;;file://%s%s\\%s]8;;\\'\n"
 msgstr "Зберігаємо ']8;;file://%s%s\\%s]8;;\\'\n"
 
-#: src/wget.c:3464
+#: src/wget.c:3582
 #, c-format
 msgid "Saving '%s'\n"
 msgstr "Зберігаємо «%s»\n"
 
-#: src/wget.c:3469
+#: src/wget.c:3588
 #, c-format
 msgid "Failed to write file %s (%zd, errno=%d)\n"
 msgstr "Не вдалося записати файл %s (%zd, номер помилки=%d)\n"
 
-#: src/wget.c:3477
+#: src/wget.c:3596
 #, c-format
 msgid "File '%s' already there; not retrieving.\n"
 msgstr "Файл «%s» вже на місці, не завантажуємо.\n"
 
-#: src/wget.c:3483
+#: src/wget.c:3602
 #, c-format
 msgid "Directory / file name clash - not saving '%s'\n"
 msgstr "Конфлікт назв каталогів і файлів — не зберігаємо «%s»\n"
 
-#: src/wget.c:3485
+#: src/wget.c:3604
 #, c-format
 msgid "Failed to open '%s' (%d)\n"
 msgstr "Не вдалося відкрити «%s» (%d)\n"
 
-#: src/wget.c:3497
+#: src/wget.c:3616
 #, c-format
 msgid "Failed to save extended attribute %s\n"
 msgstr "Не вдалося зберегти розширений атрибут %s\n"
 
-#: src/wget.c:3688
+#: src/wget.c:3807
 #, c-format
 msgid ""
 "# got header %zu bytes:\n"
@@ -2323,65 +2372,69 @@ msgstr ""
 "# отримано %zu байтів заголовка:\n"
 "%s\n"
 
-#: src/wget.c:3762
+#: src/wget.c:3881
 #, c-format
 msgid "Failed to open .netrc file '%s' (%d): %s\n"
 msgstr "Не вдалося відкрити файл .netrc «%s» (%d): %s\n"
 
-#: src/wget.c:4096
+#: src/wget.c:4228
 #, c-format
 msgid "Failed to fsync errno=%d\n"
 msgstr "Не вдалося виконати fsync, номер помилки=%d\n"
 
-#: src/wget.c:4404
+#: src/wget.c:4536
 #, c-format
 msgid "Continuing in background, pid %lu.\n"
 msgstr "Продовжуємо у фоновому режимі, номер процесу %lu.\n"
 
-#: src/wget.c:4406 src/wget.c:4472
+#: src/wget.c:4538 src/wget.c:4619
 #, c-format
 msgid "Output will be written to %s.\n"
 msgstr "Виведення буде записано до %s.\n"
 
-#: src/wget.c:4432
+#: src/wget.c:4564
 msgid "fake_fork_child() failed\n"
 msgstr "помилка fake_fork_child()\n"
 
-#: src/wget.c:4440
+#: src/wget.c:4572
 msgid "fake_fork() failed\n"
 msgstr "помилка fake_fork()\n"
 
-#: src/wget.c:4466
+#: src/wget.c:4613
 #, c-format
 msgid "Failed to fork (%d)\n"
 msgstr "Не вдалося створити відгалуження (%d)\n"
 
-#: src/wget.c:4470
+#: src/wget.c:4617
 #, c-format
 msgid "Continuing in background, pid %d.\n"
 msgstr "Продовжуємо у фоновому режимі, номер процесу %d.\n"
 
-#: src/wget.c:4480
+#: src/wget.c:4627
 msgid "Failed to redirect stdin to /dev/null.\n"
 msgstr "Не вдалося переспрямувати stdin до /dev/null.\n"
 
-#: src/wget.c:4482
+#: src/wget.c:4629
 msgid "Failed to redirect stdout to /dev/null.\n"
 msgstr "Не вдалося переспрямувати stdout до /dev/null.\n"
 
-#: src/wget.c:4484
+#: src/wget.c:4631
 msgid "Failed to redirect stderr to /dev/null.\n"
 msgstr "Не вдалося переспрямувати stderr до /dev/null.\n"
 
-#, c-format
+#~ msgid "WARNING: The certificate's (stapled) OCSP status has not been sent\n"
+#~ msgstr "ПОПЕРЕДЖЕННЯ: стан (приєднаний) OCSP сертифіката не надіслано\n"
+
+#~ msgid "INFO logger being disabled as --progress=bar enabled\n"
+#~ msgstr ""
+#~ "Засіб запису до журналу INFO вимкнено, оскільки увімкнено --progress=bar\n"
+
 #~ msgid "Failed to connect (%d)\n"
 #~ msgstr "Не вдалося встановити з'єднання (%d)\n"
 
-#, c-format
 #~ msgid "Failed to write %zu bytes (%d)\n"
 #~ msgstr "Не вдалося записати %zu байтів (%d)\n"
 
-#, c-format
 #~ msgid "Failed to load %s, please check the file.\n"
 #~ msgstr "Не вдалося завантажити %s. Будь ласка, перевірте файл.\n"
 
@@ -2399,11 +2452,9 @@ msgstr "Не вдалося переспрямувати stderr до /dev/null.\
 #~ msgid "Certificate revoked by OCSP.\n"
 #~ msgstr "Сертифікат відкликано OCSP.\n"
 
-#, c-format
 #~ msgid "  %.*s -> %s\n"
 #~ msgstr "  %.*s -> %s\n"
 
-#, c-format
 #~ msgid "       -> %s\n"
 #~ msgstr "       -> %s\n"
 

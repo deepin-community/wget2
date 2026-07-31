@@ -1,3 +1,913 @@
+2024-11-24 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * src/wget.c (http_receive_response): Check conn param for non-NULL
+
+2024-11-24 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * .gitlab-ci.yml (pages): add apt-get update
+
+2024-11-24 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Prepare release v2.2.0
+
+2024-11-18 Michal Ruprich <mruprich@redhat.com>
+
+     * src/options.c: do not truncate when -c is used
+     
+     Copyright-paperwork-exempt: Yes
+
+2024-11-17 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * Makefile.am: Don't try to build tests/ without GnuTLS
+
+2024-11-17 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * src/bar.c: Make var terminate_thread volatile
+
+2024-11-17 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * configure.ac: Improve summary output for pandoc and doxygen
+
+2024-11-01 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/iri.c (wget_iri_parse): Check for port number validity
+
+2024-11-01 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * configure.ac: Avoid -Wc11-c2x-compat (issue in config.h)
+
+2024-11-01 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * README.md: Amend license section (fix syntax-check)
+
+2024-11-01 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * src/wget.c: Fix safe_write, safe_read return types
+
+2024-11-01 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * configure.ac: Suppress several warnings coming with gnulib 01.11.2024
+
+2024-11-01 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/ssl_wolfssl.c (ShowX509): Add semicolon to end of XFREE()
+     
+     Fixes https://github.com/rockdaboot/wget2/issues/351
+
+2024-11-01 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Update gnulib
+     
+     * gnulib: Update git module.
+     * bootstrap: Update from gnulib.
+
+2024-10-31 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * src/wget.c (program_deinit): Minor cleanup
+
+2024-10-27 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * src/wget.c: Fix parameter names in function prototypes
+
+2024-10-03 Michael Weiser <michael.weiser@gmx.de>
+
+     Wake the main thread on downloader shutdown
+     
+     * src/wget.c (downloader_thread): Signal main() on exit.
+     
+     Without this, the main thread may get stuck waiting for signals from
+     downloaders while those have already exited and will never signal it.
+     Observed with --wait.
+     
+     Fixes: https://github.com/rockdaboot/wget2/issues/348
+     
+     Copyright-paperwork-exempt: Yes
+
+2024-10-03 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * src/wget.c: Wait for progress thread during test runs
+
+2024-10-03 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * tests/valgrind-suppressions: Suppress libc6 2.40 getaddrinfo/memmove
+
+2024-02-27 harshmohan07 <code.harshmohan@gmail.com>
+
+     Don't log URI userinfo to logs
+     
+     * include/wget/wget.h (struct wget_iri_st): Add safe_uri member.
+     * libwget/iri.c: New function create_safe_uri(),
+       (wget_iri_unescape_url_inline): Check iri->userinfo,
+       (wget_iri_parse): Likewise,
+       (wget_iri_clone): Likewise,
+       (wget_iri_relative_to_abs): Remove debug logs,
+       (wget_iri_set_scheme): Check iri->userinfo.
+     * src/blacklist.c: Log safe_uri instead of uri.
+     * src/host.c: Likewise.
+     * src/options.c: Likewise.
+     * src/stats_site.c: Likewise.
+     * src/wget.c: Likewise,
+       (queue_url_from_remote): Move redirection check further down.
+     * unit-tests/test.c (test_iri_parse): Add checks for safe_uri,
+       (test_iri_parse): Add safe_uri to IRI comparison,
+       Print safe_uri and password.
+     
+     Co-authored-by: Tim Rühsen <tim.ruehsen@gmx.de>
+
+2024-09-22 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Count 0 as an error for SSL_read and SSL_write, per documentation
+     
+     * libwget/ssl_openssl.c (ssl_transfer): Take 0 as error,
+       slightly refactor code.
+     
+     Fixes https://github.com/rockdaboot/wget2/issues/342
+     
+     Reported-by: Tobias Brick (he/him) <tobiasb@microsoft.com>
+     Co-authored-by: Tobias Brick (he/him) <tobiasb@microsoft.com>
+
+2024-09-22 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Fix error message for unknown --compression types
+     
+     * src/options.c (parse_compression): Fix error messages.
+     
+     Fixes https://github.com/rockdaboot/wget2/issues/346
+
+2024-09-21 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Add empty line after header with --save-headers
+     
+     * libwget/http.c (wget_http_get_response_cb): Remove adding empty line.
+     * src/wget.c (prepare_file): Add empty line to headers.
+     
+     Fixes https://github.com/rockdaboot/wget2/issues/347
+
+2024-09-16 Tobias Brick (he/him) <tobiasb@microsoft.com>
+
+     set debug_skip_body for OCSP requests in openssl tls provider
+
+2024-09-11 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Fix downloading multiple files via HTTP/2
+     
+     * include/wget/wget.h: New function declaration wget_http_connection_receive_only().
+     * libwget/http.c: New function definition wget_http_connection_receive_only().
+     * libwget/http.h (struct wget_http_connection_st): Add member goaway.
+     * libwget/http2.c (struct http2_stream_context): Add member conn,
+       (on_frame_recv_callback): Handle NGHTTP2_GOAWAY,
+       (wget_http2_send_request): Initialize conn member.
+     * src/host.c (_release_job): Don't release parts if in 'done' state.
+     * src/wget.c (process_response_header): Remove handling of LINK headers,
+       (process_response): Add handling of LINK headers,
+       (downloader_thread): Handle pending responses correctly.
+     
+     This patch fixes two related issues:
+     1. With HTTP/2, servers sometimes limit the number of requests per connection.
+        Beforethis patch, the connection was closed too early after GOAWAY and pending
+        responses weren't received.
+     2. In _release_job(), already downloaded parts of a file were erroneous released.
+        This caused successful metalink and chunked downloads to fail in combination with
+        a GOAWAY or a remotely closed connection.
+
+2024-09-06 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Update progress report line every second
+     
+     * src/wget.c: Add new function progress_report(),
+       add new declaration progress_report().
+     * src/wget.c (main): Start thread progress_report().
+     * src/bar.c: Increase BAR_THREAD_SLEEP_DURATION from 125 to 1000 millseconds.
+     * libwget/bar.c (bar_update_slot): Limit ratio to 100%, add TODO.
+
+2024-09-05 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Do not overwrite wget-log for 2+ instances
+     
+     * src/wget.c: Add new function create_unique(),
+       (fork_to_background): Make use of create_unique().
+     
+     Fixes https://github.com/rockdaboot/wget2/issues/330
+
+2024-09-05 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Fix redirections with --no-parent
+     
+     * src/wget.c: Add new functions add_parent(), is_parent(), matches_parent().
+     * src/wget.c (queue_url_from_remote): Add redirected URL to parents if
+       origin is a parent.
+     * src/wget.c (queue_url_from_remote): Do not apply robots.txt to redirected
+       URL if origin was requested by user.
+     
+     Fixes https://github.com/rockdaboot/wget2/issues/331
+
+2024-09-05 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Support connecting with HTTP/1.0 proxies
+     
+     * libwget/http.c (establish_proxy_connect): Allow HTTP/1.0 responses
+     
+     Fixes https://gitlab.com/gnuwget/wget2/-/issues/666
+
+2024-09-04 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Ignore 1xx HTTP responses
+     
+     * libwget/http.c (wget_http_get_response_cb): Ignore 1xx responses.
+     
+     Fixes https://github.com/rockdaboot/wget2/issues/340
+
+2024-09-04 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Do not spell-check NEWS and bootstrap.conf
+
+2024-08-29 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Fix status 8 for failed redirection of robots.txt
+     
+     * src/wget.c (queue_url_from_remote): Copy job->robotstxt flag for redirections"
+     * tests/test-redirection.c: Add test for correct status code after robots redirection fails"
+     
+     Fixes https://gitlab.com/gnuwget/wget2/-/issues/677
+
+2024-08-16 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Fix confusing error message on Win32 "No CAs were found in ..."
+     
+     * libwget/ssl.c (wget_ssl_default_ca_bundle_path): Check if file exists
+
+2024-08-10 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * src/wget.c (program_init): Move console and signal handler setup up
+
+2024-07-21 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Fix buffer overflow in progress bar
+     
+     * libwget/bar.c (bar_set_progress): Check for minimum bar size.
+
+2024-07-13 Roger Marco Hernandez <bluntun@gmail.com>
+
+     Consider connect timeout only when set
+     
+     * libwget/net.c (set_socket_options): Skip SO_SNDTIMEO if connect timeout is <= 0.
+     
+     Copyright-paperwork-exempt: Yes
+
+2024-07-07 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Fix ignoring connect timeout (regression)
+     
+     * libwget/net.c (set_socket_options): Set SO_SNDTIMEO for socket
+     
+     Reported-by: https://gitlab.com/plvalerio
+     Co-authored-by: https://gitlab.com/RogerMarcoHernandez
+
+2024-07-07 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * contrib/Dockerfile.win32.static: Remove brotli
+
+2024-06-30 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Disable TCP Fast Open by default
+     
+     * docs/wget2.md: Amended description of --tcp-fastopen.
+     * src/options.c (struct config config): Disabled TFO.
+
+2024-06-30 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Connect using synchronous socket
+     
+     * libwget/dns.c (getaddrinfo_merging, resolve): Code cleanup.
+     * libwget/net.c (wget_tcp_connect): Connect first, then set socket to async.
+     
+     Connecting asynchronously prevented wget2 to fallback to the next IP address
+     of a host when a connect error occurred.
+     
+     Reported at https://github.com/rockdaboot/wget2/issues/325
+
+2024-06-29 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Fix --dns-cache-preload for IPv6
+     
+     * src/options.c (preload_dns_cache): Fix parsing IPv6 addresses
+
+2024-06-01 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * src/wget.c (main): Disable progress bar for non-verbose and debug mode
+
+2024-06-01 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * src/bar.c (bar_init): Write info text above progress bar
+
+2024-06-01 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/bar.c: Add new function wget_bar_write_line_ext()
+
+2024-06-01 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * src/wget.c (main): Do not switch off info text when progress is enabled
+
+2024-05-24 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * fuzz/Makefile.am (oss-fuzz): Add -lgmp
+
+2024-05-21 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     .gitlab-ci.yml (pages): Install pandoc, doxygen, texinfo
+
+2024-05-21 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * .gitlab-ci.yml (pages): Explicitly clean docs (required to build HTML)
+
+2024-05-21 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * .gitlab-ci.yml (pages): Explicitly create HTML docs
+
+2024-05-21 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * .gitlab-ci.yml (pages): Use make-coverage-badge from git source tree
+
+2023-08-04 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * .gitlab-ci.yml: Restructuring
+
+2024-05-21 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * tests/valgrind-suppressions: Drop libgpgme version from suppression
+
+2024-05-21 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * tests/Makefile.am: Add suppression files
+
+2024-05-20 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * fuzz/Makefile.am: Add valgrind-suppressions to EXTRA_DIST
+
+2024-05-20 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/io.c (getline_internal): Clear memory to not trigger valgrind
+
+2024-05-20 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Accept --progress=dot:... for backwards compatibility
+     
+     * src/options.c (parse_progress_type): Fix checking dot options.
+     * tests/test-wget-1.c: Add check for --progress variants.
+
+2024-05-19 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * Makefile.am: Ignore geninfo errors
+
+2024-05-19 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/ssl_gnutls.c (verify_certificate_callback): Fix gcc warning -Wjump-misses-init
+
+2024-05-19 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Move Win32 console save/restore from libwget into wget.c.
+     
+     * libwget/init.c: Remove Win32 console code.
+     * src/wget.c: Add Win32 console code.
+
+2024-05-19 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/ssl_gnutls.c (verify_certificate_callback): Fix 'do not translate debug strings'
+
+2024-05-19 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/ssl_gnutls.c (verify_certificate_callback): Warn about OCSP privacy leak
+
+2024-04-18 Taylan Gökkaya <insomnimus@proton.me>
+
+     Windows: handle ctrl+break to restore console modes
+     
+     * libwget/init.c: Add HandleCtrlEvent(),
+       (global_exit): Restore console modes,
+       (global_init): Save console modes.
+     
+     Copyright-paperwork-exempt: Yes
+
+2024-05-19 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * .gitlab-ci.yml: Let Valgrind runners use more cores
+
+2024-05-19 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * tests/libtest.c: Fix two memleaks
+
+2024-05-19 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/ssl_openssl.c (verify_ocsp): Fix segfault when OCSP response is missing
+
+2024-05-19 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Disable explicit OCSP requests by default for TLS library functions
+     
+     * libwget/ssl_openssl: Disable explicit OCSP requests by default.
+     * libwget/ssl_gnutls: Likewise.
+     * libwget/ssl_wolfssl.c: Likewise.
+
+2024-05-18 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * .gitlab-ci.yml: Use faster CI runners for MinGW builds
+
+2024-05-18 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * configure.ac: Remove -Wuseless-cast (gcc 14) from manywarnings
+
+2024-05-18 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * tests/libtest.c: Remove superfluous casts
+
+2024-05-18 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * .gitlab-ci.yml: Remove 'tags' (breaking changes in Gitlab 1.7)
+
+2024-05-18 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/ssl_gnutls.c: Improve messages for OCSP stapling
+
+2024-05-18 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Disable explicit OCSP requests by default
+     
+     * docs/wget2.md: Document --ocsp default value as 'off'.
+     * src/options.c (struct config): Disable .ocsp by default.
+     
+     OCSP validation of the server certificate implies privacy issues:
+       - The OCSP request tells the CA which web service the client tries to reach.
+       - The OCSP requests are sent via unencrypted HTTP, so every "listener in the
+         middle" can see which web service the client tries to connect.
+     Additionally, the OCSP requests slow down operation and may cause unexpected
+     network traffic, which may trigger security alarms unnecessarily.
+     
+     Due to these issues we explicitly disable OCSP by default.
+
+2024-05-12 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Fix tests/test-ocsp-server
+     
+     * tests/libtest.c: Handle > 1 OCSP responses.
+     * tests/libtest.h: Rename WGET_TEST_OCSP_RESP_FILE to WGET_TEST_OCSP_RESP_FILES.
+     * tests/test-ocsp-server.c: Make use of WGET_TEST_OCSP_RESP_FILES.
+
+2024-05-12 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     -* libwget/ssl_gnutls.c (cert_verify_ocsp): Fix segfault when OCSP response is missing
+
+2024-05-12 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Fix OCSP verification of first intermediate certificate.
+     
+     * libwget/ssl_gnutls.c (verify_certificate_callback): Fix off-by-one check.
+     
+     See https://gitlab.com/gnuwget/wget2/-/issues/664#note_1901610438
+
+2024-05-10 Romain Geissler <romain.geissler@amadeus.com>
+
+     Allow option --no-tcp-fastopen to work on Linux kernels >= 4.11.
+     
+     * libwget/net.c (set_socket_options): Add check for tcp->tcp_fastopen.
+     
+     Copyright-paperwork-exempt: Yes
+
+2024-05-05 harshmohan07 <code.harshmohan@gmail.com>
+
+     * src/wget.c (add_statistics): Don't account already downloaded files as error
+     
+     Co-authored-by: Tim Rühsen <tim.ruehsen@gmx.de>
+
+2024-04-29 Darshit Shah <git@darnir.net>
+
+     * src/wget.c: Remove trailing space
+
+2024-04-29 Darshit Shah <git@darnir.net>
+
+     Limit cases where methods are redirected to GET
+     
+     * tests/test-spider-r.c: Add new test for redirections with spider
+     * src/wget.c(process_response_header): Prevent changing the request
+       method during a redirection to GET.
+     
+     Fixes: #660
+
+2024-04-29 Darshit Shah <git@darnir.net>
+
+     * contrib/check_options: Replace deprecated use of egrep
+
+2024-04-28 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/cookie.c (cookie_db_load): Fix return value
+
+2024-04-28 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/io.c (wget_update_load_fn): Fix parameter name
+
+2024-04-28 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Fix --no-clobber + --no-parent including a possible deadlock
+     
+     * src/wget.c (queue_url_from_local): Move parents handling further up,
+       (queue_url_from_remote): Fix check for parse_localfile(),
+       (html_parse): Fix locking for known_urls,
+       (sitemap_parse_xml): Fix locking for known_urls,
+       (add_urls): Fix locking for known_urls.
+
+2024-04-28 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * src/wget.c (set_file_metadata): Fix http:// to https:// in comment
+
+2024-04-28 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * src/wget.c (parse_localfile): Fix xattr reading of user.mime_type
+
+2024-04-27 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * src/options.c (struct config): Use 'Wget' as user-agent
+     
+     Some websites use browser sniffing, and a 'Wget' user agent header
+     is likely to be more compatible than 'Wget2'.
+     
+     See https://github.com/rockdaboot/wget2/issues/314
+
+2024-04-27 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * .gitlab-ci.yml: Remove FreeBSD runner
+
+2024-04-27 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * gnulib: Update
+
+2024-04-01 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Fix progress bar for multiple downloads
+     
+     * libwget/bar.c (wget_bar_slot_begin): Remove numfiles handling,
+       (struct bar_slot): Remove member 'numfiles'.
+     
+     Report: https://github.com/rockdaboot/wget2/issues/307
+
+2024-04-01 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/net.c (wget_tcp_connect): Fix return code on resolve failure
+
+2024-03-29 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Switch some variables from int to bool
+     
+     * src/plugin.c: Use bool for global variables "initialized" and
+       "plugin_help_forwarded".
+     * src/wget_plugin.h (plugin_db_help_forwarded): Use bool for return type.
+
+2024-03-29 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/xml.c (xml_context): Add docs to member fields
+
+2024-03-28 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Fix --no-parent for denormalized paths
+     
+     * libwget/iri.c (wget_iri_parse): Normalize path part of URL.
+     * unit-tests/test.c (test_iri_parse): Add test with denormalized path.
+
+2024-03-24 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Update gnulib link libraries
+     
+     * fuzz/Makefile.am: Update gnulib link libraries.
+     * libwget/Makefile.am: Likewise.
+     * src/Makefile.am: Likewise.
+     * tests/Makefile.am: Likewise.
+     * unit-tests/Makefile.am: Likewise.
+
+2024-03-23 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Skip failing OCSP tests with WolfSSL
+     
+     * tests/test-ocsp-server.c: Skip failing tests.
+     * tests/test-ocsp-stap.c: Likewise.
+
+2024-03-23 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     gnulib: Update
+
+2024-03-23 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * src/options.c (version_text): Fix copyright year
+
+2024-03-17 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * unit-tests/test.c (test_robots): Fix memory leak
+
+2022-04-20 Avinash Sonawane <rootkea@gmail.com>
+
+     * configure.ac: Remove redundant sanitizer warnings
+
+2024-01-10 Avinash Sonawane <rootkea@gmail.com>
+
+     * .gitignore: Ignore generated files in VPATH builds
+
+2022-06-25 Avinash Sonawane <rootkea@gmail.com>
+
+     * libwget/robots.c: Fix robots.txt parser
+     
+     Co-authored-by: Tim Rühsen <tim.ruehsen@gmx.de>
+
+2022-07-28 Avinash Sonawane <rootkea@gmail.com>
+
+     * unit-tests/test.c (test_robots): Add new tests
+
+2024-01-12 Avinash Sonawane <rootkea@gmail.com>
+
+     * bootstrap.conf: Replace `\e` with portable `\033`
+
+2024-01-10 Avinash Sonawane <rootkea@gmail.com>
+
+     * bootstrap: Do not edit auto-generated file
+
+2024-02-18 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Add SECURITY.md [skip ci]
+
+2024-01-27 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     tests/test-page-requisites.c: Add HTML source/srcset to tests
+
+2024-01-13 Avinash Sonawane <rootkea@gmail.com>
+
+     * tests/test-timestamping.c: Pass correct type to variadic function
+
+2024-01-14 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * src/log.c (log_init): Redirect INFO logs to stderr with -O-
+
+2024-01-07 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/cookie.c (cookie_db_load): Fix EOL removal
+
+2024-01-07 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Update copyright year
+
+2024-01-07 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     fuzz/libwget_cookie_fuzzer.c: Randomize keeping session cookies
+
+2024-01-07 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Fix double free in cookie_db_load().
+     
+     Fixes #650
+     
+     * libwget/cookie.c (cookie_db_load): Call wget_cookie_init() at top of read loop.
+
+2024-01-07 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     libwget/ssl_wolfssl.c (wget_ssl_init): Combine CA cert directory and file
+
+2024-01-06 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     libwget/ssl_wolfssl.c (wget_ssl_init): Use wolfSSL_CTX_load_system_CA_certs()
+
+2023-12-17 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Fix IPv6 address representation
+     
+     * libwget/dns.c (resolve): Fix IPv6 in debug message,
+       (wget_dns_cache_ip): Fix IPv6 in error message,
+       (wget_dns_resolve): Fix IPv6 in debug message.
+     * libwget/dns_cache.c (wget_dns_cache_get): Fix IPv6 in debug message.
+     * libwget/hsts.c (hsts_db_add_entry): Fix IPv6 in debug message.
+     * libwget/http.c (wget_http_create_request): Fix IPv6 in Host header,
+       (establish_proxy_connect): Fix IPv6 in CONNECT and in Host header.
+     * libwget/ip.c (wget_ip_is_family): Cosmetic change.
+     * libwget/iri.c (wget_iri_get_connection_part): Fix IPv6 in URL creation.
+     * libwget/net.c (debug_addr): Fix IPv6 in debug message.
+     * src/options.c (stats_callback_dns): Fix IPv6 in output.
+     * src/wget.c (test_modify_hsts): Fix IPv6 in console output,
+       (http_create_request): Fix IPv6 in Referer header.
+     * unit-tests/test.c (test_iri_parse): Add two IPv6 parsing tests.
+     * libwget/Makefile.am (libwget_dnscache.la): Link with libwget_ip.la,
+       (libwget_hsts.la): Link with libwget_ip.la.
+
+2023-12-03 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * src/options.c (parse_restrict_names): Avoid false positive for -Wjump-misses-init
+
+2023-12-03 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * src/utils.c (wget_restrict_file_name): Remove forgotten info_printf()
+
+2023-12-03 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Fix --restrict-file-names to be backwards compatible wot wget 1.x
+     
+     * src/options.c (parse_restrict_names): Allow comma-separated list of arguments.
+     * src/utils.c (wget_restrict_file_name): Support combinations of modes.
+
+2023-11-26 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/netrc.c (wget_netrc_db_load): Add fetchmail compatibility (user and passwd)
+
+2023-11-17 Ander Juaristi <a@juaristi.eus>
+
+     Rename internal functions
+
+2023-10-31 Ander Juaristi <a@juaristi.eus>
+
+     Rename internal functions
+
+2023-10-25 Ander Juaristi <a@juaristi.eus>
+
+     Remove empty guard
+
+2023-10-15 Ander Juaristi <a@juaristi.eus>
+
+     Fix NULLABLES
+
+2023-10-11 Ander Juaristi <a@juaristi.eus>
+
+     Update POTFILES
+
+2023-08-20 Ander Juaristi <a@juaristi.eus>
+
+     Extract common HTTP functions
+     
+      * libwget/http.h: new functions wget_http_connection_is_aborted,
+        wget_http_fix_broken_server_encoding,
+        wget_decompress_get_body_cb, wget_decompress_error_handler_cb,
+        wget_http2_open, wget_http2_close, wget_http2_send_request,
+        wget_http2_get_response_cb
+      * libwget/http2.c: new file
+
+2023-11-17 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/http_parse.c: Make http_isseparator an inline function
+
+2023-11-17 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * unit-tests/test.c: Add tests for wget_http_parse_full_date()
+
+2023-11-15 Curtis Doty <Curtis@GreenKey.net>
+
+     Add support for another non-standard cookie timstamp format
+     
+      - example: Sun Nov 26 2023 21:24:47
+     
+     * libwget/http_parse.c (wget_http_parse_full_date): Parse additional format.
+
+2023-11-04 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * Makefile.am: Fix lcov command line
+
+2023-11-04 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * .gitlab-ci.yml (pages): Install libcapture-tiny-perl and libdatetime-perl
+
+2023-10-23 Jan-Michael Brummer <jan-michael.brummer1@volkswagen.de>
+
+     Add libproxy support
+     
+     Add support for libproxy, which is capable to extract desktop
+     environment proxy configurations from dozens of systems and platforms.
+     This also enables wget to handle pac/wpad proxy server.
+     
+     * configure.ac: Add check for libbproxy.
+     * libwget/http.c (wget_http_open): Retrieve proxy via libproxy.
+     
+     Copyright-paperwork-exempt: Yes
+
+2023-11-04 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * src/wget.c: Fix minor typo comment
+
+2023-11-04 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Fix minor typos in comments
+
+2023-10-31 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Add instructions on how to build wget2.exe
+     
+     * ../README.md: Add new section.
+     * Dockerfile.win32.static: Remove cp command.
+
+2023-10-12 Durgesh kumar prajapati <98798977+Durgesh4993@users.noreply.github.com>
+
+     * README.md: Add table of contents
+     
+     Copyright-paperwork-exempt: Yes
+
+2023-10-31 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * src/wget.c: Fix typos in comments
+
+2023-10-29 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * cfg.mk: Fxuix 'make syntax-check'
+
+2023-10-21 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * src/wget.c (http_create_request): Use 'Accept: */*' for single file downloads
+
+2023-10-20 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * .gitlab-ci.yml (MinGW64-static): Add configure flag --enable-threads=windows
+     
+     This allows multi-threading on Windows.
+
+2023-10-03 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * gitlab-ci.yml: Enable Gitlab SAST
+
+2023-10-03 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/ssl_openssl.c (tls_exit): Fix syntax-check
+
+2023-10-03 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/http.c: Fix NULLABLE issues
+
+2023-10-03 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/cookie.c: Fix NULLABLE issues
+
+2023-10-03 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/metalink.c (add_mirror): Fix NULLABLE issue
+
+2023-10-03 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/cookie_parse.c: Fix NULLABLE issues
+
+2023-10-03 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/html_url.c (html_get_url): Fix NULLABLE issue
+
+2023-10-03 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/hpkp_db.c: Fix NULLABLE issues
+
+2023-10-03 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/hpkp.c: Fix NULLABLE issues
+
+2023-10-03 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/css_url.c (urls_to_absolute): Silence clang nullability checks
+
+2023-10-03 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/ssl_gnutls.c (wget_ssl_open): Check ctx for NULL
+
+2023-09-30 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * libwget/ssl_openssl.c (tls_exit): Don't call CRYPTO_free_ex_index() when build with LibreSSL
+
+2023-09-24 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * cfg.mk: Exclude docs/announce*.txt from trailing blank check
+
+2023-09-11 Ander Juaristi <a@juaristi.eus>
+
+     announce: Remove trailing spaces
+     
+     Trailing spaces are causing the first stage of the pipeline to fail.
+
+2023-09-03 Ander Juaristi <a@juaristi.eus>
+
+     fuzz: Fix http_client fuzzer
+     
+     Properly free the addrinfo structs, assuming there could be more than
+     one.
+
+2023-09-02 Ander Juaristi <a@juaristi.eus>
+
+     dns: Merge SOCK_STREAM and SOCK_DGRAM addrinfo lists
+     
+     We want resolve() to return both, TCP and UDP sockets.
+     
+     On Linux, we could set .ai_socktype = 0 on the getaddrinfo() hints which
+     would return us all the socket types available. However, that is not
+     accepted on Windows. Instead, we ask for TCP and UDP sockets separately
+     and then merge the two lists.
+
+2023-08-31 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * contrib/release: Fix GPG key selection
+
+2023-08-31 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     * contrib/mk_authors: Use previous tag instead of current release tag"
+
+2023-08-31 Tim Rühsen <tim.ruehsen@gmx.de>
+
+     Fix typos
+     
+     * NEWS: HTMP -> HTML.
+     * docs/announce_2.1.0.txt: Likewise.
+
 2023-08-31 Tim Rühsen <tim.ruehsen@gmx.de>
 
      Release v2.1.0
