@@ -1,5 +1,5 @@
 # Mensajes en español para GNU wget2.
-# Copyright (C) 2021, 2022 Free Software Foundation, Inc.
+# Copyright (C) 2021, 2022, 2023 Free Software Foundation, Inc.
 # This file is distributed under the same license as the wget2 package.
 #
 # Esta traducción se inició con los mensajes existentes de wget, en los
@@ -7,14 +7,14 @@
 # Santiago Vila, Nicolás Lichtmaier, Salvador Gimeno Zanón,
 # Carlos E. Robinson y Antonio Ceballos.
 #
-# Cristian Othón Martínez Vera <cfuga@cfuga.mx>, 2021, 2022.
+# Cristian Othón Martínez Vera <cfuga@cfuga.mx>, 2021, 2022, 2023.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: GNU wget2 2.0.0\n"
+"Project-Id-Version: GNU wget2 2.1.0\n"
 "Report-Msgid-Bugs-To: bug-wget2@gnu.org\n"
-"POT-Creation-Date: 2023-08-31 14:40+0200\n"
-"PO-Revision-Date: 2022-03-09 09:48-0600\n"
+"POT-Creation-Date: 2024-11-24 19:19+0100\n"
+"PO-Revision-Date: 2023-09-01 10:26-0600\n"
 "Last-Translator: Cristian Othón Martínez Vera <cfuga@cfuga.mx>\n"
 "Language-Team: Spanish <es@tp.org.es>\n"
 "Language: es\n"
@@ -24,7 +24,7 @@ msgstr ""
 "X-Bugs: Report translation errors to the Language-Team address.\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: lib/error.c:194
+#: lib/error.c:208
 msgid "Unknown system error"
 msgstr "Error de sistema desconocido"
 
@@ -114,12 +114,12 @@ msgstr "no se pudo grabar el directorio de trabajo actual"
 msgid "failed to return to initial working directory"
 msgstr "no se pudo regresar al directorio de trabajo actual"
 
-#: lib/os2-spawn.c:45
+#: lib/os2-spawn.c:51
 #, c-format
 msgid "_open_osfhandle failed"
 msgstr "falló _open_osfhandle"
 
-#: lib/os2-spawn.c:82
+#: lib/os2-spawn.c:88
 #, c-format
 msgid "cannot restore fd %d: dup2 failed"
 msgstr "no se puede restaurar fd %d: dup2 falló"
@@ -196,22 +196,22 @@ msgstr ") or \\) desparejado"
 msgid "No previous regular expression"
 msgstr "No hay expresión regular previa"
 
-#: lib/spawn-pipe.c:216 lib/spawn-pipe.c:219
+#: lib/spawn-pipe.c:218 lib/spawn-pipe.c:221
 #, c-format
 msgid "cannot create pipe"
 msgstr "no se puede crear tubería"
 
-#: lib/spawn-pipe.c:596 lib/wait-process.c:291 lib/wait-process.c:365
+#: lib/spawn-pipe.c:599 lib/wait-process.c:326 lib/wait-process.c:400
 #, c-format
 msgid "%s subprocess failed"
 msgstr "falló el subproceso %s"
 
-#: lib/wait-process.c:232 lib/wait-process.c:264 lib/wait-process.c:326
+#: lib/wait-process.c:267 lib/wait-process.c:299 lib/wait-process.c:361
 #, c-format
 msgid "%s subprocess"
 msgstr "subproceso %s"
 
-#: lib/wait-process.c:283 lib/wait-process.c:355
+#: lib/wait-process.c:318 lib/wait-process.c:390
 #, c-format
 msgid "%s subprocess got fatal signal %d"
 msgstr "subproceso %s obtuvo señal fatal %d"
@@ -220,21 +220,21 @@ msgstr "subproceso %s obtuvo señal fatal %d"
 msgid "memory exhausted"
 msgstr "memoria agotada"
 
-#: libwget/cookie.c:408
+#: libwget/cookie.c:411
 #, c-format
 msgid "Incomplete cookie entry: %s\n"
 msgstr "Entrada de cookie incompleta: %s\n"
 
-#: libwget/cookie.c:440
+#: libwget/cookie.c:445
 msgid "Failed to read cookies\n"
 msgstr "No se pudo leer cookies\n"
 
-#: libwget/cookie.c:499
+#: libwget/cookie.c:506
 #, c-format
 msgid "Failed to write cookie file '%s'\n"
 msgstr "No se pudo escribir el fichero de cookie '%s'\n"
 
-#: libwget/cookie_parse.c:363
+#: libwget/cookie_parse.c:365
 msgid "Cookie without name or assignment ignored\n"
 msgstr "Se descarga la cookie sin nombre o asignación\n"
 
@@ -248,7 +248,7 @@ msgstr "Elemento desconocido después de @charset: %d\n"
 msgid "Failed to open %s\n"
 msgstr "No se pudo abrir %s\n"
 
-#: libwget/css_url.c:102
+#: libwget/css_url.c:104
 #, c-format
 msgid "Cannot resolve relative URI '%s'\n"
 msgstr "No se pudo resolver el URI relativo '%s'\n"
@@ -258,10 +258,8 @@ msgid "Failed to init gzip decompression\n"
 msgstr "No se pudo inicializar la descompresión gzip\n"
 
 #: libwget/decompressor.c:159
-#, fuzzy
-#| msgid "Failed to init deflate decompression\n"
 msgid "Failed to re-init deflate/gzip decompression\n"
-msgstr "No se pudo inicializar la descompresión deflate\n"
+msgstr "No se pudo inicializar la descompresión deflate/gzip\n"
 
 #: libwget/decompressor.c:175
 #, c-format
@@ -332,17 +330,21 @@ msgstr "No se pudo inicializar la descompresión bzip2\n"
 msgid "Failed to uncompress bzip2 stream (%d)\n"
 msgstr "No se pudo descomprimir el flujo bzip2 (%d)\n"
 
-#: libwget/dns.c:282
+#: libwget/dns.c:313
 #, fuzzy, c-format
-#| msgid "Failed to resolve %s:%d: %s\n"
-msgid "Failed to resolve '%s:%d': %s\n"
-msgstr "No se pudo resolver %s:%d: %s\n"
+#| msgid "Failed to resolve '%s:%d': %s\n"
+msgid "Failed to resolve '[%s]:%d': %s\n"
+msgstr "No se pudo resolver '%s:%d': %s\n"
 
-#: libwget/dns.c:365
-#, fuzzy, c-format
-#| msgid "Failed to resolve %s (%s)\n"
+#: libwget/dns.c:315
+#, c-format
+msgid "Failed to resolve '%s:%d': %s\n"
+msgstr "No se pudo resolver '%s:%d': %s\n"
+
+#: libwget/dns.c:398
+#, c-format
 msgid "Failed to resolve '%s' (%s)\n"
-msgstr "No se pudo resolver %s (%s)\n"
+msgstr "No se pudo resolver '%s' (%s)\n"
 
 #: libwget/encoding.c:112
 #, c-format
@@ -428,10 +430,9 @@ msgid "Failed to hash (%d)\n"
 msgstr "No se pudo dispersar (%d)\n"
 
 #: libwget/hash_printf.c:89
-#, fuzzy, c-format
-#| msgid "Failed to allocate %zu bytes\n"
+#, c-format
 msgid "%s: Failed to malloc %zu bytes\n"
-msgstr "No se pudo alojar %zu bytes\n"
+msgstr "%s: No se pudo alojar %zu bytes\n"
 
 #: libwget/hashfile.c:92
 #, c-format
@@ -441,7 +442,7 @@ msgstr "Tipo de dispersión '%s' desconocida\n"
 #: libwget/hashfile.c:794 libwget/hpkp_db.c:159
 #, c-format
 msgid "%s: Unexpected hash len %zu > %zu\n"
-msgstr ""
+msgstr "%s: Longitud inesperada de dispersión %zu > %zu\n"
 
 #: libwget/hashfile.c:816
 #, c-format
@@ -482,181 +483,170 @@ msgstr "No se pudo leer los datos HPKP\n"
 msgid "Failed to write HPKP file '%s'\n"
 msgstr "No se pudo escribir el fichero HPKP '%s'\n"
 
-#: libwget/hsts.c:412 libwget/tls_session.c:332
+#: libwget/hsts.c:419 libwget/tls_session.c:332
 #, c-format
 msgid "Failed to parse HSTS line: '%s'\n"
 msgstr "No se pudo analizar dirección IP '%s'\n"
 
-#: libwget/hsts.c:452
+#: libwget/hsts.c:459
 msgid "Failed to read HSTS data\n"
 msgstr "No se pudo leer los datos HSTS\n"
 
-#: libwget/hsts.c:515
+#: libwget/hsts.c:522
 #, c-format
 msgid "Failed to write HSTS file '%s'\n"
 msgstr "No se pudo abrir el fichero HSTS '%s'\n"
 
-#: libwget/http.c:178 libwget/http.c:188 libwget/http.c:197 libwget/http.c:206
+#: libwget/http.c:184 libwget/http.c:194 libwget/http.c:203 libwget/http.c:212
 #, c-format
 msgid "%s: Unknown key %d (or value must not be an integer)\n"
 msgstr "%s: Llave %d desconocida (o el valor no debe ser un entero)\n"
 
-#: libwget/http.c:303
+#: libwget/http.c:309
 #, c-format
 msgid "Unsupported quality of protection '%s'.\n"
 msgstr "Calidad de protección no soportada '%s'.\n"
 
-#: libwget/http.c:314
+#: libwget/http.c:320
 #, c-format
 msgid "Unsupported algorithm '%s'.\n"
 msgstr "Algoritmo no soportado '%s'.\n"
 
-#: libwget/http.c:413
+#: libwget/http.c:412
 #, c-format
 msgid "Decompress failed [host: %s - resource: %s]\n"
 msgstr "No se pudo descomprimir [nombre de equipo: %s - recurso: %s]\n"
 
-#: libwget/http.c:645
-#, fuzzy, c-format
-#| msgid "Proxy tunneling failed: %s"
+#: libwget/http.c:483
+#, c-format
 msgid "Proxy connection failed with: %s\n"
-msgstr "Falló la tunelización proxy: %s"
+msgstr "Falló la conexión proxy con: %s\n"
 
-#: libwget/http.c:739
-msgid "Failed to create HTTP2 callbacks\n"
-msgstr "No se pudo crear invocaciones HTTP2\n"
-
-#: libwget/http.c:749
-#, c-format
-msgid "Failed to create HTTP2 client session (%d)\n"
-msgstr "No se pudo crear la sesión cliente HTTP2 (%d)\n"
-
-#: libwget/http.c:761
-#, c-format
-msgid "Failed to submit HTTP2 client settings (%d)\n"
-msgstr "No se pudo enviar las opciones de cliente HTTP2 (%d)\n"
-
-#: libwget/http.c:791
-#, c-format
-msgid "Failed to terminate HTTP2 session (%d)\n"
-msgstr "No se pudo terminar la sesión HTTP2 (%d)\n"
-
-#: libwget/http.c:857
-#, fuzzy, c-format
-#| msgid "Failed to allocate %zu bytes\n"
-msgid "Failed to allocate nvs[%d]\n"
-msgstr "No se pudo alojar %zu bytes\n"
-
-#: libwget/http.c:863
-#, fuzzy, c-format
-#| msgid "Failed to allocate %zu bytes\n"
-msgid "Failed to allocate resource[%zu]\n"
-msgstr "No se pudo alojar %zu bytes\n"
-
-#: libwget/http.c:918
-msgid "Failed to submit HTTP2 request\n"
-msgstr "No se pudo enviar la petición HTTP2\n"
-
-#: libwget/http.c:933
+#: libwget/http.c:668
 msgid "Failed to create request buffer\n"
 msgstr "No se pudo crear el almacenamiento temporar de petición\n"
 
-#: libwget/http.c:1136 libwget/tls_session.c:374
+#: libwget/http.c:835 libwget/tls_session.c:374
 #, c-format
 msgid "Failed to allocate %zu bytes\n"
 msgstr "No se pudo alojar %zu bytes\n"
 
-#: libwget/http.c:1231
-#, fuzzy, c-format
-#| msgid "Failed to allocate %zu bytes\n"
+#: libwget/http.c:929
+#, c-format
 msgid "Failed to allocate %zu bytes (%s)\n"
-msgstr "No se pudo alojar %zu bytes\n"
+msgstr "No se pudo alojar %zu bytes (%s)\n"
 
-#: libwget/http.c:1254
-#, fuzzy, c-format
-#| msgid "Failed to convert chunk size '%.31s'\n"
+#: libwget/http.c:952
+#, c-format
 msgid "Failed to convert chunk size '%.31s' (%s)\n"
-msgstr "No se pudo convertir el tamaño de fragmento '%.31s'\n"
+msgstr "No se pudo convertir el tamaño de fragmento '%.31s' (%s)\n"
 
-#: libwget/http.c:1292
-#, fuzzy, c-format
-#| msgid "Chunk size overflow: %zX\n"
+#: libwget/http.c:990
+#, c-format
 msgid "Chunk size overflow: %zX (%s)\n"
-msgstr "Desbordamiento de tamaño de fragmento: %zX\n"
+msgstr "Desbordamiento de tamaño de fragmento: %zX (%s)\n"
 
-#: libwget/http.c:1334
-#, fuzzy, c-format
-#| msgid "Expected end-of-chunk not found\n"
+#: libwget/http.c:1032
+#, c-format
 msgid "Expected end-of-chunk not found (%s)\n"
-msgstr "No se encuentra el final de fragmento esperado\n"
+msgstr "No se encuentra el final de fragmento esperado (%s)\n"
 
-#: libwget/http.c:1382
-#, fuzzy, c-format
-#| msgid "Failed to read %zd bytes (%d)\n"
+#: libwget/http.c:1080
+#, c-format
 msgid "Failed to read %zd bytes (%d) (%s)\n"
-msgstr "No se pudo leer %zd bytes (%d)\n"
+msgstr "No se pudo leer %zd bytes (%d) (%s)\n"
 
-#: libwget/http.c:1388
-#, fuzzy, c-format
-#| msgid "Just got %zu of %zu bytes\n"
+#: libwget/http.c:1086
+#, c-format
 msgid "Just got %zu of %zu bytes (%s)\n"
-msgstr "Sólo se tienen %zu de %zu bytes\n"
+msgstr "Sólo se tienen %zu de %zu bytes (%s)\n"
 
-#: libwget/http.c:1393
-#, fuzzy, c-format
-#| msgid "Body too large: %zu instead of %zu bytes\n"
+#: libwget/http.c:1091
+#, c-format
 msgid "Body too large: %zu instead of %zu bytes (%s)\n"
-msgstr "El cuerpo es demasiado grande: %zu en lugar de %zu bytes\n"
+msgstr "El cuerpo es demasiado grande: %zu en lugar de %zu bytes (%s)\n"
+
+#: libwget/http2.c:200
+msgid "Failed to create HTTP2 callbacks\n"
+msgstr "No se pudo crear invocaciones HTTP2\n"
+
+#: libwget/http2.c:209
+#, c-format
+msgid "Failed to create HTTP2 client session (%d)\n"
+msgstr "No se pudo crear la sesión cliente HTTP2 (%d)\n"
+
+#: libwget/http2.c:220
+#, c-format
+msgid "Failed to submit HTTP2 client settings (%d)\n"
+msgstr "No se pudo enviar las opciones de cliente HTTP2 (%d)\n"
+
+#: libwget/http2.c:240
+#, c-format
+msgid "Failed to terminate HTTP2 session (%d)\n"
+msgstr "No se pudo terminar la sesión HTTP2 (%d)\n"
+
+#: libwget/http2.c:289
+#, c-format
+msgid "Failed to allocate nvs[%d]\n"
+msgstr "No se pudo alojar nvs[%d]\n"
+
+#: libwget/http2.c:295
+#, c-format
+msgid "Failed to allocate resource[%zu]\n"
+msgstr "No se pudo alojar resource[%zu]\n"
+
+#: libwget/http2.c:360
+msgid "Failed to submit HTTP2 request\n"
+msgstr "No se pudo enviar la petición HTTP2\n"
 
 #: libwget/http_highlevel.c:45
-#, fuzzy, c-format
-#| msgid "Failed to write %zu bytes of data (%d)\n"
+#, c-format
 msgid "Failed to fwrite %zu bytes of data (%d)\n"
-msgstr "No se pudo escribir %zu bytes de datos (%d)\n"
+msgstr "No se pudo escribir con fwrite %zu bytes de datos (%d)\n"
 
 #: libwget/http_highlevel.c:60
 #, c-format
 msgid "Failed to write %zu bytes of data (%d)\n"
 msgstr "No se pudo escribir %zu bytes de datos (%d)\n"
 
-#: libwget/http_highlevel.c:161
+#: libwget/http_highlevel.c:165
 #, c-format
 msgid "Unknown option %d\n"
 msgstr "Opción %d desconocida\n"
 
-#: libwget/http_highlevel.c:171
+#: libwget/http_highlevel.c:175
 msgid "Error parsing URL\n"
 msgstr "Error analizando la URL\n"
 
-#: libwget/http_highlevel.c:178
+#: libwget/http_highlevel.c:182
 msgid "Missing URL/URI\n"
 msgstr "Falta la URL/URI\n"
 
-#: libwget/http_parse.c:860 libwget/http_parse.c:885
+#: libwget/http_parse.c:865 libwget/http_parse.c:890
 #, c-format
 msgid "Failed to parse date '%s'\n"
 msgstr "No se pudo analizar la fecha '%s'\n"
 
-#: libwget/http_parse.c:1268
+#: libwget/http_parse.c:1273
 msgid "HTTP response header not found\n"
 msgstr "No se encontró el encabezado de respuesta HTTP\n"
 
-#: libwget/init.c:136 src/options.c:3632
+#: libwget/init.c:137 src/options.c:3683
 #, c-format
 msgid "Failed to init DNS cache (%d)"
 msgstr "No se pudo iniciar el caché de DNS (%d)"
 
-#: libwget/init.c:171 libwget/init.c:245 libwget/init.c:270 libwget/init.c:285
+#: libwget/init.c:172 libwget/init.c:246 libwget/init.c:271 libwget/init.c:286
 #, c-format
 msgid "%s: Unknown option %d"
 msgstr "%s: Opción desconocida %d"
 
-#: libwget/init.c:190
+#: libwget/init.c:191
 #, c-format
 msgid "%s: Failed to init networking (%d)"
 msgstr "%s: No se pudo inicializar la red (%d)"
 
-#: libwget/init.c:228
+#: libwget/init.c:229
 #, c-format
 msgid "%s: Failed to deinit networking (%d)"
 msgstr "%s: No se pudo desinicializar la red (%d)"
@@ -720,22 +710,24 @@ msgstr "No se pudo renombrar '%s' a '%s' (%d)\n"
 msgid "Take manually care for '%s'\n"
 msgstr "Revise manualmente '%s'\n"
 
-#: libwget/iri.c:651
+#: libwget/iri.c:629
+msgid "Port number must be in the range 1..65535\n"
+msgstr ""
+
+#: libwget/iri.c:663
 #, c-format
 msgid "Missing host/domain in URI '%s'\n"
 msgstr "Faltó el nombre de equipo/dominio en el URI '%s'\n"
 
 #: libwget/net.c:133
-#, fuzzy, c-format
-#| msgid "Failed to rename '%s' (errno=%d)\n"
+#, c-format
 msgid "%s (hostname='%s', ip=%s, errno=%d)\n"
-msgstr "No se pudo renombrar '%s' (errno=%d)\n"
+msgstr "%s (anfitrión='%s', ip=%s, errno=%d)\n"
 
 #: libwget/net.c:140
-#, fuzzy, c-format
-#| msgid "Failed to rename '%s' (errno=%d)\n"
+#, c-format
 msgid "%s (hostname='%s', errno=%d)\n"
-msgstr "No se pudo renombrar '%s' (errno=%d)\n"
+msgstr "%s (anfitrión='%s', errno=%d)\n"
 
 #: libwget/net.c:608 libwget/net.c:616
 msgid "Failed to set socket to non-blocking\n"
@@ -761,37 +753,35 @@ msgstr "No se pudo poner la opción de conector BINDTODEVICE\n"
 msgid "Unsupported socket option BINDTODEVICE\n"
 msgstr "Opción de conector BINDTODEVICE sin soporte\n"
 
-#: libwget/net.c:773
+#: libwget/net.c:654
 #, fuzzy
-#| msgid "Failed to bind (%d)\n"
-msgid "Failed to bind"
-msgstr "No se pudo unir (%d)\n"
+#| msgid "Failed to set socket option NODELAY\n"
+msgid "Failed to set socket option SO_SNDTIMEO\n"
+msgstr "No se pudo poner la opción de conector NODELAY\n"
 
-#: libwget/net.c:785 libwget/net.c:959
-#, fuzzy
-#| msgid "Failed to connect: %s\n"
-msgid "Failed to connect"
-msgstr "No se pudo conectar: %s\n"
-
-#: libwget/net.c:819
-#, fuzzy
-#| msgid "Failed to create socket (%d)\n"
+#: libwget/net.c:780
 msgid "Failed to create socket"
-msgstr "No se pudo crear el conector (%d)\n"
+msgstr "No se pudo crear el conector"
 
-#: libwget/net.c:898
-#, fuzzy, c-format
-#| msgid "Failed to read %zu bytes (%d)\n"
+#: libwget/net.c:793
+msgid "Failed to bind"
+msgstr "No se pudo unir"
+
+#: libwget/net.c:805 libwget/net.c:979
+msgid "Failed to connect"
+msgstr "No se pudo conectar"
+
+#: libwget/net.c:918
+#, c-format
 msgid "Failed to read %zu bytes (hostname='%s', ip=%s, errno=%d)\n"
-msgstr "No se pudo leer %zu bytes (%d)\n"
+msgstr "No se pudo leer %zu bytes (anfitrión='%s', ip=%s, errno=%d)\n"
 
-#: libwget/net.c:981
-#, fuzzy, c-format
-#| msgid "Failed to rename '%s' (errno=%d)\n"
+#: libwget/net.c:1001
+#, c-format
 msgid "Failed to send %zu bytes (hostname='%s', ip=%s, errno=%d)\n"
-msgstr "No se pudo renombrar '%s' (errno=%d)\n"
+msgstr "No se pudo enviar %zu bytes (anfitrión='%s', ip=%s, errno=%d)\n"
 
-#: libwget/net.c:1023
+#: libwget/net.c:1043
 #, c-format
 msgid "%s: internal error: length mismatch %zu != %zd\n"
 msgstr "%s: error interno: diferencia de longitud %zu != %zd\n"
@@ -801,7 +791,7 @@ msgstr "%s: error interno: diferencia de longitud %zu != %zd\n"
 msgid "Mirror scheme not supported: '%s'\n"
 msgstr "Esquema de espejo no soportado: '%s'\n"
 
-#: libwget/metalink.c:287
+#: libwget/metalink.c:289
 msgid "Error in parsing XML"
 msgstr "Error al analizar XML"
 
@@ -1003,169 +993,176 @@ msgstr "Cifrado: %s\n"
 msgid "MAC: %s\n"
 msgstr "MAC: %s\n"
 
-#: libwget/ssl_gnutls.c:883
+#: libwget/ssl_gnutls.c:888
 #, c-format
 msgid "Failed to import pubkey: %s\n"
 msgstr "No se pudo importar la llave pública: %s\n"
 
-#: libwget/ssl_gnutls.c:891 libwget/ssl_gnutls.c:903 libwget/ssl_gnutls.c:911
+#: libwget/ssl_gnutls.c:896 libwget/ssl_gnutls.c:908 libwget/ssl_gnutls.c:916
 #, c-format
 msgid "Failed to export pubkey: %s\n"
 msgstr "No se pudo exportar la llave pública: %s\n"
 
-#: libwget/ssl_gnutls.c:961
+#: libwget/ssl_gnutls.c:966
 msgid "ERROR"
 msgstr "ERROR"
 
-#: libwget/ssl_gnutls.c:961
+#: libwget/ssl_gnutls.c:966
 msgid "WARNING"
 msgstr "AVISO"
 
-#: libwget/ssl_gnutls.c:980
+#: libwget/ssl_gnutls.c:986
 #, c-format
 msgid "%s: Certificate verification error\n"
 msgstr "%s: Error de verificación de certificado\n"
 
-#: libwget/ssl_gnutls.c:1032
+#: libwget/ssl_gnutls.c:1038
 #, c-format
 msgid "DANE verification print error for %s: %s\n"
-msgstr ""
+msgstr "La verificación DANE muestra error para %s: %s\n"
 
-#: libwget/ssl_gnutls.c:1034
-#, fuzzy, c-format
-#| msgid "%s: Hash init failed for type '%s': %s\n"
+#: libwget/ssl_gnutls.c:1040
+#, c-format
 msgid "DANE verification failed for %s: %s\n"
-msgstr "%s: No se pudo inicializar la dispersión para el tipo '%s': %s\n"
+msgstr "Falló la verificaión DANE para %s: %s\n"
 
-#: libwget/ssl_gnutls.c:1051
+#: libwget/ssl_gnutls.c:1057
 #, c-format
 msgid "%s: The certificate is not trusted.\n"
 msgstr "%s: El certificado no es confiable.\n"
 
-#: libwget/ssl_gnutls.c:1053
+#: libwget/ssl_gnutls.c:1059
 #, c-format
 msgid "%s: The certificate has been revoked.\n"
 msgstr "%s: El certificado ha sido revocado.\n"
 
-#: libwget/ssl_gnutls.c:1055
+#: libwget/ssl_gnutls.c:1061
 #, c-format
 msgid "%s: The certificate doesn't have a known issuer.\n"
 msgstr "%s: El certificado no tiene un emisor conocido.\n"
 
-#: libwget/ssl_gnutls.c:1057
+#: libwget/ssl_gnutls.c:1063
 #, c-format
 msgid "%s: The certificate signer was not a CA.\n"
 msgstr "%s: El signatario del certificado no es una AC.\n"
 
-#: libwget/ssl_gnutls.c:1059
+#: libwget/ssl_gnutls.c:1065
 #, c-format
 msgid "%s: The certificate was signed using an insecure algorithm.\n"
 msgstr "%s: El certificado fue firmado usando un algoritmo inseguro.\n"
 
-#: libwget/ssl_gnutls.c:1061
+#: libwget/ssl_gnutls.c:1067
 #, c-format
 msgid "%s: The certificate is not yet activated.\n"
 msgstr "%s: El certificado no está aún activado.\n"
 
-#: libwget/ssl_gnutls.c:1063
+#: libwget/ssl_gnutls.c:1069
 #, c-format
 msgid "%s: The certificate has expired.\n"
 msgstr "%s: El certificado ha expirado.\n"
 
-#: libwget/ssl_gnutls.c:1066
+#: libwget/ssl_gnutls.c:1072
 #, c-format
 msgid "%s: The certificate signature is invalid.\n"
 msgstr "%s: La firma del certificado es inválida.\n"
 
-#: libwget/ssl_gnutls.c:1068
+#: libwget/ssl_gnutls.c:1074
 #, c-format
 msgid "%s: The certificate's owner does not match hostname '%s'.\n"
 msgstr ""
 "%s: El propietario del certificado no se ajusta al nombre de equipo '%s'.\n"
 
-#: libwget/ssl_gnutls.c:1080
+#: libwget/ssl_gnutls.c:1086
 #, c-format
 msgid "%s: The certificate could not be verified (0x%X).\n"
 msgstr "%s: El certificado no se puede verificar (0x%X).\n"
 
-#: libwget/ssl_gnutls.c:1091
+#: libwget/ssl_gnutls.c:1097
 #, c-format
 msgid "%s: Certificate must be X.509\n"
 msgstr "%s: El certificado debe ser X.509\n"
 
-#: libwget/ssl_gnutls.c:1096
+#: libwget/ssl_gnutls.c:1102
 #, c-format
 msgid "%s: Error initializing X.509 certificate\n"
 msgstr "%s: Error inicializando el certificado X509\n"
 
-#: libwget/ssl_gnutls.c:1102
+#: libwget/ssl_gnutls.c:1108
 #, c-format
 msgid "%s: No certificate was found!\n"
 msgstr "%s: ¡No se encontró un certificado!\n"
 
-#: libwget/ssl_gnutls.c:1107
+#: libwget/ssl_gnutls.c:1113
 #, c-format
 msgid "%s: Failed to parse certificate: %s\n"
 msgstr "%s: Error analizando el certificado: %s\n"
 
-#: libwget/ssl_gnutls.c:1130
+#: libwget/ssl_gnutls.c:1137
 msgid "WARNING: The certificate's (stapled) OCSP status is invalid\n"
 msgstr "AVISO: El estado OSCP (engrapado) del certificado es inválido\n"
 
-#: libwget/ssl_gnutls.c:1134
-msgid "WARNING: The certificate's (stapled) OCSP status has not been sent\n"
-msgstr "AVISO: El estado OSCP (engrapado) del certificado no se ha enviado\n"
+#: libwget/ssl_gnutls.c:1144
+#, c-format
+msgid ""
+"WARNING: OCSP stapling is not supported by '%s', but OCSP validation has "
+"been requested.\n"
+msgstr ""
 
-#: libwget/ssl_gnutls.c:1146
+#: libwget/ssl_gnutls.c:1145
+msgid ""
+"WARNING: This implies a privacy leak: the client sends the certificate "
+"serial ID over HTTP to the CA.\n"
+msgstr ""
+
+#: libwget/ssl_gnutls.c:1158
 #, c-format
 msgid "%s: Failed to parse certificate[%u]: %s\n"
 msgstr "%s: Error analizando el certificado[%u]: %s\n"
 
-#: libwget/ssl_gnutls.c:1232
+#: libwget/ssl_gnutls.c:1244
 #, c-format
 msgid "%s: Pubkey pinning mismatch!\n"
 msgstr "%s: ¡No coincide el dato fijo de la llave pública!\n"
 
-#: libwget/ssl_gnutls.c:1295
+#: libwget/ssl_gnutls.c:1307
 msgid "GnuTLS requires the key and the cert to be of the same type.\n"
 msgstr "GnuTLS requiere que la llave y el certificado sean del mismo tipo.\n"
 
-#: libwget/ssl_gnutls.c:1299
+#: libwget/ssl_gnutls.c:1311
 msgid "No certificates or keys were found\n"
 msgstr "No se encontraron certificados o llaves\n"
 
-#: libwget/ssl_gnutls.c:1306
+#: libwget/ssl_gnutls.c:1318
 #, c-format
 msgid "No CAs were found in '%s'\n"
 msgstr "No se encontraron ACs en '%s'\n"
 
-#: libwget/ssl_gnutls.c:1373
-#, fuzzy, c-format
-#| msgid "Failed to parse last line in '%s'\n"
+#: libwget/ssl_gnutls.c:1385
+#, c-format
 msgid "Failed to allocate file name for cert '%s/%s'\n"
-msgstr "No se pudo analizar la última línea en '%s'\n"
+msgstr "No se pudo alojar el nombre de fichero para el certificado '%s/%s'\n"
 
-#: libwget/ssl_gnutls.c:1392
+#: libwget/ssl_gnutls.c:1404
 #, c-format
 msgid "Failed to opendir %s\n"
 msgstr "No se pudo abrir el directorio %s\n"
 
-#: libwget/ssl_gnutls.c:1399
+#: libwget/ssl_gnutls.c:1411
 #, c-format
 msgid "Failed to load CRL '%s': (%d)\n"
 msgstr "Falló al cargar CRL '%s': (%d)\n"
 
-#: libwget/ssl_gnutls.c:1441
+#: libwget/ssl_gnutls.c:1453
 #, c-format
 msgid "GnuTLS: Unsupported priority string '%s': %s\n"
 msgstr "GnuTLS: Cadena de prioridad '%s' no soportada: %s\n"
 
-#: libwget/ssl_gnutls.c:1445
+#: libwget/ssl_gnutls.c:1457
 #, c-format
 msgid "GnuTLS: Unsupported default priority 'NULL': %s\n"
 msgstr "GnuTLS: Prioridad 'NULL' por defecto no soportada: %s.\n"
 
-#: libwget/ssl_gnutls.c:1692 libwget/ssl_gnutls.c:1698
+#: libwget/ssl_gnutls.c:1708 libwget/ssl_gnutls.c:1714
 msgid ""
 "TLS False Start requested but libwget built with insufficient GnuTLS "
 "version\n"
@@ -1173,16 +1170,16 @@ msgstr ""
 "Se solicitó un Falso Inicio TLS pero libwget se compiló con una versión de "
 "GNUTLS insuficiente\n"
 
-#: libwget/ssl_gnutls.c:1703
+#: libwget/ssl_gnutls.c:1719
 #, c-format
 msgid "GnuTLS: Failed to set priorities: %s\n"
 msgstr "GnuTLS: No se pudo establecer prioridades: %s\n"
 
-#: libwget/ssl_gnutls.c:1736
+#: libwget/ssl_gnutls.c:1752
 msgid "WARNING: OCSP is not available in this version of GnuTLS.\n"
 msgstr "AVISO: OCSP no está disponible en esta versión de GnuTLS.\n"
 
-#: libwget/ssl_gnutls.c:1803
+#: libwget/ssl_gnutls.c:1819
 #, c-format
 msgid "GnuTLS: Failed to set session data: %s\n"
 msgstr "GnuTLS: No se pudo establecer los datos de sesión: %s\n"
@@ -1200,24 +1197,45 @@ msgstr "No se pudo crear WOLFSSL_CTX\n"
 msgid "WolfSSL: Failed to set ciphers '%s'\n"
 msgstr "WolfSSL: No se pudo establecer los cifrados '%s'\n"
 
-#: libwget/ssl_wolfssl.c:662
-#, c-format
+#: libwget/ssl_wolfssl.c:658
+#, fuzzy
+#| msgid "Failed to load %s (%d)"
+msgid "Failed to load system certs\n"
+msgstr "No se pudo cargar %s (%d)"
+
+#: libwget/ssl_wolfssl.c:684
+#, fuzzy
+#| msgid ""
+#| "Failed to load CA pem: %s or cert dir: %s, ssl verification will likely "
+#| "fail.\n"
+msgid "Skipped loading CA certs. SSL verification will likely fail.\n"
+msgstr ""
+"Falló al cargar el pem de AC: %s o el dir de cert: %s, la verificación ssl "
+"seguramente fallará.\n"
+
+#: libwget/ssl_wolfssl.c:690
+#, fuzzy, c-format
+#| msgid ""
+#| "Failed to load CA pem: %s or cert dir: %s, ssl verification will likely "
+#| "fail.\n"
 msgid ""
-"Failed to load CA pem: %s or cert dir: %s, ssl verification will likely "
+"Failed to load CA pem: %s or cert dir: %s, SSL verification will likely "
 "fail.\n"
 msgstr ""
+"Falló al cargar el pem de AC: %s o el dir de cert: %s, la verificación ssl "
+"seguramente fallará.\n"
 
-#: libwget/ssl_wolfssl.c:900
+#: libwget/ssl_wolfssl.c:929
 msgid "Failed to create WolfSSL session\n"
 msgstr "No se pudo crear la sesión WolfSSL\n"
 
-#: libwget/ssl_wolfssl.c:1034
+#: libwget/ssl_wolfssl.c:1063
 #, c-format
 msgid "failed to connect TLS (%d): %s\n"
 msgstr "no se pudo conectar TLS (%d): %s\n"
 
-#: libwget/ssl_openssl.c:243 libwget/ssl_openssl.c:283
-#: libwget/ssl_openssl.c:361
+#: libwget/ssl_openssl.c:246 libwget/ssl_openssl.c:286
+#: libwget/ssl_openssl.c:364
 #, c-format
 msgid ""
 "Unknown configuration key %d (maybe this config value should be of another "
@@ -1226,7 +1244,7 @@ msgstr ""
 "Valor de configuración %d desconocido (¿Tal vez este valor de configuración "
 "debe ser de otro tipo?)\n"
 
-#: libwget/ssl_openssl.c:410
+#: libwget/ssl_openssl.c:413
 msgid ""
 "OpenSSL: TLS 1.3 is not supported by your OpenSSL version. Will use TLS 1.2 "
 "instead.\n"
@@ -1234,12 +1252,12 @@ msgstr ""
 "OpenSSL: TLS 1.3 no está soportado por su versión de OpenSSL. Se usará TLS "
 "1.2 en su lugar.\n"
 
-#: libwget/ssl_openssl.c:420
+#: libwget/ssl_openssl.c:423
 #, c-format
 msgid "OpenSSL: Invalid priority string '%s'\n"
 msgstr "OpenSSL: Cadena de prioridad '%s' inválida\n"
 
-#: libwget/ssl_openssl.c:482
+#: libwget/ssl_openssl.c:485
 #, c-format
 msgid ""
 "OpenSSL: Could not load certificates from default paths. Falling back to "
@@ -1248,137 +1266,130 @@ msgstr ""
 "OpenSSL: No se pudo cargar certificados de las rutas por defecto. Regresando "
 "a '%s'."
 
-#: libwget/ssl_openssl.c:487
+#: libwget/ssl_openssl.c:490
 #, c-format
 msgid "OpenSSL: No certificates could be loaded from directory '%s'\n"
 msgstr "OpenSSL: No se pudo cargar certificados del directorio '%s'\n"
 
-#: libwget/ssl_openssl.c:491
+#: libwget/ssl_openssl.c:494
 #, c-format
 msgid "OpenSSL: Could not open directory '%s'. No certificates were loaded.\n"
 msgstr ""
 "OpenSSL: No se pudo abrir el directorio '%s'. No se cargaron certificados.\n"
 
-#: libwget/ssl_openssl.c:682
-#, fuzzy
-#| msgid "Could not verify stapled OCSP response. Aborting.\n"
+#: libwget/ssl_openssl.c:685
 msgid "Could not get user data to verify stapled OCSP.\n"
-msgstr "No se pudo verificar la respuesta OCSP engrapada. Abortando.\n"
+msgstr ""
+"No se pudo obtener los datos de usuario para verificar la OCSP engrapada.\n"
 
-#: libwget/ssl_openssl.c:694
+#: libwget/ssl_openssl.c:697
 msgid "Got a stapled OCSP response, but could not parse it. Aborting.\n"
 msgstr ""
 "Se obtuvo una respuesta OCSP engrapada, pero no se puede analizar. "
 "Abortando.\n"
 
-#: libwget/ssl_openssl.c:700
+#: libwget/ssl_openssl.c:703
 msgid "Could not get server's cert stack\n"
 msgstr "No se pudo obtener la pila de certificados del servidor\n"
 
-#: libwget/ssl_openssl.c:712
+#: libwget/ssl_openssl.c:715
 msgid "Could not verify stapled OCSP response. Aborting.\n"
 msgstr "No se pudo verificar la respuesta OCSP engrapada. Abortando.\n"
 
-#: libwget/ssl_openssl.c:873
+#: libwget/ssl_openssl.c:877
 msgid "ERROR: print_openssl_time: BIO_read failed\n"
-msgstr ""
+msgstr "ERROR: print_openssl_time: falló BIO_read\n"
 
-#: libwget/ssl_openssl.c:887
-#, fuzzy
-#| msgid "Could not get server's cert stack\n"
+#: libwget/ssl_openssl.c:891
 msgid "Could not get current time!\n"
-msgstr "No se pudo obtener la pila de certificados del servidor\n"
-
-#: libwget/ssl_openssl.c:896
-#, fuzzy
-#| msgid "Could not compute certificate fingerprint for cert %u\n"
-msgid "Could not compute time difference for thisUpd. Aborting.\n"
-msgstr "No se puede computar la huella de certificado para el certificado %u\n"
+msgstr "¡No se pudo obtener la hora actual!\n"
 
 #: libwget/ssl_openssl.c:900
-#, fuzzy
-#| msgid "OCSP response is too old. Ignoring.\n"
-msgid "*** OCSP response thisUpd is too old. Aborting.\n"
-msgstr "La respuesta OCSP es muy vieja. Ignorando.\n"
-
-#: libwget/ssl_openssl.c:911
-#, fuzzy
-#| msgid "Could not compute certificate fingerprint for cert %u\n"
-msgid "Could not compute time difference for nextUpd. Aborting.\n"
-msgstr "No se puede computar la huella de certificado para el certificado %u\n"
-
-#: libwget/ssl_openssl.c:916
-msgid "*** OCSP next update is in the past!\n"
+msgid "Could not compute time difference for thisUpd. Aborting.\n"
 msgstr ""
+"No se puede computar la diferencia de tiempo para thisUpd. Abortando.\n"
 
-#: libwget/ssl_openssl.c:946
+#: libwget/ssl_openssl.c:904
+msgid "*** OCSP response thisUpd is too old. Aborting.\n"
+msgstr "*** La respuesta OCSP thisUpd es muy vieja. Abortando.\n"
+
+#: libwget/ssl_openssl.c:915
+msgid "Could not compute time difference for nextUpd. Aborting.\n"
+msgstr ""
+"No se puede computar la diferencia de tiempo para nextUpd. Abortando.\n"
+
+#: libwget/ssl_openssl.c:920
+msgid "*** OCSP next update is in the past!\n"
+msgstr "*** ¡La siguiente actualización OCSP está en el pasado!\n"
+
+#: libwget/ssl_openssl.c:950
 msgid "Unsuccessful OCSP response\n"
 msgstr "Respuesta OCSP sin éxito\n"
 
-#: libwget/ssl_openssl.c:954
+#: libwget/ssl_openssl.c:958
 msgid "Could not verify OCSP certificate chain\n"
 msgstr "No se pudo verificar la cadena de certificado OCSP\n"
 
-#: libwget/ssl_openssl.c:960
+#: libwget/ssl_openssl.c:964
 msgid "Could not parse OCSP single response\n"
 msgstr "No se pudo analizar la respuesta sencilla OCSP\n"
 
-#: libwget/ssl_openssl.c:967
+#: libwget/ssl_openssl.c:971
 msgid "Could not obtain OCSP response status\n"
 msgstr "No se pudo obtener el estado de respuesta OCSP\n"
 
-#: libwget/ssl_openssl.c:982
+#: libwget/ssl_openssl.c:986
 msgid "Could not get 'thisUpd' from OCSP response. Cannot check time.\n"
 msgstr ""
 "No se pudo obtener 'thisUpd' de la respuesta OCSP. No se puede verificar el "
 "tiempo.\n"
 
-#: libwget/ssl_openssl.c:1044
+#: libwget/ssl_openssl.c:1046
 msgid "Could not obtain OCSP_BASICRESPONSE\n"
 msgstr "No se puede obtener OCSP_BASICRESPONSE\n"
 
-#: libwget/ssl_openssl.c:1050
+#: libwget/ssl_openssl.c:1052
 msgid "OCSP nonce does not match\n"
 msgstr "No coincide OSCP nonce\n"
 
-#: libwget/ssl_openssl.c:1195 libwget/ssl_openssl.c:1230
+#: libwget/ssl_openssl.c:1197 libwget/ssl_openssl.c:1232
 #, c-format
 msgid "Could not compute certificate fingerprint for cert %u\n"
 msgstr "No se puede computar la huella de certificado para el certificado %u\n"
 
-#: libwget/ssl_openssl.c:1264
+#: libwget/ssl_openssl.c:1266
 msgid "Certificate check disabled. Peer's certificate will NOT be checked.\n"
 msgstr ""
 "Se desactivó la verificación de certificado. El certificado del asociado NO "
 "se verificará.\n"
 
-#: libwget/ssl_openssl.c:1270
+#: libwget/ssl_openssl.c:1272
 msgid "OpenSSL: Could not obtain cert store\n"
 msgstr "OpenSSL: No se puede obtener el almacén de certificados\n"
 
-#: libwget/ssl_openssl.c:1283
+#: libwget/ssl_openssl.c:1285
 #, c-format
 msgid "Could not load CRL from '%s' (%d)\n"
 msgstr "Falló al cargar CRL de '%s': (%d)\n"
 
-#: libwget/ssl_openssl.c:1299
+#: libwget/ssl_openssl.c:1301
 #, c-format
 msgid "Could not load CA certificate from file '%s'\n"
 msgstr "Falló al cargar la AC de certificado del fichero '%s'\n"
 
-#: libwget/ssl_openssl.c:1352
+#: libwget/ssl_openssl.c:1354
 msgid "Could not initialize OpenSSL\n"
 msgstr "No se pudo inicializar OpenSSL\n"
 
-#: libwget/ssl_openssl.c:1403
+#: libwget/ssl_openssl.c:1405
 msgid "OpenSSL: Could not parse cached session data.\n"
 msgstr "OpenSSL: No se pudo analizar los datos de sesión almacenados.\n"
 
-#: libwget/ssl_openssl.c:1411
+#: libwget/ssl_openssl.c:1413
 msgid "OpenSSL: Could not set session data.\n"
 msgstr "OpenSSL: No se pudo establecer los datos de sesión.\n"
 
-#: libwget/ssl_openssl.c:1626
+#: libwget/ssl_openssl.c:1628
 msgid ""
 "Host name check disabled. Server certificate's subject name will not be "
 "checked.\n"
@@ -1386,45 +1397,41 @@ msgstr ""
 "Verificación de nombre de servidor desactivada. El nombre de sujeto del "
 "certificado del servidor no se verificará.\n"
 
-#: libwget/ssl_openssl.c:1635
+#: libwget/ssl_openssl.c:1637
 msgid "Could not set 'status_request' extension\n"
 msgstr "No se pudo establecer la extensión 'status_request'\n"
 
-#: libwget/ssl_openssl.c:1641
+#: libwget/ssl_openssl.c:1643
 msgid "SNI could not be sent"
 msgstr "No se pudo enviar SNI"
 
-#: libwget/ssl_openssl.c:1645
+#: libwget/ssl_openssl.c:1647
 msgid "ALPN offering could not be sent"
 msgstr "No se pudo enviar el ofrecimiento ALPN"
 
-#: libwget/ssl_openssl.c:1653
+#: libwget/ssl_openssl.c:1655
 msgid "Could not get cached TLS session"
 msgstr "No se pudo obtener la sesión TLS almacenada"
 
-#: libwget/ssl_openssl.c:1675
+#: libwget/ssl_openssl.c:1677
 #, c-format
 msgid "Could not complete TLS handshake: %s\n"
 msgstr "No se pudo completar la negociación TLS: %s\n"
 
-#: libwget/ssl_openssl.c:1693
-#, fuzzy
-#| msgid "Public key pinning mismatch.\n"
+#: libwget/ssl_openssl.c:1695
 msgid "Public key pinning mismatch\n"
-msgstr "No coincide el dato fijo de la llave pública.\n"
+msgstr "No coincide el dato fijo de la llave pública\n"
 
-#: libwget/ssl_openssl.c:1712
-#, fuzzy
-#| msgid "Could not verify OCSP certificate chain\n"
+#: libwget/ssl_openssl.c:1714
 msgid "Aborting handshake. Could not verify OCSP chain.\n"
-msgstr "No se pudo verificar la cadena de certificado OCSP\n"
+msgstr "Se aborta la negociación. No se pudo verificar la cadena OCSP\n"
 
-#: libwget/ssl_openssl.c:1867
+#: libwget/ssl_openssl.c:1873
 #, c-format
 msgid "TLS read error: %s\n"
 msgstr "Error de lectura TLS: %s\n"
 
-#: libwget/ssl_openssl.c:1901
+#: libwget/ssl_openssl.c:1907
 #, c-format
 msgid "TLS write error: %s\n"
 msgstr "Error de escritura TLS: %s\n"
@@ -1439,12 +1446,11 @@ msgid "Failed to write TLS session file '%s'\n"
 msgstr "No se pudo escribir el fichero de sesión TLS '%s'\n"
 
 #: libwget/xml.c:661
-#, fuzzy, c-format
-#| msgid "Failed to allocate %zu bytes\n"
+#, c-format
 msgid "Failed to allocate %zu bytes for XML parse buffer\n"
-msgstr "No se pudo alojar %zu bytes\n"
+msgstr "No se pudo alojar %zu bytes para el búfer de decodificación XML\n"
 
-#: src/bar.c:120
+#: src/bar.c:124
 msgid "Cannot create progress bar thread. Disabling progress bar.\n"
 msgstr ""
 "No se puede crear el hilo de la barra de progreso. Se desactiva la barra de "
@@ -1523,7 +1529,7 @@ msgstr "¡No se pudo corregir el fichero de firma!\n"
 msgid "Failed to read file to verify sig: %s\n"
 msgstr "No se pudo leer el fichero para verificar firma: %s\n"
 
-#: src/host.c:394 src/wget.c:946
+#: src/host.c:393 src/wget.c:1000
 #, c-format
 msgid "URL '%s' not followed (disallowed by robots.txt)\n"
 msgstr "No se sigue URL '%s' (desactivado por robots.txt)\n"
@@ -1579,10 +1585,9 @@ msgid "No value in header (ignoring): %s\n"
 msgstr "Sin valor en la cabecera (ignorando): %s\n"
 
 #: src/options.c:680
-#, fuzzy, c-format
-#| msgid "Invalid boolean value '%s'\n"
+#, c-format
 msgid "Invalid value '%s'\n"
-msgstr "Valor booleano '%s' inválido\n"
+msgstr "Valor '%s' inválido\n"
 
 #: src/options.c:696
 #, c-format
@@ -1611,197 +1616,225 @@ msgstr "Tipo de progreso vacío\n"
 #: src/options.c:809
 #, c-format
 msgid "Progress type '%s' ignored. It is not implemented yet\n"
-msgstr ""
+msgstr "Se descarta el tipo de progreso '%s'. Aún no se implementa\n"
 
 #: src/options.c:811
 #, c-format
 msgid "Unknown progress type '%s'\n"
 msgstr "Tipo de progreso '%s' desconocido\n"
 
-#: src/options.c:836
+#: src/options.c:824
+#, fuzzy
+#| msgid "Unknown restrict-file-name type '%s'\n"
+msgid "Missing restrict-file-name type\n"
+msgstr "Tipo de nombre-fichero-restringido '%s' desconocido\n"
+
+#: src/options.c:854
 #, c-format
 msgid "Unknown restrict-file-name type '%s'\n"
 msgstr "Tipo de nombre-fichero-restringido '%s' desconocido\n"
 
-#: src/options.c:868
+#: src/options.c:860
+msgid "Restrict file names to either 'unix' or 'windows'\n"
+msgstr ""
+
+#: src/options.c:865
+msgid "Restrict file names to either 'uppercase' or 'lowercase'\n"
+msgstr ""
+
+# CER, 20101031: creo que son tokens, no traducibles.
+#: src/options.c:874
+#, fuzzy
+#| msgid ""
+#| "%s: %s: Invalid restriction %s,\n"
+#| "    use [unix|vms|windows],[lowercase|uppercase],[nocontrol],[ascii].\n"
+msgid ""
+"    use [none]|[unix|windows],[lowercase|uppercase],[nocontrol][,ascii].\n"
+msgstr ""
+"%s: %s: restricción %s inválida,\n"
+"    use [unix|vms|windows],[lowercase|uppercase],[nocontrol],[ascii].\n"
+
+#: src/options.c:903
 #, c-format
 msgid "Unknown option '-n%c'\n"
 msgstr "Opción '-n%c' desconocida\n"
 
-#: src/options.c:888
+#: src/options.c:923
 #, c-format
 msgid "Unknown address family '%s'\n"
 msgstr "Familia de direcciones '%s' desconocida\n"
 
-#: src/options.c:915
+#: src/options.c:950
 #, c-format
 msgid "Unknown stats format '%s'\n"
 msgstr "Formato de estadísticas '%s' desconocido\n"
 
-#: src/options.c:945 src/options.c:963
+#: src/options.c:980 src/options.c:998
 #, c-format
 msgid "Plugin '%s' failed to load: %s\n"
 msgstr "Falló al cargar el plugin '%s': %s\n"
 
-#: src/options.c:1024 src/options.c:1044
+#: src/options.c:1059 src/options.c:1079
 msgid "Missing required type specifier\n"
 msgstr "Falta el especificador de tipo requerido\n"
 
-#: src/options.c:1028 src/options.c:1048
+#: src/options.c:1063 src/options.c:1083
 #, c-format
 msgid "Invalid type specifier: %s\n"
 msgstr "Especificador de tipo inválido: %s\n"
 
-#: src/options.c:1061
+#: src/options.c:1096
 msgid "no-verify-sig cannot take additional arguments\n"
 msgstr "no-verify-sig no puede recibir argumentos adicionales\n"
 
-#: src/options.c:1071
+#: src/options.c:1106
 #, c-format
 msgid "Invalid option specifier: %s\n"
 msgstr "Especificador de opción inválido: %s\n"
 
-#: src/options.c:1115
-#, c-format
-msgid "Compression type %s not supported\n"
+#: src/options.c:1151
+#, fuzzy, c-format
+#| msgid "Compression type %s not supported\n"
+msgid "Compression type '%s' not supported\n"
 msgstr "El tipo de compresión %s no está soportado\n"
 
-#: src/options.c:1118
-#, c-format
-msgid "Duplicate type %s"
+#: src/options.c:1154
+#, fuzzy, c-format
+#| msgid "Duplicate type %s"
+msgid "Duplicate type '%s'"
 msgstr "Tipo %s duplicado"
 
-#: src/options.c:1148
+#: src/options.c:1184
 #, c-format
 msgid "Lib for type %s not built"
 msgstr "No se compiló la librería para el tipo %s"
 
-#: src/options.c:1180
+#: src/options.c:1216
 #, c-format
 msgid "Disallowed Value for --no-download-attr: %s\n"
 msgstr "Valor no permitido para --no-download-attr: %s\n"
 
-#: src/options.c:1189
+#: src/options.c:1225
 #, c-format
 msgid "Invalid value for --download-attr: %s\n"
 msgstr "Valor inválido para --download-attr: %s\n"
 
-#: src/options.c:2547 src/options.c:2582
+#: src/options.c:2592 src/options.c:2627
 #, c-format
 msgid "Unknown option '%s'\n"
 msgstr "Opción '%s' desconocida\n"
 
-#: src/options.c:2599
+#: src/options.c:2642
 #, c-format
 msgid "Option 'no-%s' doesn't allow an argument\n"
 msgstr "La opción 'no-%s' no admite ningún argumento\n"
 
-#: src/options.c:2603
+#: src/options.c:2646
 #, c-format
 msgid "Option '%s' doesn't allow an argument\n"
 msgstr "La opción '%s' no admite ningún argumento\n"
 
-#: src/options.c:2614
+#: src/options.c:2657
 #, c-format
 msgid "Missing argument for option '%s'\n"
 msgstr "Falta el argumento para la opción '%s'\n"
 
-#: src/options.c:2680
+#: src/options.c:2723
 #, c-format
 msgid "Failed to parse: '%s'\n"
 msgstr "No se pudo analizar: '%s'\n"
 
-#: src/options.c:2742
+#: src/options.c:2785
 #, c-format
 msgid "Config file recursion detected in %s\n"
 msgstr "Recursión en el fichero de configuración detectada en %s\n"
 
-#: src/options.c:2769
+#: src/options.c:2812
 #, c-format
 msgid "Failed to open %s (%d): %s\n"
 msgstr "No se pudo abrir %s (%d): %s\n"
 
-#: src/options.c:2833
+#: src/options.c:2876
 #, c-format
 msgid "Failed to parse last line in '%s'\n"
 msgstr "No se pudo analizar la última línea en '%s'\n"
 
-#: src/options.c:2913
+#: src/options.c:2956
 #, c-format
 msgid "Missing argument(s) for option '-%c'\n"
 msgstr "Falta argumento(s) para la opción '-%c'\n"
 
-#: src/options.c:2933
+#: src/options.c:2976
 #, c-format
 msgid "Unknown option '-%c'\n"
 msgstr "Opción '-%c' desconocida\n"
 
-#: src/options.c:2964
+#: src/options.c:3007
 #, c-format
 msgid "Password for user \"%s\": "
 msgstr "Contraseña para el usuario \"%s\": "
 
-#: src/options.c:2966
+#: src/options.c:3009
 msgid "Password: "
 msgstr "Contraseña: "
 
-#: src/options.c:2987
+#: src/options.c:3030
 msgid "Cannot create pipe"
 msgstr "No se puede crear tubería"
 
-#: src/options.c:2993
+#: src/options.c:3036
 #, c-format
 msgid "Error initializing spawn file actions for use-askpass: %d"
 msgstr ""
 "Error al inicializar las acciones de fichero de spawn para use-askpass: %d"
 
-#: src/options.c:3004
+#: src/options.c:3047
 #, c-format
 msgid "Error setting spawn file actions for use-askpass: %d"
 msgstr ""
 "Error al establecer las acciones de fichero de spawn para use-askpass: %d"
 
-#: src/options.c:3011
+#: src/options.c:3054
 #, c-format
 msgid "Error spawning %s: %d"
 msgstr "Error al hacer spawn %s: %d"
 
-#: src/options.c:3028
+#: src/options.c:3071
 #, c-format
 msgid "Error reading response from command \"%s %s\": %s\n"
 msgstr "Error al leer la respuesta de la orden \"%s %s\": %s\n"
 
-#: src/options.c:3093
+#: src/options.c:3136
 #, c-format
 msgid "Failed to open %s"
 msgstr "No se pudo abrir %s"
 
-#: src/options.c:3143
+#: src/options.c:3186
 #, c-format
 msgid "~/.wget2rc is deprecated. Please move it to %s/wget2rc\n"
 msgstr "~/.wget2rc es obsoleto. Por favor múevalo a %s/wget2rc\n"
 
-#: src/options.c:3471
+#: src/options.c:3522
 #, c-format
 msgid "Failed to set http proxies %s\n"
 msgstr "No se pudieron establecer los proxies http %s\n"
 
-#: src/options.c:3475
+#: src/options.c:3526
 #, c-format
 msgid "Failed to set https proxies %s\n"
 msgstr "No se pudieron los proxies https %s\n"
 
-#: src/options.c:3479
+#: src/options.c:3530
 #, c-format
 msgid "Failed to set proxy exceptions %s\n"
 msgstr "No se pudieron establecer las excepciones de proxy %s\n"
 
-#: src/options.c:3505
+#: src/options.c:3556
 #, c-format
 msgid "Failed to load %s (%d)"
 msgstr "No se pudo cargar %s (%d)"
 
-#: src/options.c:3565
+#: src/options.c:3616
 msgid ""
 "Specifying both --start-pos and --continue is not recommended; --continue "
 "will be disabled"
@@ -1809,21 +1842,21 @@ msgstr ""
 "No se recomienda especificar al mismo tiempo --start-pos y --continue; --"
 "continue será desactivada"
 
-#: src/options.c:3571
+#: src/options.c:3622
 msgid "WARNING: timestamping does nothing in combination with -O"
 msgstr "AVISO: las marcas de tiempo no hacen nada en combinación con -O"
 
-#: src/options.c:3575
+#: src/options.c:3626
 msgid "Can't timestamp and not clobber old files at the same time"
 msgstr ""
 "No se pueden usar marcas de tiempo y no sobreescribir ficheros viejos al "
 "mismo tiempo"
 
-#: src/options.c:3579
+#: src/options.c:3630
 msgid "WARNING: timestamping does nothing in combination with spider"
 msgstr "AVISO: las marcas de tiempo no hacen nada en combinación con spider"
 
-#: src/options.c:3583
+#: src/options.c:3634
 msgid ""
 "WARNING: timestamping and chunk-size only work together without If-Modified-"
 "Since"
@@ -1831,93 +1864,93 @@ msgstr ""
 "AVISO: las marcas de tiempo y el tamaño de fragmento solamente funcionan "
 "juntos sin If-Modified-Since"
 
-#: src/options.c:3622
+#: src/options.c:3673
 #, c-format
 msgid "Failed to init networking (%d)"
 msgstr "No se pudo iniciar la red (%d)"
 
-#: src/options.c:3627
+#: src/options.c:3678
 #, c-format
 msgid "Failed to init DNS (%d)"
 msgstr "No se pudo iniciar DNS (%d)"
 
-#: src/options.c:3645 src/options.c:3656 src/options.c:3667 src/options.c:3678
-#: src/options.c:3689
+#: src/options.c:3696 src/options.c:3707 src/options.c:3718 src/options.c:3729
+#: src/options.c:3740
 #, c-format
 msgid "Failed to open '%s' (%d)"
 msgstr "No se pudo abrir '%s' (%d)"
 
-#: src/options.c:3942
+#: src/options.c:3993
 #, c-format
 msgid "%s: Option not in order '%s' after '%s' (using opt_compare())\n"
 msgstr ""
 "%s: La opción no está en orden '%s' después de '%s' (usando opt_compare())\n"
 
-#: src/options.c:3951
+#: src/options.c:4002
 #, c-format
 msgid "%s: Option not in order '%s' after '%s' (using opt_compare_config())\n"
 msgstr ""
 "%s: La opción no está en orden '%s' después de '%s' (usando "
 "opt_compare_config())\n"
 
-#: src/options.c:3961
+#: src/options.c:4012
 #, c-format
 msgid "%s: Failed to find option '%s' (using opt_compare())\n"
 msgstr "%s: No se pudo encontrar la opción '%s' (usando opt_compare())\n"
 
-#: src/options.c:3971 src/options.c:3995
+#: src/options.c:4022 src/options.c:4046
 #, c-format
 msgid "%s: Failed to find option '%s' (using opt_compare_config())\n"
 msgstr ""
 "%s: No se pudo encontrar la opción '%s' (usando opt_compare_config())\n"
 
-#: src/options.c:4020
+#: src/options.c:4071
 #, c-format
 msgid "%s: Failed to parse bool short option #%zu (=%d)\n"
 msgstr "%s: No se pudo analizar la opción corta booleana #%zu (=%d)\n"
 
-#: src/options.c:4046 src/options.c:4052
+#: src/options.c:4097 src/options.c:4103
 #, c-format
 msgid "%s: Failed to parse bool long option #%zu (%d)\n"
 msgstr "%s: No se pudo analizar la opción larga booleana #%zu (%d)\n"
 
-#: src/options.c:4095
+#: src/options.c:4146
 #, c-format
 msgid "%s: Failed to parse timeout short option #%zu (=%d)\n"
 msgstr "%s: No se pudo analizar la opción corta de expiración #%zu (=%d)\n"
 
-#: src/options.c:4126
+#: src/options.c:4177
 #, c-format
 msgid "%s: Failed to parse timeout long option #%zu (%d)\n"
 msgstr "%s: No se pudo analizar la opción larga de expiración #%zu (%d)\n"
 
-#: src/options.c:4161
+#: src/options.c:4212
 #, c-format
 msgid "%s: Extra headers found in option #%zu\n"
 msgstr "%s: Se encontraron cabeceras extra en la opción #%zu\n"
 
-#: src/options.c:4166
+#: src/options.c:4217
 #, c-format
 msgid "%s: Failed to parse header option #%zu\n"
 msgstr "%s: No se pudo analizar la opción de cabecera #%zu\n"
 
-#: src/options.c:4189
+#: src/options.c:4240
 #, c-format
 msgid "%s: Accepted illegal header option #%zu\n"
 msgstr "%s: Opción de cabecera ilegal #%zu aceptada\n"
 
-#: src/options.c:4217 src/options.c:4236
+#: src/options.c:4268 src/options.c:4287
 #, c-format
 msgid "%s: Failed to parse string short option #%zu (=%s)\n"
 msgstr ""
 "%s: No se pudo analizar la opción corta de cadena de texto #%zu (=%s)\n"
 
-#: src/plugin.c:397
+#: src/plugin.c:398
 #, c-format
 msgid "Plugin '%s' failed to load: %s"
 msgstr "No se pudo cargar el plugin '%s': %s"
 
-#: src/plugin.c:505
+#: src/plugin.c:506
 #, c-format
 msgid "Options for %s:\n"
 msgstr "Opciones para %s:\n"
@@ -1937,362 +1970,383 @@ msgstr "No se pudo crear el directorio '%s' (errno=%d)\n"
 msgid "Failed to rename '%s' (errno=%d)\n"
 msgstr "No se pudo renombrar '%s' (errno=%d)\n"
 
-#: src/wget.c:599
+#: src/wget.c:631
+#, fuzzy, c-format
+#| msgid "HSTS in effect for %s:%hu\n"
+msgid "HSTS in effect for [%s]:%hu\n"
+msgstr "HSTS en efecto para %s:%hu\n"
+
+#: src/wget.c:633
 #, c-format
 msgid "HSTS in effect for %s:%hu\n"
 msgstr "HSTS en efecto para %s:%hu\n"
 
-#: src/wget.c:617
+#: src/wget.c:696
 #, c-format
 msgid "Failed to parse URI '%s'\n"
 msgstr "No se pudo analizar URI '%s'\n"
 
-#: src/wget.c:635
+#: src/wget.c:714
 #, c-format
 msgid "URI scheme not supported: '%s'\n"
 msgstr "Esquema de URI no soportado: '%s'\n"
 
-#: src/wget.c:778
+#: src/wget.c:852
+#, fuzzy
+#| msgid "Cannot resolve URI '%s'\n"
+msgid "Cannot resolve URI\n"
+msgstr "No se puede resolver URI '%s'\n"
+
+#: src/wget.c:864
 #, c-format
 msgid "Adding URL: %s\n"
 msgstr "Agregando URL: %s\n"
 
-#: src/wget.c:794 src/wget.c:1159
-#, c-format
-msgid "Cannot resolve URI '%s'\n"
-msgstr "No se puede resolver URI '%s'\n"
-
-#: src/wget.c:802
+#: src/wget.c:870
 #, c-format
 msgid "not requesting '%s'. (Plugin Verdict)\n"
-msgstr ""
+msgstr "no se solicita '%s'. (Añadido Verdict)\n"
 
-#: src/wget.c:816
+#: src/wget.c:884
 #, c-format
 msgid "URL '%s' not followed (unsupported scheme)\n"
 msgstr "No se siguió URL '%s' (esquema no soportado)\n"
 
-#: src/wget.c:826
+#: src/wget.c:894
 #, c-format
 msgid "URL '%s' not followed (https-only requested)\n"
 msgstr "No se siguió URL '%s' (se pidió solamente https)\n"
 
-#: src/wget.c:843
+#: src/wget.c:911
 msgid "missing ip/host/domain"
 msgstr "falta ip/nombre del equipo/dominio"
 
-#: src/wget.c:846
+#: src/wget.c:914
 msgid "no host-spanning requested"
 msgstr "se solicitó sin expansión de nombre de equipo"
 
-#: src/wget.c:848
+#: src/wget.c:916
 msgid "domain explicitly excluded"
 msgstr "dominio excluído explícitamente"
 
-#: src/wget.c:852
+#: src/wget.c:920
 #, c-format
 msgid "URL '%s' not followed (%s)\n"
 msgstr "No se siguió URL '%s' (%s)\n"
 
-#: src/wget.c:900
+#: src/wget.c:954
 #, c-format
 msgid "URL '%s' not followed (parent ascending not allowed)\n"
 msgstr "No se siguió URL '%s' (no se permite un padre ascendente)\n"
 
-#: src/wget.c:918
+#: src/wget.c:972
 #, c-format
 msgid "URL '%s' not requested (file already exists)\n"
 msgstr "No se solicitó el URL '%s' (el fichero ya existe)\n"
 
-#: src/wget.c:953
+#: src/wget.c:1007
 #, c-format
 msgid "Failed to get '%s' from hosts\n"
 msgstr "No se pudo obtener '%s' de hosts\n"
 
-#: src/wget.c:1135
+#: src/wget.c:1191
 #, c-format
 msgid "convert %s %s %s\n"
 msgstr "convertir %s %s %s\n"
 
-#: src/wget.c:1138
+#: src/wget.c:1194
 #, c-format
 msgid "%s not found (%d)\n"
 msgstr "%s: no se encontró (%d)\n"
 
-#: src/wget.c:1189
+#: src/wget.c:1215
+#, c-format
+msgid "Cannot resolve URI '%s'\n"
+msgstr "No se puede resolver URI '%s'\n"
+
+#: src/wget.c:1245
 #, c-format
 msgid "Failed to rename %s to %s (%d)"
 msgstr "No se pudo renombrar %s a %s (%d)"
 
-#: src/wget.c:1195
+#: src/wget.c:1251
 #, c-format
 msgid "Failed to write open %s (%d)"
 msgstr "No se pudo abrir %s para escritura (%d)"
 
-#: src/wget.c:1336 src/wget.c:1428
+#: src/wget.c:1391 src/wget.c:1482
 #, c-format
 msgid "Failed to start downloader, error %d\n"
 msgstr "No se pudo iniciar el descargador, error %d\n"
 
-#: src/wget.c:1359
+#: src/wget.c:1414
 #, c-format
 msgid "Failed to open input file %s\n"
 msgstr "No se pudo abrir el fichero de entrada %s\n"
 
-#: src/wget.c:1364
+#: src/wget.c:1419
 msgid "Nothing to do - goodbye\n"
 msgstr "No hay nada que hacer - adiós\n"
 
-#: src/wget.c:1382
+#: src/wget.c:1437
 msgid "Wget2 built without thread support. Disabling progress report\n"
 msgstr ""
 "Wget2 compilado sin soporte para hilos. Reporte de progreso desactivado\n"
 
-#: src/wget.c:1400
-msgid "INFO logger being disabled as --progress=bar enabled\n"
-msgstr ""
+#: src/wget.c:1455
+#, fuzzy, c-format
+#| msgid "Failed to start downloader, error %d\n"
+msgid "Failed to start progress report thread, error %d\n"
+msgstr "No se pudo iniciar el descargador, error %d\n"
 
-#: src/wget.c:1435
+#: src/wget.c:1489
 #, c-format
 msgid "Quota of %lld bytes reached - stopping.\n"
 msgstr "Cuota de %lld bytes alcanzada - parando.\n"
 
-#: src/wget.c:1455
+#: src/wget.c:1509
 #, c-format
 msgid "Failed to wait for downloader #%d (%d %d)\n"
 msgstr "No se pudo esperar al descargador #%d (%d %d)\n"
 
-#: src/wget.c:1462
+#: src/wget.c:1516
 #, c-format
 msgid "Downloaded: %d files, %s bytes, %d redirects, %d errors\n"
 msgstr "Descargado: %d ficheros, %s bytes, %d redirecciones, %d errores\n"
 
-#: src/wget.c:1488
+#: src/wget.c:1542
 msgid ""
 "--convert-links and --convert-file-only cannot be used together, error\n"
 msgstr ""
 "--convert-links y --convert-file-only no se pueden usar juntos, error\n"
 
-#: src/wget.c:1584
+#: src/wget.c:1557
+#, fuzzy, c-format
+#| msgid "Failed to wait for downloader #%d (%d %d)\n"
+msgid "Failed to wait for progress thread (%d %d)\n"
+msgstr "No se pudo esperar al descargador #%d (%d %d)\n"
+
+#: src/wget.c:1654
 #, c-format
 msgid "Failed to connect: %s\n"
 msgstr "No se pudo conectar: %s\n"
 
-#: src/wget.c:1810
+#: src/wget.c:1880
 msgid "The file is already fully retrieved; nothing to do.\n"
 msgstr "El fichero ya ha sido totalmente recuperado, no hay nada que hacer.\n"
 
-#: src/wget.c:1875
+#: src/wget.c:1932
 #, c-format
 msgid "File '%s' not modified on server. Omitting download"
 msgstr "Fichero %s no modificado en el servidor. Omitiendo la descarga"
 
-#: src/wget.c:1912
+#: src/wget.c:1969
 #, c-format
 msgid "Not scanning '%s' (known ETag)\n"
 msgstr "No se analiza '%s' (ETag conocido)\n"
 
-#: src/wget.c:1959
+#: src/wget.c:2016
 #, c-format
 msgid "The sizes do not match (local %lld, remote %zu) -- retrieving"
 msgstr "Los tamaños no concuerdan (%lld local, %zu remoto) -- recuperando"
 
-#: src/wget.c:2085
+#: src/wget.c:2178
 #, c-format
 msgid "File length %llu - remove job\n"
 msgstr "Longitud de fichero %llu - trabajo borrado\n"
 
-#: src/wget.c:2087
+#: src/wget.c:2180
 msgid "No download mirrors found - remove job\n"
 msgstr "No se encontraron espejos de descarga - trabajo borrado\n"
 
-#: src/wget.c:2202
+#: src/wget.c:2295
 msgid "Couldn't determine base file to delete for failed verification\n"
 msgstr ""
 "No se pudo determinar el fichero base para borrar por verificación fallida\n"
 
-#: src/wget.c:2206
+#: src/wget.c:2299
 #, c-format
 msgid "Signature for file %s successfully verified\n"
 msgstr "Firma para el fichero %s verificada con éxito\n"
 
-#: src/wget.c:2222
+#: src/wget.c:2315
 msgid "Should not have remaining extensions!\n"
 msgstr "¡No hay extensiones restantes!\n"
 
-#: src/wget.c:2236
+#: src/wget.c:2329
 msgid "File name for signature checking not assigned to job!\n"
 msgstr ""
 "¡No se asignó nombre de fichero para la verificación de firma al trabajo!\n"
 
-#: src/wget.c:2238
+#: src/wget.c:2331
 msgid "Cannot check the signature on a signature!\n"
 msgstr "¡No se pudo verificar la firma en una firma!\n"
 
-#: src/wget.c:2452
+#: src/wget.c:2560
 #, c-format
 msgid "Unhandled action %d\n"
 msgstr "Acción %d no manejada\n"
 
-#: src/wget.c:2561
+#: src/wget.c:2672
 #, c-format
 msgid "URL '%.*s' not followed (conversion failed)\n"
 msgstr "No se siguió URL '%.*s' (conversión fallida)\n"
 
-#: src/wget.c:2569
+#: src/wget.c:2680
 #, c-format
 msgid "Cannot resolve relative URI %.*s\n"
 msgstr "No se pudo resolver URI relativo %.*s.\n"
 
-#: src/wget.c:2591
+#: src/wget.c:2702
 msgid "set by user"
 msgstr "establecida por el usuario"
 
-#: src/wget.c:2596 src/wget.c:2604 src/wget.c:2612
+#: src/wget.c:2707 src/wget.c:2715 src/wget.c:2723
 msgid "set by BOM"
 msgstr "establecida por BOM"
 
-#: src/wget.c:2618
+#: src/wget.c:2729
 msgid "set by server response"
 msgstr "establecida por la respuesta del servidor"
 
-#: src/wget.c:2627
+#: src/wget.c:2738
 #, c-format
 msgid "Convert non-ASCII encoding '%s' (%s) to UTF-8\n"
 msgstr "Conversión de la codificación '%s' (%s) que no es ASCII a UTF-8\n"
 
-#: src/wget.c:2631
+#: src/wget.c:2742
 #, c-format
 msgid "Link conversion disabled for '%s'\n"
 msgstr "Conversión de enlace desactivada para '%s'\n"
 
-#: src/wget.c:2634
+#: src/wget.c:2745
 #, c-format
 msgid "Filename conversion disabled for '%s'\n"
 msgstr "Conversión de nombre de fichero desactivada para '%s'\n"
 
-#: src/wget.c:2638
+#: src/wget.c:2749
 #, c-format
 msgid "Failed to convert non-ASCII encoding '%s' (%s) to UTF-8, skip parsing\n"
 msgstr ""
 "No se pudo convertir de la codificación '%s' (%s) que no es ASCII a UTF-8, "
 "saltando el análisis\n"
 
-#: src/wget.c:2651
+#: src/wget.c:2762
 msgid "set by document"
 msgstr "establecida por el documento"
 
-#: src/wget.c:2654
+#: src/wget.c:2765
 msgid "default, encoding not specified"
 msgstr "por defecto, no se especificó codificación"
 
-#: src/wget.c:2658
+#: src/wget.c:2769
 #, c-format
 msgid "URI content encoding = '%s' (%s)\n"
 msgstr "codificación del contenido de URI = '%s' (%s)\n"
 
-#: src/wget.c:2666
+#: src/wget.c:2777
 #, c-format
 msgid "BASE '%.*s' not usable (missing absolute base URI)\n"
 msgstr "No se puede usar BASE '%.*s' (falta URI base absoluta)\n"
 
-#: src/wget.c:2673
+#: src/wget.c:2784
 #, c-format
 msgid "Cannot resolve BASE URI %.*s\n"
 msgstr "No se pudo resolver URI BASE %.*s\n"
 
-#: src/wget.c:2685
+#: src/wget.c:2794
 #, c-format
 msgid "URL '%.*s' not followed (action/formaction attribute)\n"
 msgstr "No se sigue URL '%.*s' (atributo acción/acción de forma)\n"
 
-#: src/wget.c:2699
+#: src/wget.c:2808
 #, c-format
 msgid "URL '%.*s' not followed (page requisites + level)\n"
 msgstr "No se sigue URL '%.*s' (requisitos de página + nivel)\n"
 
-#: src/wget.c:2710 src/wget.c:2912 src/wget.c:3045
+#: src/wget.c:2819 src/wget.c:3029 src/wget.c:3164
 #, c-format
 msgid "URL '%.*s' not followed (missing base URI)\n"
 msgstr "No se sigue URL '%.*s' (falta URI base)\n"
 
-#: src/wget.c:2774 src/wget.c:2900
+#: src/wget.c:2886 src/wget.c:3019
 #, c-format
 msgid "found %d url(s) (base=%s)\n"
 msgstr "se encontraron %d url(s) (base=%s)\n"
 
-#: src/wget.c:2782 src/wget.c:2878
+#: src/wget.c:2893 src/wget.c:2997
 #, c-format
 msgid "URL '%.*s' not followed (not matching sitemap location)\n"
 msgstr "No se sigue URL '%.*s' (no coincide con ubicación del mapa de sitio)\n"
 
-#: src/wget.c:2789 src/wget.c:2806 src/wget.c:2919
+#: src/wget.c:2904 src/wget.c:2925 src/wget.c:3040
 #, c-format
 msgid "URL '%.*s' not followed (already known)\n"
 msgstr "No se sigue URL '%.*s' (ya se conoce)\n"
 
-#: src/wget.c:2797
+#: src/wget.c:2912
 #, c-format
 msgid "found %d sitemap url(s) (base=%s)\n"
 msgstr "se encontraron %d url(s) de mapa de sitio (base=%s)\n"
 
-#: src/wget.c:2839
+#: src/wget.c:2957
 #, c-format
 msgid "Can't scan '%s' because no libz support enabled at compile time\n"
 msgstr ""
 "No se puede analizar '%s' porque no se activó el soporte para libz al "
 "momento de compilación\n"
 
-#: src/wget.c:2979
+#: src/wget.c:3098
 #, c-format
 msgid "Invalid file length %llu\n"
 msgstr "Longitud de fichero %llu inválida \n"
 
-#: src/wget.c:2982
+#: src/wget.c:3101
 msgid "No download mirrors found\n"
 msgstr "No se encontraron espejos para descarga\n"
 
-#: src/wget.c:3031 src/wget.c:3059 src/wget.c:3078
+#: src/wget.c:3150 src/wget.c:3178 src/wget.c:3197
 #, c-format
 msgid "URI content encoding = '%s'\n"
 msgstr "Codificación de contenido del URI = '%s'\n"
 
-#: src/wget.c:3151
+#: src/wget.c:3270
 #, c-format
 msgid "Failed to set file date (%d)\n"
 msgstr "No se pudo establecer la fecha del fichero (%d)\n"
 
-#: src/wget.c:3298
-#, c-format
-msgid "Failed to write to STDOUT (%zu, errno=%d)\n"
+#: src/wget.c:3417
+#, fuzzy, c-format
+#| msgid "Failed to write to STDOUT (%zu, errno=%d)\n"
+msgid "Failed to write to STDOUT (%td, errno=%d)\n"
 msgstr "No se pudo escribir a STDOUT (%zu, errno=%d)\n"
 
-#: src/wget.c:3398
+#: src/wget.c:3517
 #, c-format
 msgid "Failed to rename %s to %s (errno=%d)\n"
 msgstr "No se pudo renombrar %s a %s (errno=%d)\n"
 
-#: src/wget.c:3425 src/wget.c:3431
+#: src/wget.c:3543 src/wget.c:3549
 #, c-format
 msgid "Failed to load partial content from '%s' (errno=%d)\n"
 msgstr "No se pudo cargar el contenido parcial de '%s' (errno=%d)\n"
 
-#: src/wget.c:3440
+#: src/wget.c:3558
 #, c-format
 msgid "Failed to unlink '%s' (errno=%d)\n"
 msgstr "No se pudo borrar '%s' (errno=%d)\n"
 
-#: src/wget.c:3460
+#: src/wget.c:3578
 #, c-format
 msgid "Saving ']8;;file://%s%s\\%s]8;;\\'\n"
 msgstr "Grabando ']8;;file://%s%s\\%s]8;;\\'\n"
 
-#: src/wget.c:3464
+#: src/wget.c:3582
 #, c-format
 msgid "Saving '%s'\n"
 msgstr "Grabando '%s'\n"
 
-#: src/wget.c:3469
+#: src/wget.c:3588
 #, c-format
 msgid "Failed to write file %s (%zd, errno=%d)\n"
 msgstr "No se pudo escribir el fichero %s (%zd, errno=%d)\n"
@@ -2300,27 +2354,27 @@ msgstr "No se pudo escribir el fichero %s (%zd, errno=%d)\n"
 # `no recuperando' no me suena muy español, te propongo la alternativa
 # más "humanizada", `no se recupera' - cll
 # CER, 201011117:  Me parece más apropiado "descargar", ¿no?
-#: src/wget.c:3477
+#: src/wget.c:3596
 #, c-format
 msgid "File '%s' already there; not retrieving.\n"
 msgstr "El fichero '%s' ya está ahí; no se descarga.\n"
 
-#: src/wget.c:3483
+#: src/wget.c:3602
 #, c-format
 msgid "Directory / file name clash - not saving '%s'\n"
 msgstr "Choque de directorio / nombre de fichero - no se guarda '%s'\n"
 
-#: src/wget.c:3485
+#: src/wget.c:3604
 #, c-format
 msgid "Failed to open '%s' (%d)\n"
 msgstr "No se pudo abrir '%s' (%d)\n"
 
-#: src/wget.c:3497
+#: src/wget.c:3616
 #, c-format
 msgid "Failed to save extended attribute %s\n"
 msgstr "No se pudo guardar el atributo extendido %s\n"
 
-#: src/wget.c:3688
+#: src/wget.c:3807
 #, c-format
 msgid ""
 "# got header %zu bytes:\n"
@@ -2329,67 +2383,71 @@ msgstr ""
 "# se obtuvieron %zu bytes de cabecera:\n"
 "%s\n"
 
-#: src/wget.c:3762
+#: src/wget.c:3881
 #, c-format
 msgid "Failed to open .netrc file '%s' (%d): %s\n"
 msgstr "No se pudo abrir el fichero .netrc '%s' (%d): %s\n"
 
-#: src/wget.c:4096
+#: src/wget.c:4228
 #, c-format
 msgid "Failed to fsync errno=%d\n"
 msgstr "Falló fsync errno=%d\n"
 
 # Lo mismo que antes, ... `background' es `segundo plano' - cll
-#: src/wget.c:4404
+#: src/wget.c:4536
 #, c-format
 msgid "Continuing in background, pid %lu.\n"
 msgstr "Continuando en segundo plano, pid %lu.\n"
 
-#: src/wget.c:4406 src/wget.c:4472
+#: src/wget.c:4538 src/wget.c:4619
 #, c-format
 msgid "Output will be written to %s.\n"
 msgstr "La salida será escrita a %s.\n"
 
-#: src/wget.c:4432
+#: src/wget.c:4564
 msgid "fake_fork_child() failed\n"
 msgstr "fake_fork_child() falló\n"
 
-#: src/wget.c:4440
+#: src/wget.c:4572
 msgid "fake_fork() failed\n"
 msgstr "fake_fork() falló\n"
 
-#: src/wget.c:4466
+#: src/wget.c:4613
 #, c-format
 msgid "Failed to fork (%d)\n"
 msgstr "No se pudo hacer fork (%d)\n"
 
 # Lo mismo que antes, ... `background' es `segundo plano' - cll
-#: src/wget.c:4470
+#: src/wget.c:4617
 #, c-format
 msgid "Continuing in background, pid %d.\n"
 msgstr "Continuando en segundo plano, pid %d.\n"
 
-#: src/wget.c:4480
+#: src/wget.c:4627
 msgid "Failed to redirect stdin to /dev/null.\n"
 msgstr "No se pudo redirigir stdin a /dev/null.\n"
 
-#: src/wget.c:4482
+#: src/wget.c:4629
 msgid "Failed to redirect stdout to /dev/null.\n"
 msgstr "No se pudo redirigir stdout a /dev/null.\n"
 
-#: src/wget.c:4484
+#: src/wget.c:4631
 msgid "Failed to redirect stderr to /dev/null.\n"
 msgstr "No se pudo redirigir stderr a /dev/null.\n"
 
-#, c-format
+#~ msgid "WARNING: The certificate's (stapled) OCSP status has not been sent\n"
+#~ msgstr ""
+#~ "AVISO: El estado OSCP (engrapado) del certificado no se ha enviado\n"
+
+#~ msgid "INFO logger being disabled as --progress=bar enabled\n"
+#~ msgstr "se desactiva el registro INFO porque se activó --progress=bar\n"
+
 #~ msgid "Failed to connect (%d)\n"
 #~ msgstr "No se pudo conectar (%d)\n"
 
-#, c-format
 #~ msgid "Failed to write %zu bytes (%d)\n"
 #~ msgstr "No se pudo escribir %zu bytes (%d)\n"
 
-#, c-format
 #~ msgid "Failed to load %s, please check the file.\n"
 #~ msgstr "No se pudo cargar %s, por favor verifique el fichero.\n"
 
@@ -2408,11 +2466,9 @@ msgstr "No se pudo redirigir stderr a /dev/null.\n"
 #~ msgid "Certificate revoked by OCSP.\n"
 #~ msgstr "Certificado revocado por OCSP.\n"
 
-#, c-format
 #~ msgid "  %.*s -> %s\n"
 #~ msgstr "  %.*s -> %s\n"
 
-#, c-format
 #~ msgid "       -> %s\n"
 #~ msgstr "       -> %s\n"
 
@@ -3281,14 +3337,6 @@ msgstr "No se pudo redirigir stderr a /dev/null.\n"
 
 #~ msgid "%s: %s: Invalid WARC header %s.\n"
 #~ msgstr "%s: %s: cabecera WARC inválida  %s.\n"
-
-# CER, 20101031: creo que son tokens, no traducibles.
-#~ msgid ""
-#~ "%s: %s: Invalid restriction %s,\n"
-#~ "    use [unix|vms|windows],[lowercase|uppercase],[nocontrol],[ascii].\n"
-#~ msgstr ""
-#~ "%s: %s: restricción %s inválida,\n"
-#~ "    use [unix|vms|windows],[lowercase|uppercase],[nocontrol],[ascii].\n"
 
 #~ msgid "Encoding %s isn't valid\n"
 #~ msgstr "La codificación %s no es válida\n"

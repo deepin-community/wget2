@@ -1,4 +1,4 @@
-.TH "libwget-robots" 3 "Thu Aug 31 2023" "Version 2.1.0" "wget2" \" -*- nroff -*-
+.TH "libwget-robots" 3 "Version 2.2.0" "wget2" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -11,6 +11,13 @@ libwget-robots \- Robots Exclusion file parser
 .in +1c
 .ti -1c
 .RI "struct \fBwget_robots_st\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBparse_record_field\fP(d,  f)   parse_record_field(d, f, sizeof(f) \- 1)"
 .br
 .in -1c
 .SS "Functions"
@@ -55,7 +62,7 @@ The purpose of this set of functions is to parse a Robots Exclusion Standard fil
 Return an allocated wget_robots structure or NULL on error
 .RE
 .PP
-The function parses the robots\&.txt \fCdata\fP and returns a ROBOTS structure including a list of the disallowed paths and including a list of the sitemap files\&.
+The function parses the robots\&.txt \fCdata\fP in accordance to https://www.robotstxt.org/orig.html#format and returns a ROBOTS structure including a list of the disallowed paths and including a list of the sitemap files\&.
 .PP
 The ROBOTS structure has to be freed by calling \fBwget_robots_free()\fP\&. 
 .SS "void wget_robots_free (\fBwget_robots\fP ** robots)"

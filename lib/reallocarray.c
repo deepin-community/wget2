@@ -1,6 +1,6 @@
 /* reallocarray function that is glibc compatible.
 
-   Copyright (C) 2017-2023 Free Software Foundation, Inc.
+   Copyright (C) 2017-2024 Free Software Foundation, Inc.
 
    This file is free software: you can redistribute it and/or modify
    it under the terms of the GNU Lesser General Public License as
@@ -33,6 +33,12 @@ reallocarray (void *ptr, size_t nmemb, size_t size)
       return NULL;
     }
 
-  /* Rely on the semantics of GNU realloc.  */
+  /* Work around realloc glitch by treating a 0 size as if it were 1,
+     to avoid undefined behavior in strict C23 platforms,
+     and so that returning NULL is equivalent to failing.  */
+  if (nbytes == 0)
+    nbytes = 1;
+
+  /* Call realloc, setting errno to ENOMEM on failure.  */
   return realloc (ptr, nbytes);
 }

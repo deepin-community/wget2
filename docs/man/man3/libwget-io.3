@@ -1,4 +1,4 @@
-.TH "libwget-io" 3 "Thu Aug 31 2023" "Version 2.1.0" "wget2" \" -*- nroff -*-
+.TH "libwget-io" 3 "Version 2.2.0" "wget2" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -28,7 +28,7 @@ libwget-io \- I/O helper routines
 .RI "char * \fBwget_read_file\fP (const char *fname, size_t *size)"
 .br
 .ti -1c
-.RI "int \fBwget_update_file\fP (const char *fname, wget_update_load_fn *load_func, wget_update_load_fn *save_func, void *context)"
+.RI "int \fBwget_update_file\fP (const char *fname, wget_update_load_fn *load_func, wget_update_save_fn *save_func, void *context)"
 .br
 .ti -1c
 .RI "int \fBwget_truncate\fP (const char *path, off_t length)"
@@ -174,7 +174,7 @@ Reads the content of a file, or from STDIN\&. When reading from STDIN, the behav
 Memory will be accordingly allocated by \fBwget_read_file()\fP and a pointer to it returned when the read finishes, but the caller is responsible for freeing that memory\&. The length of the allocated block of memory, which is guaranteed to be the same as the length of the data read, will be placed in the variable pointed at by \fCsize\fP\&.
 .PP
 The read data is guaranteed to be appended a NUL termination character (\fC\\0\fP)\&. 
-.SS "int wget_update_file (const char * fname, wget_update_load_fn * load_func, wget_update_load_fn * save_func, void * context)"
+.SS "int wget_update_file (const char * fname, wget_update_load_fn * load_func, wget_update_save_fn * save_func, void * context)"
 
 .PP
 \fBParameters\fP

@@ -1,4 +1,4 @@
-.TH "libwget-base64" 3 "Thu Aug 31 2023" "Version 2.1.0" "wget2" \" -*- nroff -*-
+.TH "libwget-base64" 3 "Version 2.2.0" "wget2" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -200,7 +200,7 @@ Base64 encoded string
 Encodes the string constructed by \fCfmt\fP and the arguments\&. The encoded string is returned in an allocated buffer\&.
 .PP
 You should free() the returned string when not needed any more\&. 
-.SS "size_t wget_base64_get_decoded_length (size_t len)"
+.SS "static inline size_t wget_base64_get_decoded_length (size_t len)"
 
 .PP
 \fBParameters\fP
@@ -214,7 +214,7 @@ Number of decoded bytes plus one (for 0-byte termination)
 .RE
 .PP
 Calculate the number of bytes needed for decoding a base64 sequence with length \fClen\fP\&. 
-.SS "size_t wget_base64_get_encoded_length (size_t len)"
+.SS "static inline size_t wget_base64_get_encoded_length (size_t len)"
 
 .PP
 \fBParameters\fP

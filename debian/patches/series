@@ -1,2 +1,8 @@
+fix-restrict-filename.patch
+fix_type_of_chunk_size.patch
+fix_linked_libraries.patch
+# no_need_to_depend_from_git.patch
+disable-flaky-tests.patch
+remove_git_from_doxygen.patch
 CVE-2025-69194.patch
 CVE-2025-69195.patch

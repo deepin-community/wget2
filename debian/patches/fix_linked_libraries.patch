@@ -1,0 +1,44 @@
+Description: Fix linkage to libraries.
+ libwget links to all but [pcre, gpgme], to which wget2 links.
+Author: Shengqi Chen <harry@debian.org>
+Forwarded: not-needed
+Last-Update: 2025-03-02
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -29,6 +29,9 @@
+   wget2_SOURCES += gpgme.c wget_gpgme.h
+ endif
+ 
++# wget is linked to libwget, do not need these dependencies
++LIBS = $(LIBPCRE2_LIBS) $(GPGME_LIBS)
++
+ wget2_LDADD = ../lib/libgnu.la ../libwget/libwget.la $(LIBOBJS) \
+  $(CLOCK_TIME_LIB) \
+  $(GETADDRINFO_LIB) \
+--- a/libwget/Makefile.am
++++ b/libwget/Makefile.am
+@@ -1,7 +1,11 @@
+ AM_CFLAGS = $(WERROR_CFLAGS) $(WARN_CFLAGS) $(CODE_COVERAGE_CFLAGS) $(MANYWARNINGS) -DBUILDING_LIBWGET
+ 
+-# $(ALL_LIBS) is set to $LIBS in configure.ac
+-LIBS =
++# pcre and gpgme are not used by libwget, but wget2
++# however, the following filter would not work, I do not know why
++#LIBWGET_LIBS = $(filter-out $(GPGME_LIBS) $(LIBPCRE2_LIBS),$(LIBS))
++# hardcode all possible libs here, and change according to different B-D
++# note: $(ZLIB_LIBS) and $(BZ2_LIBS) are empty, I do not know why either
++LIBS = $(LIBIDN2_LIBS) $(ZSTD_LIBS) $(BROTLIDEC_LIBS) $(LZMA_LIBS) $(ZLIB_LIBS) $(BZ2_LIBS) -lz -lbz2 $(LZIP_LIBS) $(LIBNGHTTP2_LIBS) $(LIBPSL_LIBS) $(LIBDANE_LIBS) $(GNUTLS_LIBS) $(WOLFSSL_LIBS) $(OPENSSL_LIBS) $(NETTLE_LIBS) $(LIBPROXY_LIBS)
+ 
+ libwget_libadd = ../lib/libgnu.la $(CODE_COVERAGE_LIBS) \
+  $(CLOCK_TIME_LIB) \
+@@ -31,7 +35,7 @@
+  $(SETLOCALE_LIB) \
+  $(SETLOCALE_NULL_LIB) \
+  @INTL_MACOSX_LIBS@ \
+- $(ALL_LIBS)
++ $(LIBS)
+ 
+ lib_LTLIBRARIES = libwget.la
+ 

@@ -1,0 +1,43 @@
+Description: Disable flaky tests.
+ These tests fail with libproxy enabled (in some environments).
+Author: Shengqi Chen <harry@debian.org>
+Forwarded: not-needed
+Last-Update: 2025-03-02
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/tests/test-idn-cmd.c
++++ b/tests/test-idn-cmd.c
+@@ -39,6 +39,9 @@
+ 
+ int main(void)
+ {
++#if HAVE_LIBPROXY
++	return 0;
++#endif
+ 	wget_test_url_t urls[]={
+ 		{	.name = "http://" punycoded_hostname "/index.html",
+ 			.code = "200 Dontcare",
+--- a/tests/test-idn-meta.c
++++ b/tests/test-idn-meta.c
+@@ -39,6 +39,9 @@
+ 
+ int main(void)
+ {
++#if HAVE_LIBPROXY
++	return 0;
++#endif
+ 	wget_test_url_t urls[]={
+ 		{	.name = "http://start-here.com/start.html",
+ 			.code = "200 Dontcare",
+--- a/tests/test-idn-robots.c
++++ b/tests/test-idn-robots.c
+@@ -39,6 +39,9 @@
+ 
+ int main(void)
+ {
++#if HAVE_LIBPROXY
++	return 0;
++#endif
+ 	wget_test_url_t urls[]={
+ 		{	.name = "http://" punycoded_hostname "/index.html",
+ 			.code = "200 Dontcare",

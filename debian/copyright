@@ -2,6 +2,12 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: wget2
 Upstream-Contact: bug-wget@gnu.org
 Source: https://gitlab.com/gnuwget/wget2
+Files-Excluded:
+ fuzz/*_fuzzer.in/*
+ fuzz/*_fuzzer.repro/*
+Comment:
+ - fuzz/ contains too many fuzzer input files not used in build or test,
+   and makes dpkg-source unhappy (unrepresentable changes).
 
 Files: *
 Copyright: 2013 Tim Ruehsen

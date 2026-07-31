@@ -1,0 +1,18 @@
+Description: Fix wget_restrict_file_name
+ It fails to work as expected on architectures where char is unsigned by default.
+Author: Shengqi Chen <harry@debian.org>
+Bug: https://gitlab.com/gnuwget/wget2/-/issues/694
+Last-Update: 2025-03-02 
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/src/utils.c
++++ b/src/utils.c
+@@ -151,7 +151,7 @@
+ 	bool ascii = mode & WGET_RESTRICT_NAMES_ASCII;
+ 
+ 	for (dst = esc, s = fname; *s; s++) {
+-		char c = *s;
++		signed char c = *s;
+ 
+ 		if (lowercase && c >= 'A' && c <= 'Z') { // isupper() also returns true for chars > 0x7f, the test is not EBCDIC compatible ;-)
+ 			c |= 0x20;

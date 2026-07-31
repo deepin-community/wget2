@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2023 Free Software Foundation, Inc.
+ * Copyright (c) 2016-2024 Free Software Foundation, Inc.
  *
  * This file is part of libwget.
  *
@@ -23,10 +23,10 @@
 #ifndef WGET_WGETVER_H
 #define WGET_WGETVER_H
 
-#define LIBWGET_VERSION "2.1.0"
+#define LIBWGET_VERSION "2.2.0"
 #define LIBWGET_VERSION_MAJOR 2
-#define LIBWGET_VERSION_MINOR 1
+#define LIBWGET_VERSION_MINOR 2
 #define LIBWGET_VERSION_PATCH 0
-#define LIBWGET_VERSION_NUMBER 0x020100
+#define LIBWGET_VERSION_NUMBER 0x020200
 
 #endif /* WGET_WGETVER_H */

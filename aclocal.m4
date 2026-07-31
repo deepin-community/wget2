@@ -14,8 +14,8 @@
 m4_ifndef([AC_CONFIG_MACRO_DIRS], [m4_defun([_AM_CONFIG_MACRO_DIRS], [])m4_defun([AC_CONFIG_MACRO_DIRS], [_AM_CONFIG_MACRO_DIRS($@)])])
 m4_ifndef([AC_AUTOCONF_VERSION],
   [m4_copy([m4_PACKAGE_VERSION], [AC_AUTOCONF_VERSION])])dnl
-m4_if(m4_defn([AC_AUTOCONF_VERSION]), [2.71],,
-[m4_warning([this file was generated for autoconf 2.71.
+m4_if(m4_defn([AC_AUTOCONF_VERSION]), [2.72],,
+[m4_warning([this file was generated for autoconf 2.72.
 You have another version of autoconf.  It may work, but is not guaranteed to.
 If you have problems, you may need to regenerate the build system entirely.
 To do so, use the procedure documented by the package, typically 'autoreconf'.])])
@@ -31,7 +31,7 @@ To do so, use the procedure documented by the package, typically 'autoreconf'.])
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-# Last-changed: 2022-11-15
+# Last-changed: 2024-05-16
 
 
 dnl
@@ -95,12 +95,9 @@ AC_DEFUN([_AM_PATH_GPGRT_CONFIG],[dnl
         fi
         if test -n "$gpgrt_libdir"; then break; fi
       done
-      if test -z "$libdir_candidates"; then
-        # No valid pkgconfig dir in any of the system directories, fallback
-        gpgrt_libdir=${possible_libdir1}
-      fi
-    else
-      # When we cannot determine system libdir-format, use this:
+    fi
+    if test -z "$gpgrt_libdir"; then
+      # No valid pkgconfig dir in any of the system directories, fallback
       gpgrt_libdir=${possible_libdir1}
     fi
   else
@@ -108,16 +105,16 @@ AC_DEFUN([_AM_PATH_GPGRT_CONFIG],[dnl
   fi
 
   if test -n "$gpgrt_libdir"; then
+    # Add the --libdir option to GPGRT_CONFIG
     GPGRT_CONFIG="$GPGRT_CONFIG --libdir=$gpgrt_libdir"
-    if $GPGRT_CONFIG gpg-error >/dev/null 2>&1; then
-      GPG_ERROR_CONFIG="$GPGRT_CONFIG gpg-error"
-      AC_MSG_NOTICE([Use gpgrt-config with $gpgrt_libdir as gpg-error-config])
-      gpg_error_config_version=`$GPG_ERROR_CONFIG --modversion`
-    else
+    # Make sure if gpgrt-config really works, by testing config gpg-error
+    if ! $GPGRT_CONFIG gpg-error --exists; then
+      # If it doesn't work, clear the GPGRT_CONFIG variable.
       unset GPGRT_CONFIG
     fi
-  elif test "$GPG_ERROR_CONFIG" != "no"; then
-    gpg_error_config_version=`$GPG_ERROR_CONFIG --version`
+  else
+    # GPGRT_CONFIG found but no suitable dir for --libdir found.
+    # This is a failure.  Clear the GPGRT_CONFIG variable.
     unset GPGRT_CONFIG
   fi
 ])
@@ -208,7 +205,8 @@ dnl config script does not match the host specification the script
 dnl is added to the gpg_config_script_warn variable.
 dnl
 AC_DEFUN([AM_PATH_GPGME],
-[ AC_REQUIRE([_AM_PATH_GPGME_CONFIG])dnl
+[ AC_REQUIRE([AC_CANONICAL_HOST])dnl
+  AC_REQUIRE([_AM_PATH_GPGME_CONFIG])dnl
   tmp=ifelse([$1], ,1:0.4.2,$1)
   if echo "$tmp" | grep ':' >/dev/null 2>/dev/null ; then
      req_gpgme_api=`echo "$tmp"     | sed 's/\(.*\):\(.*\)/\1/'`
@@ -280,8 +278,9 @@ dnl                       [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND ]]])
 dnl Test for libgpgme and define GPGME_PTHREAD_CFLAGS
 dnl  and GPGME_PTHREAD_LIBS.
 dnl
-AC_DEFUN([AM_PATH_GPGME_PTHREAD],
-[ AC_REQUIRE([_AM_PATH_GPGME_CONFIG])dnl
+AC_DEFUN([AM_PATH_GPGME_PTHREAD],[
+  AC_OBSOLETE([$0], [; use AM_PATH_GPGME instead to use GPGME_CFLAGS and GPGME_LIBS])dnl
+  AC_REQUIRE([_AM_PATH_GPGME_CONFIG])dnl
   tmp=ifelse([$1], ,1:0.4.2,$1)
   if echo "$tmp" | grep ':' >/dev/null 2>/dev/null ; then
      req_gpgme_api=`echo "$tmp"     | sed 's/\(.*\):\(.*\)/\1/'`
@@ -294,35 +293,37 @@ AC_DEFUN([AM_PATH_GPGME_PTHREAD],
   AC_MSG_CHECKING(for GPGME pthread - version >= $min_gpgme_version)
   ok=no
   if test "$GPGME_CONFIG" != "no" ; then
-    if `$GPGME_CONFIG --thread=pthread 2> /dev/null` ; then
-      req_major=`echo $min_gpgme_version | \
+    req_major=`echo $min_gpgme_version | \
                sed 's/\([[0-9]]*\)\.\([[0-9]]*\)\.\([[0-9]]*\)/\1/'`
-      req_minor=`echo $min_gpgme_version | \
+    req_minor=`echo $min_gpgme_version | \
                sed 's/\([[0-9]]*\)\.\([[0-9]]*\)\.\([[0-9]]*\)/\2/'`
-      req_micro=`echo $min_gpgme_version | \
+    req_micro=`echo $min_gpgme_version | \
                sed 's/\([[0-9]]*\)\.\([[0-9]]*\)\.\([[0-9]]*\)/\3/'`
-      if test "$gpgme_version_major" -gt "$req_major"; then
+    if test "$gpgme_version_major" -gt "$req_major"; then
         ok=yes
-      else
+    else
         if test "$gpgme_version_major" -eq "$req_major"; then
-          if test "$gpgme_version_minor" -gt "$req_minor"; then
-            ok=yes
-          else
-            if test "$gpgme_version_minor" -eq "$req_minor"; then
-              if test "$gpgme_version_micro" -ge "$req_micro"; then
-                ok=yes
-              fi
+            if test "$gpgme_version_minor" -gt "$req_minor"; then
+               ok=yes
+            else
+               if test "$gpgme_version_minor" -eq "$req_minor"; then
+                   if test "$gpgme_version_micro" -ge "$req_micro"; then
+                     ok=yes
+                   fi
+               fi
             fi
-          fi
         fi
-      fi
     fi
   fi
   if test $ok = yes; then
      # If we have a recent GPGME, we should also check that the
      # API is compatible.
      if test "$req_gpgme_api" -gt 0 ; then
-        tmp=`$GPGME_CONFIG --api-version 2>/dev/null || echo 0`
+        if test -z "$use_gpgrt_config"; then
+          tmp=`$GPGME_CONFIG --api-version 2>/dev/null || echo 0`
+        else
+          tmp=`$GPGME_CONFIG --variable=api_version 2>/dev/null || echo 0`
+        fi
         if test "$tmp" -gt 0 ; then
            if test "$req_gpgme_api" -ne "$tmp" ; then
              ok=no
@@ -331,8 +332,8 @@ AC_DEFUN([AM_PATH_GPGME_PTHREAD],
      fi
   fi
   if test $ok = yes; then
-    GPGME_PTHREAD_CFLAGS=`$GPGME_CONFIG --thread=pthread --cflags`
-    GPGME_PTHREAD_LIBS=`$GPGME_CONFIG --thread=pthread --libs`
+    GPGME_PTHREAD_CFLAGS=`$GPGME_CONFIG --cflags`
+    GPGME_PTHREAD_LIBS=`$GPGME_CONFIG --libs`
     AC_MSG_RESULT(yes)
     ifelse([$2], , :, [$2])
     _AM_PATH_GPGME_CONFIG_HOST_CHECK
@@ -429,6 +430,268 @@ AC_DEFUN([AM_PATH_GPGME_GLIB],
   fi
   AC_SUBST(GPGME_GLIB_CFLAGS)
   AC_SUBST(GPGME_GLIB_LIBS)
+])
+
+dnl Autoconf macros for libassuan
+dnl Copyright (C) 2002, 2003, 2011 Free Software Foundation, Inc.
+dnl
+dnl This file is free software; as a special exception the author gives
+dnl unlimited permission to copy and/or distribute it, with or without
+dnl modifications, as long as this notice is preserved.
+dnl
+dnl This file is distributed in the hope that it will be useful, but
+dnl WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+dnl implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+dnl SPDX-License-Identifier: FSFULLR
+# Last-changed: 2024-06-13
+
+dnl
+dnl Find gpgrt-config, which uses .pc file
+dnl (minimum pkg-config functionality, supporting cross build)
+dnl
+dnl _AM_PATH_GPGRT_CONFIG
+AC_DEFUN([_AM_PATH_GPGRT_CONFIG],[dnl
+  AC_PATH_PROG(GPGRT_CONFIG, gpgrt-config, no, [$prefix/bin:$PATH])
+  if test "$GPGRT_CONFIG" != "no"; then
+    # Determine gpgrt_libdir
+    #
+    # Get the prefix of gpgrt-config assuming it's something like:
+    #   <PREFIX>/bin/gpgrt-config
+    gpgrt_prefix=${GPGRT_CONFIG%/*/*}
+    possible_libdir1=${gpgrt_prefix}/lib
+    # Determine by using system libdir-format with CC, it's like:
+    #   Normal style: /usr/lib
+    #   GNU cross style: /usr/<triplet>/lib
+    #   Debian style: /usr/lib/<multiarch-name>
+    #   Fedora/openSUSE style: /usr/lib, /usr/lib32 or /usr/lib64
+    # It is assumed that CC is specified to the one of host on cross build.
+    if libdir_candidates=$(${CC:-cc} -print-search-dirs | \
+          sed -n -e "/^libraries/{s/libraries: =//;s/:/\\
+/g;p;}"); then
+      # From the output of -print-search-dirs, select valid pkgconfig dirs.
+      libdir_candidates=$(for dir in $libdir_candidates; do
+        if p=$(cd $dir 2>/dev/null && pwd); then
+          test -d "$p/pkgconfig" && echo $p;
+        fi
+      done)
+
+      for possible_libdir0 in $libdir_candidates; do
+        # possible_libdir0:
+        #   Fallback candidate, the one of system-installed (by $CC)
+        #   (/usr/<triplet>/lib, /usr/lib/<multiarch-name> or /usr/lib32)
+        # possible_libdir1:
+        #   Another candidate, user-locally-installed
+        #   (<gpgrt_prefix>/lib)
+        # possible_libdir2
+        #   Most preferred
+        #   (<gpgrt_prefix>/<triplet>/lib,
+        #    <gpgrt_prefix>/lib/<multiarch-name> or <gpgrt_prefix>/lib32)
+        if test "${possible_libdir0##*/}" = "lib"; then
+          possible_prefix0=${possible_libdir0%/lib}
+          possible_prefix0_triplet=${possible_prefix0##*/}
+          if test -z "$possible_prefix0_triplet"; then
+            continue
+          fi
+          possible_libdir2=${gpgrt_prefix}/$possible_prefix0_triplet/lib
+        else
+          possible_prefix0=${possible_libdir0%%/lib*}
+          possible_libdir2=${gpgrt_prefix}${possible_libdir0#$possible_prefix0}
+        fi
+        if test -f ${possible_libdir2}/pkgconfig/gpg-error.pc; then
+          gpgrt_libdir=${possible_libdir2}
+        elif test -f ${possible_libdir1}/pkgconfig/gpg-error.pc; then
+          gpgrt_libdir=${possible_libdir1}
+        elif test -f ${possible_libdir0}/pkgconfig/gpg-error.pc; then
+          gpgrt_libdir=${possible_libdir0}
+        fi
+        if test -n "$gpgrt_libdir"; then break; fi
+      done
+    fi
+    if test -z "$gpgrt_libdir"; then
+      # No valid pkgconfig dir in any of the system directories, fallback
+      gpgrt_libdir=${possible_libdir1}
+    fi
+  else
+    unset GPGRT_CONFIG
+  fi
+
+  if test -n "$gpgrt_libdir"; then
+    # Add the --libdir option to GPGRT_CONFIG
+    GPGRT_CONFIG="$GPGRT_CONFIG --libdir=$gpgrt_libdir"
+    # Make sure if gpgrt-config really works, by testing config gpg-error
+    if ! $GPGRT_CONFIG gpg-error --exists; then
+      # If it doesn't work, clear the GPGRT_CONFIG variable.
+      unset GPGRT_CONFIG
+    fi
+  else
+    # GPGRT_CONFIG found but no suitable dir for --libdir found.
+    # This is a failure.  Clear the GPGRT_CONFIG variable.
+    unset GPGRT_CONFIG
+  fi
+])
+
+dnl
+dnl Common code used for libassuan detection [internal]
+dnl Returns ok set to yes or no.
+dnl
+AC_DEFUN([_AM_PATH_LIBASSUAN_COMMON],
+[ AC_REQUIRE([AC_CANONICAL_HOST])dnl
+  AC_REQUIRE([_AM_PATH_GPGRT_CONFIG])dnl
+  AC_ARG_WITH(libassuan-prefix,
+              AS_HELP_STRING([--with-libassuan-prefix=PFX],
+                             [prefix where LIBASSUAN is installed (optional)]),
+     libassuan_config_prefix="$withval", libassuan_config_prefix="")
+  if test x$libassuan_config_prefix != x ; then
+    if test x${LIBASSUAN_CONFIG+set} != xset ; then
+      LIBASSUAN_CONFIG=$libassuan_config_prefix/bin/libassuan-config
+    fi
+  fi
+
+  use_gpgrt_config=""
+  if test x"$GPGRT_CONFIG" != x -a "$GPGRT_CONFIG" != "no"; then
+    if $GPGRT_CONFIG libassuan --exists; then
+      LIBASSUAN_CONFIG="$GPGRT_CONFIG libassuan"
+      AC_MSG_NOTICE([Use gpgrt-config as libassuan-config])
+      use_gpgrt_config=yes
+    fi
+  fi
+  if test -z "$use_gpgrt_config"; then
+    AC_PATH_PROG(LIBASSUAN_CONFIG, libassuan-config, no)
+  fi
+
+  tmp=ifelse([$1], ,1:0.9.2,$1)
+  if echo "$tmp" | grep ':' >/dev/null 2>/dev/null ; then
+    req_libassuan_api=`echo "$tmp"     | sed 's/\(.*\):\(.*\)/\1/'`
+    min_libassuan_version=`echo "$tmp" | sed 's/\(.*\):\(.*\)/\2/'`
+  else
+    req_libassuan_api=0
+    min_libassuan_version="$tmp"
+  fi
+
+  AC_MSG_CHECKING(for LIBASSUAN - version >= $min_libassuan_version)
+  ok=no
+  if test "$LIBASSUAN_CONFIG" != "no"; then
+    req_major=`echo $min_libassuan_version | \
+               sed 's/\([[0-9]]*\)\.\([[0-9]]*\)\.\([[0-9]]*\)/\1/'`
+    req_minor=`echo $min_libassuan_version | \
+               sed 's/\([[0-9]]*\)\.\([[0-9]]*\)\.\([[0-9]]*\)/\2/'`
+    req_micro=`echo $min_libassuan_version | \
+               sed 's/\([[0-9]]*\)\.\([[0-9]]*\)\.\([[0-9]]*\)/\3/'`
+
+    if test -z "$use_gpgrt_config"; then
+      libassuan_config_version=`$LIBASSUAN_CONFIG --version`
+    else
+      libassuan_config_version=`$LIBASSUAN_CONFIG --modversion`
+    fi
+    major=`echo $libassuan_config_version | \
+               sed 's/\([[0-9]]*\)\.\([[0-9]]*\)\.\([[0-9]]*\).*/\1/'`
+    minor=`echo $libassuan_config_version | \
+               sed 's/\([[0-9]]*\)\.\([[0-9]]*\)\.\([[0-9]]*\).*/\2/'`
+    micro=`echo $libassuan_config_version | \
+               sed 's/\([[0-9]]*\)\.\([[0-9]]*\)\.\([[0-9]]*\).*/\3/'`
+
+    if test "$major" -gt "$req_major"; then
+        ok=yes
+    else
+        if test "$major" -eq "$req_major"; then
+            if test "$minor" -gt "$req_minor"; then
+               ok=yes
+            else
+               if test "$minor" -eq "$req_minor"; then
+                   if test "$micro" -ge "$req_micro"; then
+                     ok=yes
+                   fi
+               fi
+            fi
+        fi
+    fi
+  fi
+
+  if test $ok = yes; then
+    AC_MSG_RESULT([yes ($libassuan_config_version)])
+    AC_DEFINE_UNQUOTED(LIBASSUAN_API_REQUESTED, $req_libassuan_api, [Requested API version for libassuan])
+  else
+    AC_MSG_RESULT(no)
+  fi
+
+  if test $ok = yes; then
+    if test "$req_libassuan_api" -gt 0 ; then
+      if test -z "$use_gpgrt_config"; then
+        tmp=`$LIBASSUAN_CONFIG --api-version 2>/dev/null || echo 0`
+      else
+        tmp=`$LIBASSUAN_CONFIG --variable=api_version 2>/dev/null || echo 0`
+      fi
+      if test "$tmp" -gt 0 ; then
+        AC_MSG_CHECKING([LIBASSUAN API version])
+        if test "$req_libassuan_api" -eq "$tmp" ; then
+          AC_MSG_RESULT(okay)
+        elif test "$req_libassuan_api" -eq 2 -a "$tmp" -eq 3; then
+          AC_MSG_RESULT(okay)
+        else
+          ok=no
+          AC_MSG_RESULT([does not match.  want=$req_libassuan_api got=$tmp.])
+        fi
+      fi
+    fi
+  fi
+
+  if test $ok = yes; then
+    if test x"$host" != x ; then
+      if test -z "$use_gpgrt_config"; then
+        libassuan_config_host=`$LIBASSUAN_CONFIG --host 2>/dev/null || echo none`
+      else
+        libassuan_config_host=`$LIBASSUAN_CONFIG --variable=host 2>/dev/null || echo none`
+      fi
+      if test x"$libassuan_config_host" != xnone ; then
+        if test x"$libassuan_config_host" != x"$host" ; then
+  AC_MSG_WARN([[
+***
+*** The config script "$LIBASSUAN_CONFIG" was
+*** built for $libassuan_config_host and thus may not match the
+*** used host $host.
+*** You may want to use the configure option --with-libassuan-prefix
+*** to specify a matching config script.
+***]])
+        fi
+      fi
+    fi
+  fi
+])
+
+dnl AM_CHECK_LIBASSUAN([MINIMUM-VERSION,
+dnl                    [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND ]]])
+dnl Test whether libassuan has at least MINIMUM-VERSION. This is
+dnl used to test for features only available in newer versions.
+dnl
+AC_DEFUN([AM_CHECK_LIBASSUAN],
+[ _AM_PATH_LIBASSUAN_COMMON($1)
+  if test $ok = yes; then
+    ifelse([$2], , :, [$2])
+  else
+    ifelse([$3], , :, [$3])
+  fi
+])
+
+
+
+
+dnl AM_PATH_LIBASSUAN([MINIMUM-VERSION,
+dnl                   [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND ]]])
+dnl Test for libassuan and define LIBASSUAN_CFLAGS and LIBASSUAN_LIBS
+dnl
+AC_DEFUN([AM_PATH_LIBASSUAN],
+[ _AM_PATH_LIBASSUAN_COMMON($1)
+  if test $ok = yes; then
+    LIBASSUAN_CFLAGS=`$LIBASSUAN_CONFIG --cflags`
+    LIBASSUAN_LIBS=`$LIBASSUAN_CONFIG --libs`
+    ifelse([$2], , :, [$2])
+  else
+    LIBASSUAN_CFLAGS=""
+    LIBASSUAN_LIBS=""
+    ifelse([$3], , :, [$3])
+  fi
+  AC_SUBST(LIBASSUAN_CFLAGS)
+  AC_SUBST(LIBASSUAN_LIBS)
 ])
 
 # pkg.m4 - Macros to locate and use pkg-config.   -*- Autoconf -*-
@@ -1957,9 +2220,11 @@ m4_include([m4/ax_check_gnu_make.m4])
 m4_include([m4/ax_code_coverage.m4])
 m4_include([m4/ax_file_escapes.m4])
 m4_include([m4/btowc.m4])
+m4_include([m4/build-to-host.m4])
 m4_include([m4/builtin-expect.m4])
 m4_include([m4/byteswap.m4])
 m4_include([m4/c-bool.m4])
+m4_include([m4/c32rtomb.m4])
 m4_include([m4/calloc.m4])
 m4_include([m4/canonicalize.m4])
 m4_include([m4/chdir-long.m4])
@@ -1983,6 +2248,7 @@ m4_include([m4/errno_h.m4])
 m4_include([m4/error.m4])
 m4_include([m4/error_h.m4])
 m4_include([m4/exponentd.m4])
+m4_include([m4/extensions-aix.m4])
 m4_include([m4/extensions.m4])
 m4_include([m4/extern-inline.m4])
 m4_include([m4/fatal-signal.m4])
@@ -2025,7 +2291,6 @@ m4_include([m4/gethostname.m4])
 m4_include([m4/getline.m4])
 m4_include([m4/getlogin.m4])
 m4_include([m4/getlogin_r.m4])
-m4_include([m4/getpagesize.m4])
 m4_include([m4/getpass.m4])
 m4_include([m4/getprogname.m4])
 m4_include([m4/getrandom.m4])
@@ -2055,6 +2320,7 @@ m4_include([m4/isblank.m4])
 m4_include([m4/iswblank.m4])
 m4_include([m4/iswctype.m4])
 m4_include([m4/iswdigit.m4])
+m4_include([m4/iswpunct.m4])
 m4_include([m4/iswxdigit.m4])
 m4_include([m4/langinfo_h.m4])
 m4_include([m4/largefile.m4])
@@ -2067,6 +2333,7 @@ m4_include([m4/libunistring-base.m4])
 m4_include([m4/limits-h.m4])
 m4_include([m4/link.m4])
 m4_include([m4/localcharset.m4])
+m4_include([m4/locale-en.m4])
 m4_include([m4/locale-fr.m4])
 m4_include([m4/locale-ja.m4])
 m4_include([m4/locale-zh.m4])
@@ -2107,7 +2374,9 @@ m4_include([m4/netinet_in_h.m4])
 m4_include([m4/nl_langinfo.m4])
 m4_include([m4/nls.m4])
 m4_include([m4/nocrash.m4])
+m4_include([m4/off64_t.m4])
 m4_include([m4/off_t.m4])
+m4_include([m4/once.m4])
 m4_include([m4/open-cloexec.m4])
 m4_include([m4/open-slash.m4])
 m4_include([m4/open.m4])
@@ -2126,6 +2395,9 @@ m4_include([m4/posix_spawn_faction_addchdir.m4])
 m4_include([m4/printf.m4])
 m4_include([m4/progtest.m4])
 m4_include([m4/pselect.m4])
+m4_include([m4/pthread-once.m4])
+m4_include([m4/pthread-spin.m4])
+m4_include([m4/pthread_h.m4])
 m4_include([m4/pthread_rwlock_rdlock.m4])
 m4_include([m4/pthread_sigmask.m4])
 m4_include([m4/pwrite.m4])
@@ -2188,6 +2460,7 @@ m4_include([m4/strndup.m4])
 m4_include([m4/strnlen.m4])
 m4_include([m4/strstr.m4])
 m4_include([m4/strtoll.m4])
+m4_include([m4/sys_cdefs_h.m4])
 m4_include([m4/sys_file_h.m4])
 m4_include([m4/sys_ioctl_h.m4])
 m4_include([m4/sys_random_h.m4])
@@ -2224,7 +2497,6 @@ m4_include([m4/waitpid.m4])
 m4_include([m4/warn-on-use.m4])
 m4_include([m4/warnings.m4])
 m4_include([m4/wchar_h.m4])
-m4_include([m4/wchar_t.m4])
 m4_include([m4/wcrtomb.m4])
 m4_include([m4/wctype.m4])
 m4_include([m4/wctype_h.m4])
